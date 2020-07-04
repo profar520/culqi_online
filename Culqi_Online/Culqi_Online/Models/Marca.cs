@@ -18,7 +18,7 @@ namespace Culqi_Online.Models
         public Marca()
         {
             this.Cuenta = new HashSet<Cuenta>();
-            this.tarjeta = new HashSet<tarjeta>();
+            this.Tarjeta = new HashSet<Tarjeta>();
         }
     
         public int ID_Marca { get; set; }
@@ -28,6 +28,6 @@ namespace Culqi_Online.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cuenta> Cuenta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tarjeta> tarjeta { get; set; }
+        public virtual ICollection<Tarjeta> Tarjeta { get; set; }
     }
 }

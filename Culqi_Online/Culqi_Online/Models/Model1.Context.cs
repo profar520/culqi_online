@@ -33,7 +33,7 @@ namespace Culqi_Online.Models
         public virtual DbSet<Detalle_Venta> Detalle_Venta { get; set; }
         public virtual DbSet<Efectivo> Efectivo { get; set; }
         public virtual DbSet<Marca> Marca { get; set; }
-        public virtual DbSet<tarjeta> tarjeta { get; set; }
+        public virtual DbSet<Tarjeta> Tarjeta { get; set; }
         public virtual DbSet<Tipo_Documento> Tipo_Documento { get; set; }
         public virtual DbSet<Tipo_Usuario> Tipo_Usuario { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }

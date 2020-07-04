@@ -16,8 +16,8 @@ namespace Culqi_Online.Models
     {
         public int ID_Cuenta { get; set; }
         public int ID_Marca { get; set; }
+        public int ID_Usuario { get; set; }
         public string Tipo_Moneda { get; set; }
-        public Nullable<int> ID_Usuario { get; set; }
         public string Numero_cuenta { get; set; }
     
         public virtual Marca Marca { get; set; }

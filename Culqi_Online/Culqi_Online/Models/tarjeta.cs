@@ -12,10 +12,10 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tarjeta
+    public partial class Tarjeta
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tarjeta()
+        public Tarjeta()
         {
             this.Venta = new HashSet<Venta>();
         }

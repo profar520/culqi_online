@@ -14,16 +14,10 @@ namespace Culqi_Online.Models
     
     public partial class Tipo_Documento
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tipo_Documento()
-        {
-            this.Usuario = new HashSet<Usuario>();
-        }
-    
         public int ID_Tipo_Doc { get; set; }
+        public int ID_Usuario { get; set; }
         public string Descripcion { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

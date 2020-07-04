@@ -36,6 +36,6 @@ namespace Culqi_Online.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_Venta> Detalle_Venta { get; set; }
         public virtual Efectivo Efectivo { get; set; }
-        public virtual tarjeta tarjeta { get; set; }
+        public virtual Tarjeta Tarjeta { get; set; }
     }
 }

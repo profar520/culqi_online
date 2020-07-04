@@ -14,6 +14,7 @@ namespace Culqi_Online.Models
     
     public partial class Detalle_Deposito
     {
+        public int ID_Detalle_Deposito { get; set; }
         public int ID_Deposito { get; set; }
         public Nullable<int> N_Operacion { get; set; }
         public Nullable<System.DateTime> Fecha_Desposito { get; set; }
@@ -21,7 +22,6 @@ namespace Culqi_Online.Models
         public Nullable<double> Monto { get; set; }
         public Nullable<double> Comision { get; set; }
         public Nullable<double> Monto_Depo { get; set; }
-        public int ID_Detalle_Deposito { get; set; }
         public Nullable<System.DateTime> Fecha_Oper { get; set; }
     
         public virtual Deposito Deposito { get; set; }
