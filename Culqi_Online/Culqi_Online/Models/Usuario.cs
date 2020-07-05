@@ -19,11 +19,11 @@ namespace Culqi_Online.Models
         {
             this.Comercio = new HashSet<Comercio>();
             this.Cuenta = new HashSet<Cuenta>();
-            this.Tipo_Documento = new HashSet<Tipo_Documento>();
-            this.Tipo_Usuario = new HashSet<Tipo_Usuario>();
         }
     
         public int ID_Usuario { get; set; }
+        public Nullable<int> ID_Tipo { get; set; }
+        public Nullable<int> ID_Tipo_Doc { get; set; }
         public string Nombres { get; set; }
         public string Correo { get; set; }
         public string Contrasenia { get; set; }
@@ -32,9 +32,7 @@ namespace Culqi_Online.Models
         public virtual ICollection<Comercio> Comercio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cuenta> Cuenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tipo_Documento> Tipo_Documento { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tipo_Usuario> Tipo_Usuario { get; set; }
+        public virtual Tipo_Documento Tipo_Documento { get; set; }
+        public virtual Tipo_Usuario Tipo_Usuario { get; set; }
     }
 }

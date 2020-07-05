@@ -1,12 +1,11 @@
-﻿using Culqi_Online.Transfers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace Culqi_Online.Models
 {
-    public partial class Usuariosoa
+    public class Usuariosoa
     {
         public static int CrearUsuario(Usuario usuario)
         {

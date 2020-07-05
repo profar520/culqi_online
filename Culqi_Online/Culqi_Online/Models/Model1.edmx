@@ -24,7 +24,7 @@
           <Property Name="URL_Comercio" Type="varchar" MaxLength="100" />
           <Property Name="celular" Type="int" Nullable="false" />
           <Property Name="Pais" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Terminos_condiicones" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Terminos_condiciones" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Rubro" Type="varchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <EntityType Name="Cuenta">
@@ -105,8 +105,7 @@
           <Key>
             <PropertyRef Name="ID_Tipo_Doc" />
           </Key>
-          <Property Name="ID_Tipo_Doc" Type="int" Nullable="false" />
-          <Property Name="ID_Usuario" Type="int" Nullable="false" />
+          <Property Name="ID_Tipo_Doc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <EntityType Name="Tipo_Usuario">
@@ -114,14 +113,15 @@
             <PropertyRef Name="ID_Tipo" />
           </Key>
           <Property Name="ID_Tipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_Usuario" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="ID_Usuario" />
           </Key>
           <Property Name="ID_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Tipo" Type="int" />
+          <Property Name="ID_Tipo_Doc" Type="int" />
           <Property Name="Nombres" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Contrasenia" Type="varchar" MaxLength="25" Nullable="false" />
@@ -141,7 +141,7 @@
           <Property Name="Estado" Type="varchar" MaxLength="20" />
           <Property Name="Fecha_Hora" Type="datetime" />
         </EntityType>
-        <Association Name="FK__Comercio__ID_Gir__403A8C7D">
+        <Association Name="FK__Comercio__ID_Gir__3A81B327">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -153,7 +153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Usu__3F466844">
+        <Association Name="FK__Comercio__ID_Usu__398D8EEE">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -165,7 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cuenta__ID_Marca__38996AB5">
+        <Association Name="FK__Cuenta__ID_Marca__32E0915F">
           <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,7 +177,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cuenta__ID_Usuar__398D8EEE">
+        <Association Name="FK__Cuenta__ID_Usuar__33D4B598">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,7 +189,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Detalle_D__ID_De__4BAC3F29">
+        <Association Name="FK__Detalle_D__ID_De__45F365D3">
           <End Role="Deposito" Type="Self.Deposito" Multiplicity="1" />
           <End Role="Detalle_Deposito" Type="Self.Detalle_Deposito" Multiplicity="*" />
           <ReferentialConstraint>
@@ -201,7 +201,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Detalle_V__ID_Ve__48CFD27E">
+        <Association Name="FK__Detalle_V__ID_Ve__4316F928">
           <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
           <End Role="Detalle_Venta" Type="Self.Detalle_Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -213,7 +213,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tarjeta__ID_Marc__3C69FB99">
+        <Association Name="FK__Tarjeta__ID_Marc__36B12243">
           <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -225,31 +225,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tipo_Docu__ID_Us__35BCFE0A">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Tipo_Documento" Type="Self.Tipo_Documento" Multiplicity="*" />
+        <Association Name="FK__Usuario__ID_Tipo__2F10007B">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID_Usuario" />
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="ID_Tipo" />
             </Principal>
-            <Dependent Role="Tipo_Documento">
-              <PropertyRef Name="ID_Usuario" />
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ID_Tipo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tipo_Usua__ID_Us__32E0915F">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="*" />
+        <Association Name="FK__Usuario__ID_Tipo__300424B4">
+          <End Role="Tipo_Documento" Type="Self.Tipo_Documento" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID_Usuario" />
+            <Principal Role="Tipo_Documento">
+              <PropertyRef Name="ID_Tipo_Doc" />
             </Principal>
-            <Dependent Role="Tipo_Usuario">
-              <PropertyRef Name="ID_Usuario" />
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ID_Tipo_Doc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Comerc__4316F928">
+        <Association Name="FK__Venta__ID_Comerc__3D5E1FD2">
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -261,7 +261,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Deposi__45F365D3">
+        <Association Name="FK__Venta__ID_Deposi__403A8C7D">
           <End Role="Deposito" Type="Self.Deposito" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -273,7 +273,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_refere__440B1D61">
+        <Association Name="FK__Venta__ID_refere__3E52440B">
           <End Role="Efectivo" Type="Self.Efectivo" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -285,7 +285,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Tarjet__44FF419A">
+        <Association Name="FK__Venta__ID_Tarjet__3F466844">
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -311,55 +311,55 @@
           <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Comercio__ID_Gir__403A8C7D" Association="Self.FK__Comercio__ID_Gir__403A8C7D">
+          <AssociationSet Name="FK__Comercio__ID_Gir__3A81B327" Association="Self.FK__Comercio__ID_Gir__3A81B327">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Usu__3F466844" Association="Self.FK__Comercio__ID_Usu__3F466844">
+          <AssociationSet Name="FK__Comercio__ID_Usu__398D8EEE" Association="Self.FK__Comercio__ID_Usu__398D8EEE">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cuenta__ID_Marca__38996AB5" Association="Self.FK__Cuenta__ID_Marca__38996AB5">
+          <AssociationSet Name="FK__Cuenta__ID_Marca__32E0915F" Association="Self.FK__Cuenta__ID_Marca__32E0915F">
             <End Role="Marca" EntitySet="Marca" />
             <End Role="Cuenta" EntitySet="Cuenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cuenta__ID_Usuar__398D8EEE" Association="Self.FK__Cuenta__ID_Usuar__398D8EEE">
+          <AssociationSet Name="FK__Cuenta__ID_Usuar__33D4B598" Association="Self.FK__Cuenta__ID_Usuar__33D4B598">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Cuenta" EntitySet="Cuenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Detalle_D__ID_De__4BAC3F29" Association="Self.FK__Detalle_D__ID_De__4BAC3F29">
+          <AssociationSet Name="FK__Detalle_D__ID_De__45F365D3" Association="Self.FK__Detalle_D__ID_De__45F365D3">
             <End Role="Deposito" EntitySet="Deposito" />
             <End Role="Detalle_Deposito" EntitySet="Detalle_Deposito" />
           </AssociationSet>
-          <AssociationSet Name="FK__Detalle_V__ID_Ve__48CFD27E" Association="Self.FK__Detalle_V__ID_Ve__48CFD27E">
+          <AssociationSet Name="FK__Detalle_V__ID_Ve__4316F928" Association="Self.FK__Detalle_V__ID_Ve__4316F928">
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Detalle_Venta" EntitySet="Detalle_Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tarjeta__ID_Marc__3C69FB99" Association="Self.FK__Tarjeta__ID_Marc__3C69FB99">
+          <AssociationSet Name="FK__Tarjeta__ID_Marc__36B12243" Association="Self.FK__Tarjeta__ID_Marc__36B12243">
             <End Role="Marca" EntitySet="Marca" />
             <End Role="Tarjeta" EntitySet="Tarjeta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tipo_Docu__ID_Us__35BCFE0A" Association="Self.FK__Tipo_Docu__ID_Us__35BCFE0A">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tipo_Usua__ID_Us__32E0915F" Association="Self.FK__Tipo_Usua__ID_Us__32E0915F">
-            <End Role="Usuario" EntitySet="Usuario" />
+          <AssociationSet Name="FK__Usuario__ID_Tipo__2F10007B" Association="Self.FK__Usuario__ID_Tipo__2F10007B">
             <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Comerc__4316F928" Association="Self.FK__Venta__ID_Comerc__4316F928">
+          <AssociationSet Name="FK__Usuario__ID_Tipo__300424B4" Association="Self.FK__Usuario__ID_Tipo__300424B4">
+            <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Venta__ID_Comerc__3D5E1FD2" Association="Self.FK__Venta__ID_Comerc__3D5E1FD2">
             <End Role="Comercio" EntitySet="Comercio" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Deposi__45F365D3" Association="Self.FK__Venta__ID_Deposi__45F365D3">
+          <AssociationSet Name="FK__Venta__ID_Deposi__403A8C7D" Association="Self.FK__Venta__ID_Deposi__403A8C7D">
             <End Role="Deposito" EntitySet="Deposito" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_refere__440B1D61" Association="Self.FK__Venta__ID_refere__440B1D61">
+          <AssociationSet Name="FK__Venta__ID_refere__3E52440B" Association="Self.FK__Venta__ID_refere__3E52440B">
             <End Role="Efectivo" EntitySet="Efectivo" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Tarjet__44FF419A" Association="Self.FK__Venta__ID_Tarjet__44FF419A">
+          <AssociationSet Name="FK__Venta__ID_Tarjet__3F466844" Association="Self.FK__Venta__ID_Tarjet__3F466844">
             <End Role="Tarjeta" EntitySet="Tarjeta" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
@@ -375,7 +375,7 @@
           </Key>
           <Property Name="ID_Giro_Neg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Giro_n" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Gir__403A8C7D" FromRole="Categoria" ToRole="Comercio" />
+          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Gir__3A81B327" FromRole="Categoria" ToRole="Comercio" />
         </EntityType>
         <EntityType Name="Comercio">
           <Key>
@@ -389,11 +389,11 @@
           <Property Name="URL_Comercio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="celular" Type="Int32" Nullable="false" />
           <Property Name="Pais" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Terminos_condiicones" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Terminos_condiciones" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Rubro" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Categoria" Relationship="Self.FK__Comercio__ID_Gir__403A8C7D" FromRole="Comercio" ToRole="Categoria" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Comercio__ID_Usu__3F466844" FromRole="Comercio" ToRole="Usuario" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Comerc__4316F928" FromRole="Comercio" ToRole="Venta" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Comercio__ID_Gir__3A81B327" FromRole="Comercio" ToRole="Categoria" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Comercio__ID_Usu__398D8EEE" FromRole="Comercio" ToRole="Usuario" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Comerc__3D5E1FD2" FromRole="Comercio" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -404,8 +404,8 @@
           <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
           <Property Name="Tipo_Moneda" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Numero_cuenta" Type="String" MaxLength="22" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Marca" Relationship="Self.FK__Cuenta__ID_Marca__38996AB5" FromRole="Cuenta" ToRole="Marca" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Cuenta__ID_Usuar__398D8EEE" FromRole="Cuenta" ToRole="Usuario" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK__Cuenta__ID_Marca__32E0915F" FromRole="Cuenta" ToRole="Marca" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Cuenta__ID_Usuar__33D4B598" FromRole="Cuenta" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Deposito">
           <Key>
@@ -415,8 +415,8 @@
           <Property Name="Monto" Type="Double" />
           <Property Name="Fecha" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Detalle_Deposito" Relationship="Self.FK__Detalle_D__ID_De__4BAC3F29" FromRole="Deposito" ToRole="Detalle_Deposito" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Deposi__45F365D3" FromRole="Deposito" ToRole="Venta" />
+          <NavigationProperty Name="Detalle_Deposito" Relationship="Self.FK__Detalle_D__ID_De__45F365D3" FromRole="Deposito" ToRole="Detalle_Deposito" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Deposi__403A8C7D" FromRole="Deposito" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Detalle_Deposito">
           <Key>
@@ -431,7 +431,7 @@
           <Property Name="Comision" Type="Double" />
           <Property Name="Monto_Depo" Type="Double" />
           <Property Name="Fecha_Oper" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Deposito" Relationship="Self.FK__Detalle_D__ID_De__4BAC3F29" FromRole="Detalle_Deposito" ToRole="Deposito" />
+          <NavigationProperty Name="Deposito" Relationship="Self.FK__Detalle_D__ID_De__45F365D3" FromRole="Detalle_Deposito" ToRole="Deposito" />
         </EntityType>
         <EntityType Name="Detalle_Venta">
           <Key>
@@ -447,7 +447,7 @@
           <Property Name="Pais" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Ciudad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Dirección" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Detalle_V__ID_Ve__48CFD27E" FromRole="Detalle_Venta" ToRole="Venta" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Detalle_V__ID_Ve__4316F928" FromRole="Detalle_Venta" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Efectivo">
           <Key>
@@ -456,7 +456,7 @@
           <Property Name="ID_referencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ent_financiera" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Monto" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_refere__440B1D61" FromRole="Efectivo" ToRole="Venta" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_refere__3E52440B" FromRole="Efectivo" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Marca">
           <Key>
@@ -465,8 +465,8 @@
           <Property Name="ID_Marca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Tipo_marca" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__ID_Marca__38996AB5" FromRole="Marca" ToRole="Cuenta" />
-          <NavigationProperty Name="Tarjeta" Relationship="Self.FK__Tarjeta__ID_Marc__3C69FB99" FromRole="Marca" ToRole="Tarjeta" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__ID_Marca__32E0915F" FromRole="Marca" ToRole="Cuenta" />
+          <NavigationProperty Name="Tarjeta" Relationship="Self.FK__Tarjeta__ID_Marc__36B12243" FromRole="Marca" ToRole="Tarjeta" />
         </EntityType>
         <EntityType Name="Tarjeta">
           <Key>
@@ -477,39 +477,39 @@
           <Property Name="Num_tarjeta" Type="Int32" Nullable="false" />
           <Property Name="CVV" Type="Int32" Nullable="false" />
           <Property Name="fec_tarjeta" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Marca" Relationship="Self.FK__Tarjeta__ID_Marc__3C69FB99" FromRole="Tarjeta" ToRole="Marca" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Tarjet__44FF419A" FromRole="Tarjeta" ToRole="Venta" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK__Tarjeta__ID_Marc__36B12243" FromRole="Tarjeta" ToRole="Marca" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Tarjet__3F466844" FromRole="Tarjeta" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Tipo_Documento">
           <Key>
             <PropertyRef Name="ID_Tipo_Doc" />
           </Key>
-          <Property Name="ID_Tipo_Doc" Type="Int32" Nullable="false" />
-          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="ID_Tipo_Doc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Tipo_Docu__ID_Us__35BCFE0A" FromRole="Tipo_Documento" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__ID_Tipo__300424B4" FromRole="Tipo_Documento" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Tipo_Usuario">
           <Key>
             <PropertyRef Name="ID_Tipo" />
           </Key>
           <Property Name="ID_Tipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Tipo_Usua__ID_Us__32E0915F" FromRole="Tipo_Usuario" ToRole="Usuario" />
+          <Property Name="Descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__ID_Tipo__2F10007B" FromRole="Tipo_Usuario" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="ID_Usuario" />
           </Key>
           <Property Name="ID_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Tipo" Type="Int32" />
+          <Property Name="ID_Tipo_Doc" Type="Int32" />
           <Property Name="Nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Contrasenia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Usu__3F466844" FromRole="Usuario" ToRole="Comercio" />
-          <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__ID_Usuar__398D8EEE" FromRole="Usuario" ToRole="Cuenta" />
-          <NavigationProperty Name="Tipo_Documento" Relationship="Self.FK__Tipo_Docu__ID_Us__35BCFE0A" FromRole="Usuario" ToRole="Tipo_Documento" />
-          <NavigationProperty Name="Tipo_Usuario" Relationship="Self.FK__Tipo_Usua__ID_Us__32E0915F" FromRole="Usuario" ToRole="Tipo_Usuario" />
+          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Usu__398D8EEE" FromRole="Usuario" ToRole="Comercio" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__ID_Usuar__33D4B598" FromRole="Usuario" ToRole="Cuenta" />
+          <NavigationProperty Name="Tipo_Documento" Relationship="Self.FK__Usuario__ID_Tipo__300424B4" FromRole="Usuario" ToRole="Tipo_Documento" />
+          <NavigationProperty Name="Tipo_Usuario" Relationship="Self.FK__Usuario__ID_Tipo__2F10007B" FromRole="Usuario" ToRole="Tipo_Usuario" />
         </EntityType>
         <EntityType Name="Venta">
           <Key>
@@ -525,13 +525,13 @@
           <Property Name="Correo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Fecha_Hora" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Comercio" Relationship="Self.FK__Venta__ID_Comerc__4316F928" FromRole="Venta" ToRole="Comercio" />
-          <NavigationProperty Name="Deposito" Relationship="Self.FK__Venta__ID_Deposi__45F365D3" FromRole="Venta" ToRole="Deposito" />
-          <NavigationProperty Name="Detalle_Venta" Relationship="Self.FK__Detalle_V__ID_Ve__48CFD27E" FromRole="Venta" ToRole="Detalle_Venta" />
-          <NavigationProperty Name="Efectivo" Relationship="Self.FK__Venta__ID_refere__440B1D61" FromRole="Venta" ToRole="Efectivo" />
-          <NavigationProperty Name="Tarjeta" Relationship="Self.FK__Venta__ID_Tarjet__44FF419A" FromRole="Venta" ToRole="Tarjeta" />
+          <NavigationProperty Name="Comercio" Relationship="Self.FK__Venta__ID_Comerc__3D5E1FD2" FromRole="Venta" ToRole="Comercio" />
+          <NavigationProperty Name="Deposito" Relationship="Self.FK__Venta__ID_Deposi__403A8C7D" FromRole="Venta" ToRole="Deposito" />
+          <NavigationProperty Name="Detalle_Venta" Relationship="Self.FK__Detalle_V__ID_Ve__4316F928" FromRole="Venta" ToRole="Detalle_Venta" />
+          <NavigationProperty Name="Efectivo" Relationship="Self.FK__Venta__ID_refere__3E52440B" FromRole="Venta" ToRole="Efectivo" />
+          <NavigationProperty Name="Tarjeta" Relationship="Self.FK__Venta__ID_Tarjet__3F466844" FromRole="Venta" ToRole="Tarjeta" />
         </EntityType>
-        <Association Name="FK__Comercio__ID_Gir__403A8C7D">
+        <Association Name="FK__Comercio__ID_Gir__3A81B327">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -543,7 +543,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Usu__3F466844">
+        <Association Name="FK__Comercio__ID_Usu__398D8EEE">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -555,7 +555,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Comerc__4316F928">
+        <Association Name="FK__Venta__ID_Comerc__3D5E1FD2">
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -567,7 +567,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cuenta__ID_Marca__38996AB5">
+        <Association Name="FK__Cuenta__ID_Marca__32E0915F">
           <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -579,7 +579,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cuenta__ID_Usuar__398D8EEE">
+        <Association Name="FK__Cuenta__ID_Usuar__33D4B598">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -591,7 +591,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Detalle_D__ID_De__4BAC3F29">
+        <Association Name="FK__Detalle_D__ID_De__45F365D3">
           <End Role="Deposito" Type="Self.Deposito" Multiplicity="1" />
           <End Role="Detalle_Deposito" Type="Self.Detalle_Deposito" Multiplicity="*" />
           <ReferentialConstraint>
@@ -603,7 +603,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Deposi__45F365D3">
+        <Association Name="FK__Venta__ID_Deposi__403A8C7D">
           <End Role="Deposito" Type="Self.Deposito" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -615,7 +615,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Detalle_V__ID_Ve__48CFD27E">
+        <Association Name="FK__Detalle_V__ID_Ve__4316F928">
           <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
           <End Role="Detalle_Venta" Type="Self.Detalle_Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -627,7 +627,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_refere__440B1D61">
+        <Association Name="FK__Venta__ID_refere__3E52440B">
           <End Role="Efectivo" Type="Self.Efectivo" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -639,7 +639,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tarjeta__ID_Marc__3C69FB99">
+        <Association Name="FK__Tarjeta__ID_Marc__36B12243">
           <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -651,7 +651,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Tarjet__44FF419A">
+        <Association Name="FK__Venta__ID_Tarjet__3F466844">
           <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -663,27 +663,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tipo_Docu__ID_Us__35BCFE0A">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Tipo_Documento" Type="Self.Tipo_Documento" Multiplicity="*" />
+        <Association Name="FK__Usuario__ID_Tipo__300424B4">
+          <End Role="Tipo_Documento" Type="Self.Tipo_Documento" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID_Usuario" />
+            <Principal Role="Tipo_Documento">
+              <PropertyRef Name="ID_Tipo_Doc" />
             </Principal>
-            <Dependent Role="Tipo_Documento">
-              <PropertyRef Name="ID_Usuario" />
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ID_Tipo_Doc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tipo_Usua__ID_Us__32E0915F">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="*" />
+        <Association Name="FK__Usuario__ID_Tipo__2F10007B">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="ID_Usuario" />
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="ID_Tipo" />
             </Principal>
-            <Dependent Role="Tipo_Usuario">
-              <PropertyRef Name="ID_Usuario" />
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ID_Tipo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -701,57 +701,57 @@
           <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <EntitySet Name="Venta" EntityType="Self.Venta" />
-          <AssociationSet Name="FK__Comercio__ID_Gir__403A8C7D" Association="Self.FK__Comercio__ID_Gir__403A8C7D">
+          <AssociationSet Name="FK__Comercio__ID_Gir__3A81B327" Association="Self.FK__Comercio__ID_Gir__3A81B327">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Usu__3F466844" Association="Self.FK__Comercio__ID_Usu__3F466844">
+          <AssociationSet Name="FK__Comercio__ID_Usu__398D8EEE" Association="Self.FK__Comercio__ID_Usu__398D8EEE">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Comerc__4316F928" Association="Self.FK__Venta__ID_Comerc__4316F928">
+          <AssociationSet Name="FK__Venta__ID_Comerc__3D5E1FD2" Association="Self.FK__Venta__ID_Comerc__3D5E1FD2">
             <End Role="Comercio" EntitySet="Comercio" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cuenta__ID_Marca__38996AB5" Association="Self.FK__Cuenta__ID_Marca__38996AB5">
+          <AssociationSet Name="FK__Cuenta__ID_Marca__32E0915F" Association="Self.FK__Cuenta__ID_Marca__32E0915F">
             <End Role="Marca" EntitySet="Marca" />
             <End Role="Cuenta" EntitySet="Cuenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cuenta__ID_Usuar__398D8EEE" Association="Self.FK__Cuenta__ID_Usuar__398D8EEE">
+          <AssociationSet Name="FK__Cuenta__ID_Usuar__33D4B598" Association="Self.FK__Cuenta__ID_Usuar__33D4B598">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Cuenta" EntitySet="Cuenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Detalle_D__ID_De__4BAC3F29" Association="Self.FK__Detalle_D__ID_De__4BAC3F29">
+          <AssociationSet Name="FK__Detalle_D__ID_De__45F365D3" Association="Self.FK__Detalle_D__ID_De__45F365D3">
             <End Role="Deposito" EntitySet="Deposito" />
             <End Role="Detalle_Deposito" EntitySet="Detalle_Deposito" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Deposi__45F365D3" Association="Self.FK__Venta__ID_Deposi__45F365D3">
+          <AssociationSet Name="FK__Venta__ID_Deposi__403A8C7D" Association="Self.FK__Venta__ID_Deposi__403A8C7D">
             <End Role="Deposito" EntitySet="Deposito" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Detalle_V__ID_Ve__48CFD27E" Association="Self.FK__Detalle_V__ID_Ve__48CFD27E">
+          <AssociationSet Name="FK__Detalle_V__ID_Ve__4316F928" Association="Self.FK__Detalle_V__ID_Ve__4316F928">
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Detalle_Venta" EntitySet="Detalle_Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_refere__440B1D61" Association="Self.FK__Venta__ID_refere__440B1D61">
+          <AssociationSet Name="FK__Venta__ID_refere__3E52440B" Association="Self.FK__Venta__ID_refere__3E52440B">
             <End Role="Efectivo" EntitySet="Efectivo" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tarjeta__ID_Marc__3C69FB99" Association="Self.FK__Tarjeta__ID_Marc__3C69FB99">
+          <AssociationSet Name="FK__Tarjeta__ID_Marc__36B12243" Association="Self.FK__Tarjeta__ID_Marc__36B12243">
             <End Role="Marca" EntitySet="Marca" />
             <End Role="Tarjeta" EntitySet="Tarjeta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Tarjet__44FF419A" Association="Self.FK__Venta__ID_Tarjet__44FF419A">
+          <AssociationSet Name="FK__Venta__ID_Tarjet__3F466844" Association="Self.FK__Venta__ID_Tarjet__3F466844">
             <End Role="Tarjeta" EntitySet="Tarjeta" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tipo_Docu__ID_Us__35BCFE0A" Association="Self.FK__Tipo_Docu__ID_Us__35BCFE0A">
-            <End Role="Usuario" EntitySet="Usuario" />
+          <AssociationSet Name="FK__Usuario__ID_Tipo__300424B4" Association="Self.FK__Usuario__ID_Tipo__300424B4">
             <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tipo_Usua__ID_Us__32E0915F" Association="Self.FK__Tipo_Usua__ID_Us__32E0915F">
             <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__ID_Tipo__2F10007B" Association="Self.FK__Usuario__ID_Tipo__2F10007B">
             <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -779,7 +779,7 @@
                 <ScalarProperty Name="URL_Comercio" ColumnName="URL_Comercio" />
                 <ScalarProperty Name="celular" ColumnName="celular" />
                 <ScalarProperty Name="Pais" ColumnName="Pais" />
-                <ScalarProperty Name="Terminos_condiicones" ColumnName="Terminos_condiicones" />
+                <ScalarProperty Name="Terminos_condiciones" ColumnName="Terminos_condiciones" />
                 <ScalarProperty Name="Rubro" ColumnName="Rubro" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -869,7 +869,6 @@
             <EntityTypeMapping TypeName="culqi_dbModel.Tipo_Documento">
               <MappingFragment StoreEntitySet="Tipo_Documento">
                 <ScalarProperty Name="ID_Tipo_Doc" ColumnName="ID_Tipo_Doc" />
-                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -878,7 +877,6 @@
             <EntityTypeMapping TypeName="culqi_dbModel.Tipo_Usuario">
               <MappingFragment StoreEntitySet="Tipo_Usuario">
                 <ScalarProperty Name="ID_Tipo" ColumnName="ID_Tipo" />
-                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -887,6 +885,8 @@
             <EntityTypeMapping TypeName="culqi_dbModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+                <ScalarProperty Name="ID_Tipo" ColumnName="ID_Tipo" />
+                <ScalarProperty Name="ID_Tipo_Doc" ColumnName="ID_Tipo_Doc" />
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
