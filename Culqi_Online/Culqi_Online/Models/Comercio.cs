@@ -27,9 +27,10 @@ namespace Culqi_Online.Models
         public string URL_Comercio { get; set; }
         public int celular { get; set; }
         public string Pais { get; set; }
-        public string Terminos_condiicones { get; set; }
+        public string Terminos_condiciones { get; set; }
         public string Rubro { get; set; }
         public int ID_Comercio { get; set; }
+        public string Direccion { get; set; }
     
         public virtual Categoria Categoria { get; set; }
         public virtual Usuario Usuario { get; set; }

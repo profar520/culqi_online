@@ -1,4 +1,5 @@
 ﻿using Culqi_Online.Models;
+using Culqi_Online.Transfers;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -21,9 +22,18 @@ namespace Culqi_Online.Controllers
         // POST: api/Usuario
         [HttpPost]
         [Route("api/afiliar_comerciante/registrar_usuario")]
-        public int RegistroUsuario(Usuario usuario)
+        public Usuariodto RegistroUsuario(Usuario usuario)
         {
-            return Usuariosoa.CrearUsuario(usuario);
+            if (!Usuariosoa.BuscarCorreo(usuario.Correo))
+            {
+                return Usuariosoa.CrearUsuario(usuario);
+            }
+            else
+            {
+                Usuariodto usuariodto = new Usuariodto();
+                usuariodto.ID_Usuario = 0;
+                return usuariodto;
+            }
         }
 
         // PUT: api/Usuario/5

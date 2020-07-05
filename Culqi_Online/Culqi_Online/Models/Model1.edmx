@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="culqi_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="culqi_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categoria">
           <Key>
             <PropertyRef Name="ID_Giro_Neg" />
@@ -23,9 +23,10 @@
           <Property Name="URL_Comercio" Type="varchar" MaxLength="100" />
           <Property Name="celular" Type="int" Nullable="false" />
           <Property Name="Pais" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Terminos_condiicones" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Terminos_condiciones" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Rubro" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ID_Comercio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -124,6 +125,7 @@
           <Property Name="ID_Tipo_Doc" Type="int" Nullable="false" />
           <Property Name="Nombres" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tipo_Doc_Numero" Type="varchar" MaxLength="50" />
           <Property Name="Contrasenia" Type="varchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <EntityType Name="Venta">
@@ -364,8 +366,7 @@
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="culqi_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -388,9 +389,10 @@
           <Property Name="URL_Comercio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="celular" Type="Int32" Nullable="false" />
           <Property Name="Pais" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Terminos_condiicones" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Terminos_condiciones" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Rubro" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_Comercio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Categoria" Relationship="Self.FK__Comercio__ID_Gir__3B75D760" FromRole="Comercio" ToRole="Categoria" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Comercio__ID_Usu__3A81B327" FromRole="Comercio" ToRole="Usuario" />
           <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_Comercio" FromRole="Comercio" ToRole="Venta" />
@@ -510,6 +512,7 @@
           <NavigationProperty Name="Cuenta" Relationship="Self.FK_Cuenta_Usuario" FromRole="Usuario" ToRole="Cuenta" />
           <NavigationProperty Name="Tipo_Documento" Relationship="Self.FK__Usuario__ID_Tipo__33D4B598" FromRole="Usuario" ToRole="Tipo_Documento" />
           <NavigationProperty Name="Tipo_Usuario" Relationship="Self.FK__Usuario__ID_Tipo__32E0915F" FromRole="Usuario" ToRole="Tipo_Usuario" />
+          <Property Name="Tipo_Doc_Numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Venta">
           <Key>
@@ -778,9 +781,10 @@
                 <ScalarProperty Name="URL_Comercio" ColumnName="URL_Comercio" />
                 <ScalarProperty Name="celular" ColumnName="celular" />
                 <ScalarProperty Name="Pais" ColumnName="Pais" />
-                <ScalarProperty Name="Terminos_condiicones" ColumnName="Terminos_condiicones" />
+                <ScalarProperty Name="Terminos_condiciones" ColumnName="Terminos_condiciones" />
                 <ScalarProperty Name="Rubro" ColumnName="Rubro" />
                 <ScalarProperty Name="ID_Comercio" ColumnName="ID_Comercio" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -884,6 +888,7 @@
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="culqi_dbModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Tipo_Doc_Numero" ColumnName="Tipo_Doc_Numero" />
                 <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
                 <ScalarProperty Name="ID_Tipo" ColumnName="ID_Tipo" />
                 <ScalarProperty Name="ID_Tipo_Doc" ColumnName="ID_Tipo_Doc" />

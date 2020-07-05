@@ -27,6 +27,7 @@ namespace Culqi_Online.Models
         public string Nombres { get; set; }
         public string Correo { get; set; }
         public string Contrasenia { get; set; }
+        public string Tipo_Doc_Numero { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comercio> Comercio { get; set; }
