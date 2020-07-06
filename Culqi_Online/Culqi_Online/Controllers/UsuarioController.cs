@@ -1,4 +1,5 @@
 ﻿using Culqi_Online.Models;
+using Culqi_Online.Transfers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +17,20 @@ namespace Culqi_Online.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Usuario/5
-        public string Get(int id)
+        // post: api/Usuario/5
+        [HttpPost]
+        [Route("api/afiliar_comerciante/registrar_usuario2")]
+        public int RegistroUsuario2(Usuario usuario)
         {
-            return "value";
+            return Usuario.CrearUsuario2(usuario);
         }
 
         // POST: api/Usuario
         [HttpPost]
         [Route("api/afiliar_comerciante/registrar_usuario")]
-        public int RegistroUsuario(Usuario usuario)
+        public Usuariodto RegistroUsuario(Usuario usuario)
         {
-            return Usuariosoa.CrearUsuario(usuario);
+            return Usuario.CrearUsuario(usuario);
         }
 
         // PUT: api/Usuario/5
