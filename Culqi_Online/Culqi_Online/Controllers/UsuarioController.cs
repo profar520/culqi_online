@@ -22,15 +22,14 @@ namespace Culqi_Online.Controllers
         // POST: api/Usuario
         [HttpPost]
         [Route("api/afiliar_comerciante/registrar_usuario")]
-        public Usuariodto RegistroUsuario(Usuario usuario)
+        public Usuariodto RegistroUsuario(Usuariodto usuariodto)
         {
-            if (!Usuariosoa.BuscarCorreo(usuario.Correo))
+            if (!Usuario.BuscarCorreo(usuariodto.Correo))
             {
-                return Usuariosoa.CrearUsuario(usuario);
+                return Usuario.CrearUsuario(usuariodto);
             }
             else
             {
-                Usuariodto usuariodto = new Usuariodto();
                 usuariodto.ID_Usuario = 0;
                 return usuariodto;
             }

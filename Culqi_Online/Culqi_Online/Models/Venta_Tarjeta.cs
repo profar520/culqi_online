@@ -12,24 +12,23 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Venta
+    public partial class Venta_Tarjeta
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Venta()
+        public Venta_Tarjeta()
         {
-            this.Detalle_Venta = new HashSet<Detalle_Venta>();
+            this.Medio_Pago = new HashSet<Medio_Pago>();
         }
     
-        public int ID_Venta { get; set; }
-        public Nullable<int> ID_Comercio { get; set; }
-        public Nullable<int> ID_Deposito { get; set; }
-        public int ID_Pago { get; set; }
-        public double Monto { get; set; }
+        public int ID_Tarjeta { get; set; }
+        public int ID_Estado_Tarjeta { get; set; }
+        public Nullable<int> ID_Marca { get; set; }
+        public int Num_tarjeta { get; set; }
+        public System.DateTime Fecha { get; set; }
     
-        public virtual Comercio Comercio { get; set; }
-        public virtual Deposito Deposito { get; set; }
+        public virtual Estado_Tarjeta Estado_Tarjeta { get; set; }
+        public virtual Marca Marca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Detalle_Venta> Detalle_Venta { get; set; }
-        public virtual Medio_Pago Medio_Pago { get; set; }
+        public virtual ICollection<Medio_Pago> Medio_Pago { get; set; }
     }
 }

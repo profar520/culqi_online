@@ -12,19 +12,18 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Efectivo
+    public partial class Lugar
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Efectivo()
+        public Lugar()
         {
-            this.Venta = new HashSet<Venta>();
+            this.Cuenta = new HashSet<Cuenta>();
         }
     
-        public int ID_referencia { get; set; }
-        public string Ent_financiera { get; set; }
-        public int Monto { get; set; }
+        public int ID_Lugar { get; set; }
+        public string Lugar1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venta> Venta { get; set; }
+        public virtual ICollection<Cuenta> Cuenta { get; set; }
     }
 }

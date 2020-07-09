@@ -26,9 +26,9 @@ namespace Culqi_Online.Controllers
         // POST: api/Comercio
         [HttpPost]
         [Route("api/afiliar_comerciante/crear_comercio")]
-        public Comerciodto CrearComercio(Comercio comercio)
+        public Comerciodto CrearComercio(Comerciodto comerciodto)
         {
-            return Comerciosoa.CrearComercio(comercio);
+            return Comercio.CrearComercio(comerciodto);
         }
 
         // PUT: api/Comercio/5

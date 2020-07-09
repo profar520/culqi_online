@@ -17,17 +17,13 @@ namespace Culqi_Online.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Marca()
         {
-            this.Cuenta = new HashSet<Cuenta>();
-            this.tarjeta = new HashSet<tarjeta>();
+            this.Venta_Tarjeta = new HashSet<Venta_Tarjeta>();
         }
     
         public int ID_Marca { get; set; }
-        public string Nombre { get; set; }
-        public string Tipo_marca { get; set; }
+        public string Nombre_Marca { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cuenta> Cuenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tarjeta> tarjeta { get; set; }
+        public virtual ICollection<Venta_Tarjeta> Venta_Tarjeta { get; set; }
     }
 }

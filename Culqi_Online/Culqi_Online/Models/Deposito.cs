@@ -17,18 +17,18 @@ namespace Culqi_Online.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Deposito()
         {
-            this.Venta = new HashSet<Venta>();
             this.Detalle_Deposito = new HashSet<Detalle_Deposito>();
+            this.Venta = new HashSet<Venta>();
         }
     
         public int ID_Deposito { get; set; }
-        public Nullable<double> Monto { get; set; }
+        public Nullable<double> Monto_Total { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
-        public int Estado { get; set; }
+        public string Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venta> Venta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_Deposito> Detalle_Deposito { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Venta> Venta { get; set; }
     }
 }

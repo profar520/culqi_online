@@ -4,33 +4,46 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="029c1fe8493a4832b802afd07f54d595" Name="Diagram1">
-        <EntityTypeShape EntityType="culqi_dbModel.Categoria" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Comercio" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Cuenta" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Deposito" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Detalle_Deposito" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Detalle_Venta" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Efectivo" Width="1.5" PointX="3" PointY="23.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Marca" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.tarjeta" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Tipo_Documento" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Tipo_Usuario" Width="1.5" PointX="1.5" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Usuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="culqi_dbModel.Venta" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <AssociationConnector Association="culqi_dbModel.FK__Comercio__ID_Gir__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__Comercio__ID_Usu__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK_Venta_Comercio" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__Cuenta__ID_Marca__300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK_Cuenta_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__Venta__ID_Deposi__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK_Detalle_Deposito_Deposito" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__Detalle_V__ID_Ve__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__Venta__ID_refere__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__tarjeta__ID_Marc__37A5467C" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__Venta__ID_Tarjet__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__Usuario__ID_Tipo__33D4B598" ManuallyRouted="false" />
-        <AssociationConnector Association="culqi_dbModel.FK__Usuario__ID_Tipo__32E0915F" ManuallyRouted="false" />
+      <Diagram DiagramId="51f1c245536a4cac93673d37034d327b" Name="Diagram1">
+        <EntityTypeShape EntityType="culqi_dbModel.Banco" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Categoria" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Comercio" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Cuenta" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Deposito" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Detalle_Deposito" Width="1.5" PointX="10.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Detalle_Venta" Width="1.5" PointX="12.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Estado_Efectivo" Width="1.5" PointX="3.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Estado_Tarjeta" Width="1.5" PointX="3.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Lugar" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Marca" Width="1.5" PointX="3.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Medio_Pago" Width="1.5" PointX="8.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Tipo_Cuenta" Width="1.5" PointX="6" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Tipo_Documento" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Tipo_Moneda" Width="1.5" PointX="6" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Tipo_Usuario" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Usuario" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Venta" Width="1.5" PointX="10.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Venta_Efectivo" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="culqi_dbModel.Venta_Tarjeta" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <AssociationConnector Association="culqi_dbModel.FK__Cuenta__ID_Banco__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Comercio__ID_Gir__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Comercio__ID_Usu__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Venta__ID_Comerc__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Cuenta__ID_Lugar__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Cuenta__ID_Moned__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Cuenta__ID_Tipo___45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Cuenta__ID_Usuar__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Detalle_D__ID_De__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Venta__ID_Deposi__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Detalle_V__ID_Ve__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Venta_Efe__ID_Es__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Venta_Tar__ID_Es__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Venta_Tar__ID_Ma__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Medio_Pag__ID_re__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Medio_Pag__ID_Ta__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Venta__ID_Pago__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Usuario__ID_Tipo__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="culqi_dbModel.FK__Usuario__ID_Tipo__403A8C7D" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

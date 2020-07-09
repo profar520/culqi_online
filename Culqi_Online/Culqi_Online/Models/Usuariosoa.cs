@@ -6,16 +6,21 @@ using System.Web;
 
 namespace Culqi_Online.Models
 {
-    public partial class Usuariosoa
+    public partial class Usuario
     {
-        public static Usuariodto CrearUsuario(Usuario usuario)
+        public static Usuariodto CrearUsuario(Usuariodto usuariodto)
         {
             culqi_dbEntities db = new culqi_dbEntities();
+            Usuario usuario = new Usuario();
+            usuario.ID_Tipo = usuariodto.ID_Tipo;
+            usuario.ID_Tipo_Documento = usuariodto.ID_Tipo_Documento;
+            usuario.Nombres = usuariodto.Nombres;
+            usuario.Correo = usuariodto.Correo;
+            usuario.Contrasenia = usuariodto.Contrasenia;
             db.Usuario.Add(usuario);
             try
             {
                 db.SaveChanges();
-                Usuariodto usuariodto = new Usuariodto();
                 usuariodto.ID_Usuario = usuario.ID_Usuario;
                 return usuariodto;
             }

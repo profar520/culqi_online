@@ -22,12 +22,11 @@ namespace Culqi_Online.Models
         }
     
         public int ID_Usuario { get; set; }
-        public int ID_Tipo { get; set; }
-        public int ID_Tipo_Doc { get; set; }
+        public Nullable<int> ID_Tipo { get; set; }
+        public Nullable<int> ID_Tipo_Documento { get; set; }
         public string Nombres { get; set; }
         public string Correo { get; set; }
         public string Contrasenia { get; set; }
-        public string Tipo_Doc_Numero { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comercio> Comercio { get; set; }

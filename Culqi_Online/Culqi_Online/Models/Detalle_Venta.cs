@@ -14,15 +14,14 @@ namespace Culqi_Online.Models
     
     public partial class Detalle_Venta
     {
-        public int ID_Venta { get; set; }
-        public Nullable<System.DateTime> fecha_hora { get; set; }
+        public int ID_Detalle_Venta { get; set; }
+        public Nullable<int> ID_Venta { get; set; }
         public string Descripcion { get; set; }
         public string correo_electronico { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string Pais { get; set; }
         public string Ciudad { get; set; }
-        public int ID_Detalle_Venta { get; set; }
         public string Dirección { get; set; }
     
         public virtual Venta Venta { get; set; }

@@ -20,17 +20,16 @@ namespace Culqi_Online.Models
             this.Venta = new HashSet<Venta>();
         }
     
+        public int ID_Comercio { get; set; }
+        public int ID_Usuario { get; set; }
+        public int ID_Giro_Negocio { get; set; }
         public string Llave_Publica { get; set; }
-        public Nullable<int> ID_Usuario { get; set; }
-        public Nullable<int> ID_Giro_Negn { get; set; }
         public string Nombre_Comercio { get; set; }
         public string URL_Comercio { get; set; }
         public int celular { get; set; }
         public string Pais { get; set; }
-        public string Terminos_condiciones { get; set; }
+        public bool Terminos_condiciones { get; set; }
         public string Rubro { get; set; }
-        public int ID_Comercio { get; set; }
-        public string Direccion { get; set; }
     
         public virtual Categoria Categoria { get; set; }
         public virtual Usuario Usuario { get; set; }

@@ -7,25 +7,30 @@ using System.Web;
 
 namespace Culqi_Online.Models
 {
-    public partial class Comerciosoa
+    public partial class Comercio
     {
-        public static Comerciodto CrearComercio(Comercio comercio)
+        public static Comerciodto CrearComercio(Comerciodto comerciodto)
         {
             culqi_dbEntities db = new culqi_dbEntities();
             //Generador GUID para Llave publica Comercio
+            Comercio comercio = new Comercio();
             Guid guid = Guid.NewGuid();
-            var llave = guid.ToString().Substring(9);
+            var llave = guid.ToString();
             comercio.Llave_Publica = llave;
+            comercio.ID_Giro_Negocio = comerciodto.ID_Giro_Negocio;
+            comercio.ID_Usuario = comerciodto.ID_Usuario;
+            comercio.Nombre_Comercio = comerciodto.Nombre_Comercio;
+            comercio.Rubro = comerciodto.Rubro;
+            comercio.URL_Comercio = comerciodto.URL_Comercio;
+            comercio.Terminos_condiciones = comerciodto.Terminos_condiciones;
+            comercio.Pais = comerciodto.Pais;
+            comercio.celular = comerciodto.celular;
             db.Comercio.Add(comercio);
             try
             {
                 db.SaveChanges();
-                Comerciodto comerciodto = new Comerciodto();
                 comerciodto.ID_Comercio = comercio.ID_Comercio;
                 comerciodto.Llave_Publica = llave;
-                //comerciodto.URL_Comercio = comercio.URL_Comercio;
-                //comerciodto.ID_Giro_Negn = comercio.ID_Giro_Negn;
-                //comerciodto.Direccion = comercio.Direccion;
                 return comerciodto;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
