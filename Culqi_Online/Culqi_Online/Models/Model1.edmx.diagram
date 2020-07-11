@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="52156f46722f41f8be3fb123de0d9e1a" Name="Diagram1">
+        <EntityTypeShape EntityType="bd_culqiModel.Banco" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Canal" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Categoria" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Ciudad" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Comercio" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Cuenta" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Lugar" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Rubro" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Tipo_Cuenta" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Tipo_Documento" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Tipo_Moneda" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Tipo_Usuario" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bd_culqiModel.Usuario" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Banco__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Usuario__ID_Cana__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Gir__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Rubro__ID_Giro_N__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Ciu__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Usu__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Lugar__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Moned__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Tipo___619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Usuar__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Usuario__ID_Tipo__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Usuario__ID_Tipo__5AEE82B9" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
