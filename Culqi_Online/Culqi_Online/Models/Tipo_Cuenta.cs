@@ -17,13 +17,13 @@ namespace Culqi_Online.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tipo_Cuenta()
         {
-            this.Cuenta = new HashSet<Cuenta>();
+            this.Cuenta1 = new HashSet<Cuenta>();
         }
     
-        public int ID_Tipo_Cuenta { get; set; }
-        public string Valor { get; set; }
+        public int ID_Tipo_cuenta { get; set; }
+        public string Cuenta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cuenta> Cuenta { get; set; }
+        public virtual ICollection<Cuenta> Cuenta1 { get; set; }
     }
 }

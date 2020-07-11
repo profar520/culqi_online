@@ -24,10 +24,14 @@ namespace Culqi_Online.Models
         public int ID_Usuario { get; set; }
         public Nullable<int> ID_Tipo { get; set; }
         public Nullable<int> ID_Tipo_Documento { get; set; }
+        public Nullable<int> ID_Canal { get; set; }
         public string Nombres { get; set; }
         public string Correo { get; set; }
         public string Contrasenia { get; set; }
+        public string Numero_Documento { get; set; }
+        public string Terminos_Condiciones { get; set; }
     
+        public virtual Canal Canal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comercio> Comercio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

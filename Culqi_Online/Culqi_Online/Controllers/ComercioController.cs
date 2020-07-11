@@ -25,10 +25,20 @@ namespace Culqi_Online.Controllers
 
         // POST: api/Comercio
         [HttpPost]
-        [Route("api/afiliar_comerciante/crear_comercio")]
-        public Comerciodto CrearComercio(Comerciodto comerciodto)
+        [Route("api/registrar_comercio/crear_comercio")]
+        public Comerciodtoresponse CrearComercio(Comerciodto comerciodto)
         {
-            return Comercio.CrearComercio(comerciodto);
+            if (!Comercio.BuscarNombreComercial(comerciodto.Nombre_Comercial))
+            {
+                return Comercio.CrearComercio(comerciodto);
+            }
+            else
+            {
+                Comerciodtoresponse comerciodtoresponse = new Comerciodtoresponse();
+                comerciodtoresponse.ID_Comercio = 0;
+                comerciodtoresponse.Llave_Publica = "0";
+                return comerciodtoresponse;
+            }
         }
 
         // PUT: api/Comercio/5

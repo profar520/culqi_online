@@ -21,7 +21,7 @@ namespace Culqi_Online.Models
         }
     
         public int ID_Tipo { get; set; }
-        public string Descripcion { get; set; }
+        public string valor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuario { get; set; }

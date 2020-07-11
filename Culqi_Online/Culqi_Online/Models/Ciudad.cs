@@ -12,22 +12,18 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Venta_Efectivo
+    public partial class Ciudad
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Venta_Efectivo()
+        public Ciudad()
         {
-            this.Medio_Pago = new HashSet<Medio_Pago>();
+            this.Comercio = new HashSet<Comercio>();
         }
     
-        public int ID_referencia { get; set; }
-        public int ID_Estado_Efectivo { get; set; }
-        public int Monto { get; set; }
-        public string Correo { get; set; }
-        public Nullable<System.DateTime> Fecha_Pago { get; set; }
+        public int ID_Ciudad { get; set; }
+        public string Nombre_Ciudad { get; set; }
     
-        public virtual Estado_Efectivo Estado_Efectivo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Medio_Pago> Medio_Pago { get; set; }
+        public virtual ICollection<Comercio> Comercio { get; set; }
     }
 }

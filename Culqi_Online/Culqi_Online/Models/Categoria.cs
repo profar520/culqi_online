@@ -18,6 +18,7 @@ namespace Culqi_Online.Models
         public Categoria()
         {
             this.Comercio = new HashSet<Comercio>();
+            this.Rubro = new HashSet<Rubro>();
         }
     
         public int ID_Giro_Negocio { get; set; }
@@ -25,5 +26,7 @@ namespace Culqi_Online.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comercio> Comercio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rubro> Rubro { get; set; }
     }
 }

@@ -14,26 +14,17 @@ namespace Culqi_Online.Models
     
     public partial class Comercio
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Comercio()
-        {
-            this.Venta = new HashSet<Venta>();
-        }
-    
         public int ID_Comercio { get; set; }
         public int ID_Usuario { get; set; }
+        public int ID_Ciudad { get; set; }
         public int ID_Giro_Negocio { get; set; }
         public string Llave_Publica { get; set; }
-        public string Nombre_Comercio { get; set; }
+        public string Nombre_Comercial { get; set; }
         public string URL_Comercio { get; set; }
-        public int celular { get; set; }
-        public string Pais { get; set; }
-        public bool Terminos_condiciones { get; set; }
-        public string Rubro { get; set; }
+        public int Celular { get; set; }
     
         public virtual Categoria Categoria { get; set; }
+        public virtual Ciudad Ciudad { get; set; }
         public virtual Usuario Usuario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venta> Venta { get; set; }
     }
 }

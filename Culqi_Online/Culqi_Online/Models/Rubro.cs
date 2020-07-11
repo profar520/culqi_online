@@ -12,18 +12,12 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Detalle_Venta
+    public partial class Rubro
     {
-        public int ID_Detalle_Venta { get; set; }
-        public Nullable<int> ID_Venta { get; set; }
-        public string Descripcion { get; set; }
-        public string correo_electronico { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public string Pais { get; set; }
-        public string Ciudad { get; set; }
-        public string Dirección { get; set; }
+        public int ID_Rubro { get; set; }
+        public int ID_Giro_Negocio { get; set; }
+        public string Nombre_Rubro { get; set; }
     
-        public virtual Venta Venta { get; set; }
+        public virtual Categoria Categoria { get; set; }
     }
 }

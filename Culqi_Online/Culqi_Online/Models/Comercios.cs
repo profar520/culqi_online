@@ -1,28 +1,44 @@
 ﻿using Culqi_Online.Transfers;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
 namespace Culqi_Online.Models
 {
-    public partial class Usuario
+    public partial class Comercio
     {
-        public static Usuariodto CrearUsuario(Usuariodto usuariodto)
+        public static Comerciodtoresponse CrearComercio(Comerciodto comerciodto)
         {
-            culqi_dbEntities db = new culqi_dbEntities();
-            Usuario usuario = new Usuario();
-            usuario.ID_Tipo = usuariodto.ID_Tipo;
-            usuario.ID_Tipo_Documento = usuariodto.ID_Tipo_Documento;
-            usuario.Nombres = usuariodto.Nombres;
-            usuario.Correo = usuariodto.Correo;
-            usuario.Contrasenia = usuariodto.Contrasenia;
-            db.Usuario.Add(usuario);
+            bd_culqiEntities db = new bd_culqiEntities();
+            //Generador GUID para Llave publica Comercio
+            Comercio comercio = new Comercio();
+
+            Guid guid = Guid.NewGuid();
+            var llave = guid.ToString();
+            comercio.Llave_Publica = llave;
+            comercio.ID_Giro_Negocio = comerciodto.ID_Giro_Negocio;
+            comercio.ID_Usuario = comerciodto.ID_Usuario;
+            comercio.Nombre_Comercial = comerciodto.Nombre_Comercial;
+            comercio.URL_Comercio = comerciodto.URL_Comercio;
+            comercio.ID_Ciudad = comerciodto.ID_Ciudad;
+            comercio.Celular = comerciodto.Celular;
+            db.Comercio.Add(comercio);
+            db.SaveChanges();
+
+            Usuario usuario = db.Usuario.Find(comerciodto.ID_Usuario);
+            usuario.ID_Tipo_Documento = comerciodto.ID_Tipo_Documento;
+            usuario.Numero_Documento = comerciodto.Numero_Documento;
+            db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
             try
             {
                 db.SaveChanges();
-                usuariodto.ID_Usuario = usuario.ID_Usuario;
-                return usuariodto;
+                Comerciodtoresponse comerciodtoresponse = new Comerciodtoresponse();
+                comerciodtoresponse.ID_Comercio = comercio.ID_Comercio;
+                comerciodtoresponse.Llave_Publica = llave;
+                return comerciodtoresponse;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
@@ -41,12 +57,12 @@ namespace Culqi_Online.Models
             }
         }
 
-        internal static bool BuscarCorreo(string correo)
+        public static bool BuscarNombreComercial(string Nombre_Comercial)
         {
-            culqi_dbEntities db = new culqi_dbEntities();
+            bd_culqiEntities db = new bd_culqiEntities();
             try
             {
-                var resultado = db.Usuario.Where(u => u.Correo.Contains(correo));
+                var resultado = db.Comercio.Where(u => u.Nombre_Comercial.Contains(Nombre_Comercial));
                 if (resultado.Count() > 0)
                 {
                     return true;
@@ -71,6 +87,7 @@ namespace Culqi_Online.Models
                 }
                 throw raise;
             }
+        
         }
     }
 }
