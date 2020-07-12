@@ -8,20 +8,19 @@ namespace Culqi_Online.Models
 {
     public partial class Rubro
     {
-
-        public static IEnumerable<Rubrodto> ListarRubroCategoria(int ID_Giro_Negocio)
+        //Listar a los rubros segun a la categoria o giro de negocio que pertenece
+        public static IEnumerable<Rubrodto> ListarRubroCategoria()
         {
             //Mostrar los rubros disponibles segun a la categoria que corresponda
             bd_culqiEntities db = new bd_culqiEntities();
-            var lista_rubro_categoria = from cat in db.Rubro.Where(c => c.ID_Giro_Negocio == ID_Giro_Negocio)
-                                    select new Rubrodto()
-                                    {
-                                        ID_Rubro = cat.ID_Rubro,
-                                        Nombre_Rubro = cat.Nombre_Rubro,
-                                        ID_Giro_Negocio = cat.ID_Giro_Negocio,
-                                      
-                                    };
+            var lista_rubro_categoria = from cat in db.Rubro
+                                        select new Rubrodto()
+                                        {
+                                            ID_Rubro = cat.ID_Rubro,
+                                            Nombre_Rubro = cat.Nombre_Rubro,
+                                            ID_Giro_Negocio = cat.ID_Giro_Negocio,
+                                        };
             return lista_rubro_categoria;
         }
-}
+    }
 }

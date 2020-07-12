@@ -21,7 +21,7 @@ namespace Culqi_Online.Controllers
 
         // GET: api/registrarComercio/listarCategoriaRubro
         [HttpGet]
-        [Route("api/registrarComercio/listarCategoriaRubro")]
+        [Route("api/registrarComercio/listarCategoria")]
         public IEnumerable<Giro_Negociodto> ListarCategoria()
         {
             return Categoria.ListarCategoria();
@@ -33,6 +33,14 @@ namespace Culqi_Online.Controllers
         public IEnumerable<Rubrodto> ListarRubroCategoria()
         {
             return Rubro.ListarRubroCategoria();
+        }
+
+        // GET: api/registrarComercio/listarCategoriaRubro
+        [HttpGet]
+        [Route("api/registrarComercio/listarCategoriaRubro2")]
+        public IEnumerable<Giro_Negociodto> ListarRubroCategoria2()
+        {
+            return Categoria.ListarRubroCategoria2();
         }
     }
 }
