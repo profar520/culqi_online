@@ -12,19 +12,18 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Efectivo
+    public partial class Canal
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Efectivo()
+        public Canal()
         {
-            this.Venta = new HashSet<Venta>();
+            this.Usuario = new HashSet<Usuario>();
         }
     
-        public int ID_referencia { get; set; }
-        public string Ent_financiera { get; set; }
-        public int Monto { get; set; }
+        public int ID_Canal { get; set; }
+        public string Nombre_Canal { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venta> Venta { get; set; }
+        public virtual ICollection<Usuario> Usuario { get; set; }
     }
 }

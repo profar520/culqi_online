@@ -12,22 +12,18 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Marca
+    public partial class Tipo_Moneda
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Marca()
+        public Tipo_Moneda()
         {
             this.Cuenta = new HashSet<Cuenta>();
-            this.Tarjeta = new HashSet<Tarjeta>();
         }
     
-        public int ID_Marca { get; set; }
-        public string Nombre { get; set; }
-        public string Tipo_marca { get; set; }
+        public int ID_Moneda { get; set; }
+        public string Moneda { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cuenta> Cuenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tarjeta> Tarjeta { get; set; }
     }
 }

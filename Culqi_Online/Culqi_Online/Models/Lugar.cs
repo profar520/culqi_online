@@ -12,22 +12,18 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tarjeta
+    public partial class Lugar
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tarjeta()
+        public Lugar()
         {
-            this.Venta = new HashSet<Venta>();
+            this.Cuenta = new HashSet<Cuenta>();
         }
     
-        public int ID_Tarjeta { get; set; }
-        public Nullable<int> ID_Marca { get; set; }
-        public int Num_tarjeta { get; set; }
-        public int CVV { get; set; }
-        public System.DateTime fec_tarjeta { get; set; }
+        public int ID_Lugar { get; set; }
+        public string Lugar1 { get; set; }
     
-        public virtual Marca Marca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venta> Venta { get; set; }
+        public virtual ICollection<Cuenta> Cuenta { get; set; }
     }
 }

@@ -12,19 +12,18 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Detalle_Venta
+    public partial class Tipo_Cuenta
     {
-        public int ID_Detalle_Venta { get; set; }
-        public int ID_Venta { get; set; }
-        public Nullable<System.DateTime> fecha_hora { get; set; }
-        public string Descripcion { get; set; }
-        public string correo_electronico { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public string Pais { get; set; }
-        public string Ciudad { get; set; }
-        public string Dirección { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tipo_Cuenta()
+        {
+            this.Cuenta1 = new HashSet<Cuenta>();
+        }
     
-        public virtual Venta Venta { get; set; }
+        public int ID_Tipo_cuenta { get; set; }
+        public string Cuenta { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cuenta> Cuenta1 { get; set; }
     }
 }

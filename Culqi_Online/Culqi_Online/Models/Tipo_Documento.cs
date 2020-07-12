@@ -20,8 +20,8 @@ namespace Culqi_Online.Models
             this.Usuario = new HashSet<Usuario>();
         }
     
-        public int ID_Tipo_Doc { get; set; }
-        public string Descripcion { get; set; }
+        public int ID_Tipo_Documento { get; set; }
+        public string valor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuario { get; set; }
