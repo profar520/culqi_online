@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace Culqi_Online.Models
@@ -10,12 +12,19 @@ namespace Culqi_Online.Models
     {
         public static int CrearUsuario(Usuariodto usuariodto)
         {
+            
             bd_culqiEntities db = new bd_culqiEntities();
             Usuario usuario = new Usuario();
             usuario.ID_Tipo = usuariodto.ID_Tipo;
             usuario.Nombres = usuariodto.Nombres;
             usuario.Correo = usuariodto.Correo;
-            usuario.Contrasenia = usuariodto.Contrasenia;
+
+            using (var sha256 = new SHA256Managed())
+            { 
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(usuariodto.Contrasenia));
+                var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+                usuario.Contrasenia = hash.Substring(0,24);
+            }
             usuario.ID_Canal = usuariodto.ID_Canal;
             usuario.Terminos_Condiciones = usuariodto.Terminos_Condiciones;
             db.Usuario.Add(usuario);
