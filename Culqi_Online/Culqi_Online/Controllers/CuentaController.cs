@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Culqi_Online.Controllers
 {
+    [EnableCors(origins: "*", "*", "*")]
     public class CuentaController : ApiController
     {
         // GET: api/Cuenta

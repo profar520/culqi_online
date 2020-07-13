@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Culqi_Online", "Culqi_Online\Culqi_Online.csproj", "{969AD806-1373-4CB2-8E94-1958D4EF123D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebVue", "WebVue\WebVue.csproj", "{F6E203D0-6BE8-47AD-9EAF-321C36756048}"
+	ProjectSection(ProjectDependencies) = postProject
+		{969AD806-1373-4CB2-8E94-1958D4EF123D} = {969AD806-1373-4CB2-8E94-1958D4EF123D}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{969AD806-1373-4CB2-8E94-1958D4EF123D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{969AD806-1373-4CB2-8E94-1958D4EF123D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{969AD806-1373-4CB2-8E94-1958D4EF123D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6E203D0-6BE8-47AD-9EAF-321C36756048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E203D0-6BE8-47AD-9EAF-321C36756048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E203D0-6BE8-47AD-9EAF-321C36756048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E203D0-6BE8-47AD-9EAF-321C36756048}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

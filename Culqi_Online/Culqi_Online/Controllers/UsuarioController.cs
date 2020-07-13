@@ -2,9 +2,11 @@
 using Culqi_Online.Transfers;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Culqi_Online.Controllers
 {
+    [EnableCors(origins: "*", "*", "*")]
     public class UsuarioController : ApiController
     {
         // GET: api/Usuario
