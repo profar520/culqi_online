@@ -26,7 +26,25 @@ namespace Culqi_Online.Models
             comercio.ID_Ciudad = comerciodto.ID_Ciudad;
             comercio.Celular = comerciodto.Celular;
             db.Comercio.Add(comercio);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
 
             Usuario usuario = db.Usuario.Find(comerciodto.ID_Usuario);
             usuario.ID_Tipo_Documento = comerciodto.ID_Tipo_Documento;
