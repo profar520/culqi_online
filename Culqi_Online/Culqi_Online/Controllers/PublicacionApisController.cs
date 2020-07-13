@@ -35,12 +35,12 @@ namespace Culqi_Online.Controllers
             return Rubro.ListarRubroCategoria();
         }
 
-        // GET: api/registrarComercio/listarCategoriaRubro
-        [HttpGet]
-        [Route("api/registrarComercio/listarCategoriaRubro2")]
-        public IEnumerable<Giro_Negociodto> ListarRubroCategoria2()
+        //GET: api/afiliarCuenta/listarNombreBanco
+       [HttpGet]
+       [Route("api/afiliarCuenta/listarNombreBanco")]
+        public IEnumerable<Bancodto> ListarBancos()
         {
-            return Categoria.ListarRubroCategoria2();
+            return Banco.ListarBancos();
         }
     }
 }
