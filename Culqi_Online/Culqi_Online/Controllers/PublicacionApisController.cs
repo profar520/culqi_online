@@ -11,25 +11,25 @@ namespace Culqi_Online.Controllers
 {
     public class PublicacionApisController : ApiController
     {
-        // GET: api/registrarComercio/listarTipoDocumento
+        // GET: api/registrar_comercio/listar_categoria_rubro
         [HttpGet]
-        [Route("api/registrarComercio/listarTipoDocumento")]
+        [Route("api/registrar_comercio/listar_tipo_documento")]
         public IEnumerable<Tipo_Documentodto> ListarDocumento()
         {
             return Tipo_Documento.ListarDocumento();
         }
 
-        // GET: api/registrarComercio/listarCategoriaRubro
+        // GET: registrar_comercio/listar_categoria
         [HttpGet]
-        [Route("api/registrarComercio/listarCategoria")]
+        [Route("api/registrar_comercio/listar_categoria")]
         public IEnumerable<Giro_Negociodto> ListarCategoria()
         {
             return Categoria.ListarCategoria();
         }
 
-        // GET: api/registrarComercio/listarCategoriaRubro
+        // GET: api/registrar_comercio/listar_categoria_rubro
         [HttpGet]
-        [Route("api/registrarComercio/listarCategoriaRubro")]
+        [Route("api/registrar_comercio/listar_categoria_rubro")]
         public IEnumerable<Rubrodto> ListarRubroCategoria()
         {
             return Rubro.ListarRubroCategoria();
@@ -37,7 +37,7 @@ namespace Culqi_Online.Controllers
 
         //GET: api/afiliarCuenta/listarNombreBanco
        [HttpGet]
-       [Route("api/afiliarCuenta/listarNombreBanco")]
+       [Route("api/afiliar_cuenta/listar_nombre_banco")]
         public IEnumerable<Bancodto> ListarBancos()
         {
             return Banco.ListarBancos();

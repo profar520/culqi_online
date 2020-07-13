@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Listar_Tipo_Documento</title>
+    
+</head>
+<body>
+    <div id="app" class="container">
+        {{resultado}}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                resultado: []
+            },
+            mounted: function () {
+                this.fetchPrueba();
+            },
+            methods: {
+                fetchPrueba: function () {
+                    var url = "http://localhost:49996/api/registrar_comercio/listar_tipo_documento";
+                    this.$http.get(url).then(function (response) {
+                        this.resultado = response.body;
+                    });
+                },
+            }
+        });
+    </script>
+
+</body>
+</html>
