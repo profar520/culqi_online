@@ -24,21 +24,6 @@ namespace Culqi_Online.Models
 
         }
 
-        //public static IEnumerable<Giro_Negociodto> ListarRubroCategoria2()
-        //{
-        //    //Mostrar los rubros disponibles segun a la categoria que corresponda
-        //    bd_culqiEntities db = new bd_culqiEntities();
-        //    var lista_rubro_categoria2 = from cat in db.Categoria
-        //                                select new Giro_Negociodto()
-        //                                {
-        //                                    ID_Giro_Negocio = cat.ID_Giro_Negocio,
-        //                                    Giro_Negocio = cat.Giro_Negocio,
-        //                                };
-        //    return lista_rubro_categoria2;
-        //}
-
-
-
     }
 
 }
