@@ -245,6 +245,10 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="HTMLS\CCA_S1_GET - registrar usuario_listar_Tipo_Cuenta.html" />
+    <Content Include="HTMLS\CCA_S1_GET - registrar usuario_listar_tipo_usuario.html" />
+    <Content Include="HTMLS\CCA_S1_GET - registrar usuario_listar¡_canal.html" />
+    <Content Include="HTMLS\CCA_S1_GET - registrar_comercio_listar_ciudad.html" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
