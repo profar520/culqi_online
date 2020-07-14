@@ -43,7 +43,7 @@
             },
             methods: {
                 fetchPrueba: function () {
-                    var url = "http://localhost:49996/api/registrar_comercio/listar_categoria_rubro";
+                    var url = "http://localhost:49996/api/registrar_comercio/listar_categoria_rubro?ID_Giro_Negocio=2";
                     this.$http.get(url).then(function (response) {
                         this.resultado = response.body;
                     });

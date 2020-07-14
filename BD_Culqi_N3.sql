@@ -69,7 +69,7 @@ ID_Canal int foreign key references Canal (ID_Canal),
 Nombres varchar (50) not null,
 Correo varchar (50) not null,
 Contrasenia varchar (25) not null,
-Numero_Documento varchar(50) not null,
+Numero_Documento varchar(50),
 Terminos_Condiciones char(1) not null
 )
 

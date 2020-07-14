@@ -26,17 +26,17 @@ namespace Culqi_Online.Controllers
         {
             return Categoria.ListarCategoria();
         }
-
+        
         // GET: api/registrar_comercio/listar_categoria_rubro
         [HttpGet]
         [Route("api/registrar_comercio/listar_categoria_rubro")]
-        public IEnumerable<Rubrodto> ListarRubroCategoria()
+        public IEnumerable<Rubrodto> ListarCategoriaRubro(int ID_Giro_Negocio)
         {
-            return Rubro.ListarRubroCategoria();
+            return Rubro.ListarCategoriaRubro(ID_Giro_Negocio);
         }
-
+      
         //GET: api/afiliarCuenta/listarNombreBanco
-       [HttpGet]
+        [HttpGet]
        [Route("api/afiliar_cuenta/listar_nombre_banco")]
         public IEnumerable<Bancodto> ListarBancos()
         {

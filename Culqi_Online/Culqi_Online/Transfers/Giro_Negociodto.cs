@@ -10,6 +10,5 @@ namespace Culqi_Online.Transfers
     {
         public int ID_Giro_Negocio { get; set; }
         public string Giro_Negocio { get; set; }
-        //public Rubrodto Rubrodto { get; set; }
     }
 }

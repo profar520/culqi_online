@@ -23,7 +23,5 @@ namespace Culqi_Online.Models
             return lista_categoria;
 
         }
-
     }
-
 }
