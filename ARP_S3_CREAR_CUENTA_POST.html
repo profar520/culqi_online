@@ -1,27 +1,26 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Listar_Bancos</title>
+    <title>Crear Cuenta</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
     <div id="app" class="container">
-        <h1 class="display-4">Listar banco</h1>
+        <h1 class="display-4">Crear una cuenta bancaria</h1>
         {{resultado}}
     </br>
         <a href="index.html" class="btn btn-info" tabindex="-1" role="button">Listas de apis</a>
-        </br>
-        </br>
-        <div class="row bg-info">
-            <h2 class="h6">Detalle:</h2>
-            <p> 
-                Mostrar nombres de bancos disponibles </br>
-                URI: /api/afiliar_cuenta/listar_nombre_banco </br>
-                Query BD: select Nombre_Banco from Banco </br>
-            </p>
-        </div>
+    </br>
+    </br>
+    <div class="row bg-info">
+        <h2 class="h6">Detalle:</h2>
+        <p> Cantidad de caracteres = 20.</br>
+            URI: /api/afiliar_cuenta/registrar_cuenta</br>
+            Query BD: select * from Cuenta where ID_Cuenta=1
+        </p>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -39,8 +38,16 @@
             },
             methods: {
                 fetchPrueba: function () {
-                    var url = "http://localhost:49996/api/afiliar_cuenta/listar_nombre_banco";
-                    this.$http.get(url).then(function (response) {
+                    var url = "http://localhost:49996/api/afiliar_cuenta/registrar_cuenta";
+                    var param = {
+                        ID_Banco: 1,
+                        ID_Usuario: 1,
+                        ID_Tipo_Cuenta: 1,
+                        ID_Moneda: 1,
+                        ID_Lugar: 1,
+                        Numero_Cuenta: "11111222223333344444"
+						};
+                    this.$http.post(url,param).then(function (response) {
                         this.resultado = response.body;
                     });
                 },

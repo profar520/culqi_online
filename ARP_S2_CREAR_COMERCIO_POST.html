@@ -1,27 +1,28 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Listar_Bancos</title>
+    <title>Crear Comercio</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
     <div id="app" class="container">
-        <h1 class="display-4">Listar banco</h1>
+        <h1 class="display-4">Crear un comercio</h1>
         {{resultado}}
     </br>
         <a href="index.html" class="btn btn-info" tabindex="-1" role="button">Listas de apis</a>
-        </br>
-        </br>
-        <div class="row bg-info">
-            <h2 class="h6">Detalle:</h2>
-            <p> 
-                Mostrar nombres de bancos disponibles </br>
-                URI: /api/afiliar_cuenta/listar_nombre_banco </br>
-                Query BD: select Nombre_Banco from Banco </br>
-            </p>
-        </div>
+    </br>
+    </br>
+    </br>
+    <div class="row bg-info">
+        <h2 class="h6">Detalle:</h2>
+        <p> Genera una llave pública única </br>
+            Nombre de comercio único </br>
+            URI: /api/registrar_comercio/crear_comercio </br>
+            Query BD: select * from Comercio where ID_Comercio=1               
+        </p>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -39,8 +40,18 @@
             },
             methods: {
                 fetchPrueba: function () {
-                    var url = "http://localhost:49996/api/afiliar_cuenta/listar_nombre_banco";
-                    this.$http.get(url).then(function (response) {
+                    var url = "http://localhost:49996/api/registrar_comercio/crear_comercio";
+                    var param = {
+                        ID_Usuario: 2,
+                        ID_Giro_Negocio: 1,
+                        Nombre_Comercial: "Prueba6",
+                        URL_Comercio: "http://prueba4.com",
+                        Celular: 123456789,
+                        ID_Ciudad: 1,
+                        ID_Tipo_Documento: 1,
+                        Numero_Documento: 72944087
+						};
+                    this.$http.post(url,param).then(function (response) {
                         this.resultado = response.body;
                     });
                 },

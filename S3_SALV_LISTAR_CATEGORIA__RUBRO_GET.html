@@ -8,8 +8,24 @@
 </head>
 <body>
     <div id="app" class="container">
+        <h1 class="display-4">Listar categoria y rubro</h1>
         {{resultado}}
+    </br>
         <a href="index.html" class="btn btn-info" tabindex="-1" role="button">Listas de apis</a>
+    </br>
+    </br>
+        <div class="row bg-info">
+            <h2 class="h6">Detalle:</h2>
+            <p> 
+                Mostrar los giros de negocios disponibles.</br>
+                Mostrar el el rubro del negocio según al giro de negocio que pertenece.</br>
+                Mostrar los rubros disponibles.</br>
+                URI:/api/registrar_comercio/listar_categoria_rubro</br>
+                Query BD: SELECT c.ID_Giro_Negocio, c.Giro_Negocio, r.ID_Rubro, r.Nombre_Rubro </br>
+                FROM Categoria c, Rubro r </br>
+                WHERE ( c.ID_Giro_Negocio = r.ID_Giro_Negocio ) </br>
+            </p>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -35,6 +51,5 @@
             }
         });
     </script>
-
 </body>
 </html>
