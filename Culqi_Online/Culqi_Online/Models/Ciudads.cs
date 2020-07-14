@@ -12,11 +12,10 @@ namespace Culqi_Online.Models
         {
             bd_culqiEntities db = new bd_culqiEntities();
             var list = from b in db.Ciudad
-                 
-
 
                        select new Ciudaddto()
                        {
+                           ID_Ciudad = b.ID_Ciudad,
                            Nombre_Ciudad = b.Nombre_Ciudad,
 
                        };

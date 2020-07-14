@@ -17,6 +17,7 @@ namespace Culqi_Online.Models
 
                        select new Tipo_Cuentadto()
                        {
+                           ID_Tipo_cuenta = b.ID_Tipo_cuenta,
                            Cuenta = b.Cuenta,
 
                        };

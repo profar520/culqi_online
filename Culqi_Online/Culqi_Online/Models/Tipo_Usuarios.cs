@@ -17,6 +17,7 @@ namespace Culqi_Online.Models
 
                        select new Tipo_Usuariodto()
                        {
+                           ID_Usuario = b.ID_Tipo,
                            Valor = b.valor,
       
                       };

@@ -7,8 +7,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+using System.Web.Http.Cors; //Get HTML
+
 namespace Culqi_Online.Controllers
 {
+
+    //var cors = new EnableCorsAttibute("*", "*", "*");
+    //config.EnableCors(cors);
+    [EnableCors(origins: "*", "*", "*")] //para que se muestre con el GET.html
     public class AfiliarUsuarioController : ApiController
     {
 

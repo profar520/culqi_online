@@ -17,6 +17,7 @@ namespace Culqi_Online.Models
 
                        select new Canaldto()
                        {
+                           ID_Canal = b.ID_Canal,
                            Nombre_Canal = b.Nombre_Canal,
 
                        };

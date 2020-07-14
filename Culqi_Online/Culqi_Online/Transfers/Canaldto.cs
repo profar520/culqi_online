@@ -7,7 +7,7 @@ namespace Culqi_Online.Transfers
 {
     public class Canaldto
     {
-        //public int ID_Canal { get; set; }
+        public int ID_Canal { get; set; }
         public string Nombre_Canal { get; set; }
     }
 }

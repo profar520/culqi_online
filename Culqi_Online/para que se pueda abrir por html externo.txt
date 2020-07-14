@@ -1,0 +1,4 @@
+[0:08 a. m., 13/7/2020] +51 937 888 325: En la carpeta App Start del proyecto WebApi modifiquen el archivo WebApiConfig
+[0:08 a. m., 13/7/2020] +51 937 888 325: En vez de que sea localhost...
+[0:09 a. m., 13/7/2020] +51 937 888 325: Pongan *
+[0:09 a. m., 13/7/2020] +51 937 888 325: Para que pueda conectarse a sus servicios
