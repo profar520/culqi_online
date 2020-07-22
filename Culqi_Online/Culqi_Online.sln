@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30225.117
+VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Culqi_Online", "Culqi_Online\Culqi_Online.csproj", "{969AD806-1373-4CB2-8E94-1958D4EF123D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Culqi_Online", "Culqi_Online\Culqi_Online.csproj", "{D8CE1070-E75B-4D97-BAAE-0697C57587E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{969AD806-1373-4CB2-8E94-1958D4EF123D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{969AD806-1373-4CB2-8E94-1958D4EF123D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{969AD806-1373-4CB2-8E94-1958D4EF123D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{969AD806-1373-4CB2-8E94-1958D4EF123D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8CE1070-E75B-4D97-BAAE-0697C57587E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8CE1070-E75B-4D97-BAAE-0697C57587E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8CE1070-E75B-4D97-BAAE-0697C57587E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8CE1070-E75B-4D97-BAAE-0697C57587E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {14C8B8D2-329C-4974-9DB3-41CAF7C4485E}
+		SolutionGuid = {4A707E03-4CE6-4C77-BF87-083FB0C715C1}
 	EndGlobalSection
 EndGlobal

@@ -12,7 +12,7 @@ namespace Culqi_Online.Models
     {
         public static int CrearUsuario(Usuariodto usuariodto)
         {
-            
+
             bd_culqiEntities db = new bd_culqiEntities();
             Usuario usuario = new Usuario();
             usuario.ID_Tipo = usuariodto.ID_Tipo;
@@ -20,10 +20,10 @@ namespace Culqi_Online.Models
             usuario.Correo = usuariodto.Correo;
 
             using (var sha256 = new SHA256Managed())
-            { 
+            {
                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(usuariodto.Contrasenia));
                 var hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-                usuario.Contrasenia = hash.Substring(0,24);
+                usuario.Contrasenia = hash.Substring(0, 24);
             }
             usuario.ID_Canal = usuariodto.ID_Canal;
             usuario.Terminos_Condiciones = usuariodto.Terminos_Condiciones;

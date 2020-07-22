@@ -6,11 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace Culqi_Online.Controllers
 {
-    [EnableCors(origins: "*", "*", "*")]
     public class ComercioController : ApiController
     {
         // GET: api/Comercio
@@ -44,7 +42,7 @@ namespace Culqi_Online.Controllers
         }
 
         // PUT: api/Comercio/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] string value)
         {
         }
 
@@ -52,5 +50,6 @@ namespace Culqi_Online.Controllers
         public void Delete(int id)
         {
         }
+
     }
 }

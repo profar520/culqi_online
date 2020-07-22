@@ -6,22 +6,23 @@ using System.Web;
 
 namespace Culqi_Online.Models
 {
-    public partial class Cuenta
+    public partial class Tipo_Documento
     {
-        public static int RegistrarCuenta(Cuentadto cuentadto)
+        //Listar el tipo de documento existen DNI, RUC, CARNE EXTRANJERIA
+        public static IEnumerable<Tipo_Documentodto> ListarDocumento()
         {
             bd_culqiEntities db = new bd_culqiEntities();
-            Cuenta cuenta = new Cuenta();
-            cuenta.ID_Banco = cuentadto.ID_Banco;
-            cuenta.ID_Usuario = cuentadto.ID_Usuario;
-            cuenta.ID_Tipo_Cuenta = cuentadto.ID_Tipo_Cuenta;
-            cuenta.ID_Moneda = cuentadto.ID_Moneda;
-            cuenta.ID_Lugar = cuentadto.ID_Lugar;
-            cuenta.Numero_Cuenta = cuentadto.Numero_Cuenta;
-            db.Cuenta.Add(cuenta);
+            //Mostrar los tipos de documentos disponibles
+            var lista_documento = from doc in db.Tipo_Documento
+                    select new Tipo_Documentodto()
+                    {
+                        ID_Tipo_Documento = doc.ID_Tipo_Documento,
+                        valor = doc.valor
+                    };
+            
             try
             {
-                return db.SaveChanges();
+                return lista_documento;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
@@ -39,5 +40,6 @@ namespace Culqi_Online.Models
                 throw raise;
             }
         }
+
     }
 }

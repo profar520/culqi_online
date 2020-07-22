@@ -1,8 +1,6 @@
 ﻿using Culqi_Online.Transfers;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -105,7 +103,7 @@ namespace Culqi_Online.Models
                 }
                 throw raise;
             }
-        
+
         }
     }
 }

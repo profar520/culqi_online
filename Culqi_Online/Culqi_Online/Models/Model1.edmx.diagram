@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c71548f0bffd40a7ab83bebfd0f06ac4" Name="Diagram1">
+      <Diagram DiagramId="08334acdffe846e98bdaf047bd012f8a" Name="Diagram1">
         <EntityTypeShape EntityType="bd_culqiModel.Banco" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="bd_culqiModel.Canal" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="bd_culqiModel.Categoria" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
@@ -18,18 +18,18 @@
         <EntityTypeShape EntityType="bd_culqiModel.Tipo_Moneda" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="bd_culqiModel.Tipo_Usuario" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="bd_culqiModel.Usuario" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Banco__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Usuario__ID_Cana__37A5467C" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Gir__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Rubro__ID_Giro_N__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Ciu__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Usu__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Lugar__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Moned__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Tipo___3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Usuar__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="bd_culqiModel.FK__Usuario__ID_Tipo__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Banco__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Usuario__ID_Cana__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Gir__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Rubro__ID_Giro_N__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Ciu__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Comercio__ID_Usu__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Lugar__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Moned__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Tipo___3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Cuenta__ID_Usuar__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="bd_culqiModel.FK__Usuario__ID_Tipo__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="bd_culqiModel.FK__Usuario__ID_Tipo__34C8D9D1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
