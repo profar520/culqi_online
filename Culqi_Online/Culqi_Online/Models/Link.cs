@@ -12,21 +12,22 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tipo_Moneda
+    public partial class Link
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tipo_Moneda()
+        public Link()
         {
-            this.Cuenta = new HashSet<Cuenta>();
-            this.Link = new HashSet<Link>();
+            this.Orden = new HashSet<Orden>();
         }
     
+        public int ID_Link { get; set; }
         public int ID_Moneda { get; set; }
-        public string Moneda { get; set; }
+        public string Monto { get; set; }
+        public string Concepto { get; set; }
+        public string Url { get; set; }
     
+        public virtual Tipo_Moneda Tipo_Moneda { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cuenta> Cuenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Link> Link { get; set; }
+        public virtual ICollection<Orden> Orden { get; set; }
     }
 }

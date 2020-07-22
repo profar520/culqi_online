@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Culqi_Online", "Culqi_Online\Culqi_Online.csproj", "{D8CE1070-E75B-4D97-BAAE-0697C57587E8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vue", "Vue\Vue.csproj", "{75006F7D-1B20-4C7A-B7C8-B20AC92AF447}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D8CE1070-E75B-4D97-BAAE-0697C57587E8} = {D8CE1070-E75B-4D97-BAAE-0697C57587E8}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{D8CE1070-E75B-4D97-BAAE-0697C57587E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8CE1070-E75B-4D97-BAAE-0697C57587E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8CE1070-E75B-4D97-BAAE-0697C57587E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75006F7D-1B20-4C7A-B7C8-B20AC92AF447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75006F7D-1B20-4C7A-B7C8-B20AC92AF447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75006F7D-1B20-4C7A-B7C8-B20AC92AF447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75006F7D-1B20-4C7A-B7C8-B20AC92AF447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

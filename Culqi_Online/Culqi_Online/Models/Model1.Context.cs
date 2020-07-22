@@ -28,15 +28,21 @@ namespace Culqi_Online.Models
         public virtual DbSet<Banco> Banco { get; set; }
         public virtual DbSet<Canal> Canal { get; set; }
         public virtual DbSet<Categoria> Categoria { get; set; }
+        public virtual DbSet<Cip_Efectivo> Cip_Efectivo { get; set; }
         public virtual DbSet<Ciudad> Ciudad { get; set; }
         public virtual DbSet<Comercio> Comercio { get; set; }
         public virtual DbSet<Cuenta> Cuenta { get; set; }
+        public virtual DbSet<Link> Link { get; set; }
         public virtual DbSet<Lugar> Lugar { get; set; }
+        public virtual DbSet<Metodo_Pago> Metodo_Pago { get; set; }
+        public virtual DbSet<Metodo_Tarjeta> Metodo_Tarjeta { get; set; }
+        public virtual DbSet<Orden> Orden { get; set; }
         public virtual DbSet<Rubro> Rubro { get; set; }
         public virtual DbSet<Tipo_Cuenta> Tipo_Cuenta { get; set; }
         public virtual DbSet<Tipo_Documento> Tipo_Documento { get; set; }
         public virtual DbSet<Tipo_Moneda> Tipo_Moneda { get; set; }
         public virtual DbSet<Tipo_Usuario> Tipo_Usuario { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Venta> Venta { get; set; }
     }
 }
