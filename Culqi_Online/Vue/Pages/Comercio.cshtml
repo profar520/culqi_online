@@ -1,0 +1,111 @@
+﻿@page
+@model Vue.Pages.ComercioModel
+@{
+    ViewData["Title"] = "Comercio";
+}
+    <div id="app" class="container">
+        <h1 class="display-4">Registrar comercio</h1>
+        <div class="form-group">
+            <input class="form-control" type="text" v-model="comercio.ID_Usuario" required />
+        </div>
+        <div class="form-group">
+            <label>Nombre Comercial</label>
+            <input class="form-control" type="text" v-model="comercio.Nombre_Comercial" required />
+        </div>
+        <div class="form-group">
+            <label>Tipo de Documento</label>
+            <select class="form-control" v-model="comercio.ID_Tipo_Documento" required>
+                <option disabled selected>Seleccionar</option>
+                <option v-for="item in documento" :value="item.ID_Tipo_Documento">{{ item.valor }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Número de DNI</label>
+            <input class="form-control" type="text" v-model="comercio.Numero_Documento" required />
+        </div>
+        <div class="form-group">
+            <label>Dirección</label>
+            <input class="form-control" type="text" v-model="comercio.Direccion" required />
+        </div>
+        <div class="form-group">
+            <label>Ciudad</label>
+            <select class="form-control" v-model="comercio.ID_Ciudad" required>
+                <option disabled selected>Seleccionar</option>
+                <option v-for="item in ciudad" :value="item.ID_Ciudad">{{ item.Nombre_Ciudad }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Giro de Negocio</label>
+            <select class="form-control" v-model="comercio.ID_Giro_Negocio" required>
+                <option disabled selected>Seleccionar</option>
+                <option v-for="item in categoria" :value="item.ID_Giro_Negocio">{{ item.Giro_Negocio }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Celular</label>
+            <input class="form-control" type="text" v-model="comercio.Celular" required />
+        </div>
+        <div class="form-group">
+            <label>Link de página web o red social</label>
+            <input class="form-control" type="text" v-model="comercio.URL_Comercio" required />
+        </div>
+        <button class="btn btn-default" type="submit" @@click="grabarComercio">Continuar</button>
+        {{ comercio }}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                comercio: {},
+                documento: [],
+                ciudad: [],
+                categoria: []
+            },
+            mounted: function () {
+                this.obtenerDocumento();
+                this.obtenerCiudad();
+                this.obtenerCategoria();
+            },
+            methods: {
+                grabarComercio: function () {
+                    var url = "http://localhost:49996/api/registrar_comercio/crear_comercio";
+                    //var param = {
+                    //    ID_Usuario: 1,
+                    //    ID_Giro_Negocio: 1,
+                    //    Nombre_Comercial: "Prueba7",
+                    //    URL_Comercio: "http://prueba4.com",
+                    //    Celular: 123456789,
+                    //    ID_Ciudad: 1,
+                    //    ID_Tipo_Documento: 1,
+                    //    Numero_Documento: 72944087
+                    //};
+                    this.$http.post(url, this.comercio).then(function (response) {
+                        alert("id_comercio: "+ response.body.ID_Comercio +", llave pública: "+ response.body.Llave_Publica);
+                    });
+                },
+                obtenerDocumento: function () {
+                    var url = "http://localhost:49996/api/registrar_comercio/listar_tipo_documento";
+                    this.$http.get(url).then(function (response) {
+                        this.documento = response.body;
+                    });
+                },
+                obtenerCiudad: function () {
+                    var url = "http://localhost:49996/api/registrar_comercio/listar_ciudad";
+                    this.$http.get(url).then(function (response) {
+                        this.ciudad = response.body;
+                    });
+                },
+                obtenerCategoria: function () {
+                    var url = "http://localhost:49996/api/registrar_comercio/listar_categoria";
+                    this.$http.get(url).then(function (response) {
+                        this.categoria = response.body;
+                    });
+                }
+            }
+        });
+    </script>
