@@ -14,18 +14,10 @@ namespace Culqi_Online.Models
     
     public partial class Orden
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Orden()
-        {
-            this.Metodo_Pago = new HashSet<Metodo_Pago>();
-        }
-    
         public int ID_Orden { get; set; }
         public int ID_Link { get; set; }
         public string Correo { get; set; }
     
         public virtual Link Link { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Metodo_Pago> Metodo_Pago { get; set; }
     }
 }

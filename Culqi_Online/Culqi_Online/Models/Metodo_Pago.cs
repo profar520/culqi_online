@@ -22,12 +22,10 @@ namespace Culqi_Online.Models
         }
     
         public int ID_Metodo_Pago { get; set; }
-        public int ID_Orden { get; set; }
         public string Metodo_Pago1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cip_Efectivo> Cip_Efectivo { get; set; }
-        public virtual Orden Orden { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Metodo_Tarjeta> Metodo_Tarjeta { get; set; }
     }

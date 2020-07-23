@@ -22,7 +22,7 @@ namespace Culqi_Online.Models
     
         public int ID_Link { get; set; }
         public int ID_Moneda { get; set; }
-        public string Monto { get; set; }
+        public Nullable<int> Monto { get; set; }
         public string Concepto { get; set; }
         public string Url { get; set; }
     
