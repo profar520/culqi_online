@@ -30,7 +30,8 @@ namespace Culqi_Online.Models
             db.Usuario.Add(usuario);
             try
             {
-                return db.SaveChanges();
+                db.SaveChanges();
+                return usuario.ID_Usuario;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {

@@ -26,22 +26,15 @@ namespace Culqi_Online.Controllers
         // POST: api/Usuario
         [HttpPost]
         [Route("api/registrar_usuario/crear_usuario")]
-        public bool RegistroUsuario(Usuariodto usuariodto)
+        public int RegistroUsuario(Usuariodto usuariodto)
         {
             if (!Usuario.BuscarCorreo(usuariodto.Correo) && usuariodto.Terminos_Condiciones == "1")
             {
-                if (Usuario.CrearUsuario(usuariodto) == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return Usuario.CrearUsuario(usuariodto);
             }
             else
             {
-                return false;
+                return 0;
             }
         }
 

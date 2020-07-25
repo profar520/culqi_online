@@ -49,5 +49,19 @@ namespace Culqi_Online.Controllers
         {
             return Tipo_Cuenta.listar_tipo_cuenta();
         }
+
+        [HttpGet]
+        [Route("api/registrar_comercio/listar_lugar")]
+        public IEnumerable<Lugardto> listar_lugar()
+        {
+            return Lugar.listar_lugar();
+        }
+
+        [HttpGet]
+        [Route("api/registrar_comercio/listar_moneda")]
+        public IEnumerable<Monedadto> listar_moneda()
+        {
+            return Moneda.listar_moneda();
+        }
     }
 }

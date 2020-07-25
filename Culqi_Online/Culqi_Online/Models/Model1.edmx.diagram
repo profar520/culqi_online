@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a9887bb5aef645a3bfc147653bd34037" Name="Diagram1">
+      <Diagram DiagramId="99c1112820d74e4c931e113f72ae59b8" Name="Diagram1">
         <EntityTypeShape EntityType="culqiModel.Banco" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="culqiModel.Canal" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="culqiModel.Categoria" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
