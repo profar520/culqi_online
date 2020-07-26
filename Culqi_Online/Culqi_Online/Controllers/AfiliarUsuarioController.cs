@@ -44,21 +44,25 @@ namespace Culqi_Online.Controllers
         //4
 
         [HttpGet]
-        [Route("api/Afiliar_cuenta/listar_tipo_cuenta")]
+        [Route("api/afiliar_cuenta/listar_tipo_cuenta")]
         public IEnumerable<Tipo_Cuentadto> listar_tipo_cuenta()
         {
             return Tipo_Cuenta.listar_tipo_cuenta();
         }
 
+        //5
+
         [HttpGet]
-        [Route("api/registrar_comercio/listar_lugar")]
+        [Route("api/afiliar_cuenta/listar_lugar")]
         public IEnumerable<Lugardto> listar_lugar()
         {
             return Lugar.listar_lugar();
         }
 
+        //6
+
         [HttpGet]
-        [Route("api/registrar_comercio/listar_moneda")]
+        [Route("api/afiliar_cuenta/listar_moneda")]
         public IEnumerable<Monedadto> listar_moneda()
         {
             return Moneda.listar_moneda();

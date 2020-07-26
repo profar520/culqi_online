@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AfiliarUsuarioController.cs" />
     <Compile Include="Controllers\ComercioController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
+    <Compile Include="Controllers\Metodo_TarjetaController.cs" />
     <Compile Include="Controllers\PublicacionApisController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,9 +211,11 @@
     <Compile Include="Models\Metodo_Pago.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metodo_Pagos.cs" />
     <Compile Include="Models\Metodo_Tarjeta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metodo_Tarjetas.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -267,6 +270,8 @@
     <Compile Include="Transfers\Cuentadto.cs" />
     <Compile Include="Transfers\Giro_Negociodto.cs" />
     <Compile Include="Transfers\Lugardto.cs" />
+    <Compile Include="Transfers\Metodo_Pagodto.cs" />
+    <Compile Include="Transfers\Metodo_Tarjetadto.cs" />
     <Compile Include="Transfers\Monedadto.cs" />
     <Compile Include="Transfers\Rubrodto.cs" />
     <Compile Include="Transfers\Tipo_Cuentadto.cs" />
