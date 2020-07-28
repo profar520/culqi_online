@@ -18,7 +18,6 @@ namespace Culqi_Online.Models
         public int ID_Usuario { get; set; }
         public int ID_Ciudad { get; set; }
         public int ID_Giro_Negocio { get; set; }
-        public int ID_Venta { get; set; }
         public string Llave_Publica { get; set; }
         public string Nombre_Comercial { get; set; }
         public string URL_Comercio { get; set; }
@@ -27,6 +26,5 @@ namespace Culqi_Online.Models
         public virtual Categoria Categoria { get; set; }
         public virtual Ciudad Ciudad { get; set; }
         public virtual Usuario Usuario { get; set; }
-        public virtual Venta Venta { get; set; }
     }
 }

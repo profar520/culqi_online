@@ -30,7 +30,7 @@
         data: {
             orden: {},
             metodo: [],
-            enlace:[]
+            enlace: []
         },
         mounted: function () {
             this.obtenerPago();
@@ -46,7 +46,7 @@
             obtenerPago: function () {
                 var url = "http://localhost:49996/api/registrar_pago/listar_metodo_pago";
                 this.$http.get(url).then(function (response) {
-                    this.metodo= response.body;
+                    this.metodo = response.body;
                 });
             },
             obtenerUrl: function () {
@@ -58,4 +58,3 @@
         }
     });
 </script>
-
