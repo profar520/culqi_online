@@ -49,6 +49,7 @@
           <Property Name="ID_Usuario" Type="int" Nullable="false" />
           <Property Name="ID_Ciudad" Type="int" Nullable="false" />
           <Property Name="ID_Giro_Negocio" Type="int" Nullable="false" />
+          <Property Name="ID_Venta" Type="int" Nullable="false" />
           <Property Name="Llave_Publica" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Nombre_Comercial" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="URL_Comercio" Type="varchar" MaxLength="100" />
@@ -213,6 +214,18 @@
             </Principal>
             <Dependent Role="Comercio">
               <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comercio__ID_Ven__5812160E">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+          <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="ID_Venta" />
+            </Principal>
+            <Dependent Role="Comercio">
+              <PropertyRef Name="ID_Venta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -432,6 +445,10 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
+          <AssociationSet Name="FK__Comercio__ID_Ven__5812160E" Association="Self.FK__Comercio__ID_Ven__5812160E">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="Comercio" EntitySet="Comercio" />
+          </AssociationSet>
           <AssociationSet Name="FK__Cuenta__ID_Banco__398D8EEE" Association="Self.FK__Cuenta__ID_Banco__398D8EEE">
             <End Role="Banco" EntitySet="Banco" />
             <End Role="Cuenta" EntitySet="Cuenta" />
@@ -549,6 +566,7 @@
           <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
           <Property Name="ID_Ciudad" Type="Int32" Nullable="false" />
           <Property Name="ID_Giro_Negocio" Type="Int32" Nullable="false" />
+          <Property Name="ID_Venta" Type="Int32" Nullable="false" />
           <Property Name="Llave_Publica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nombre_Comercial" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="URL_Comercio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -556,6 +574,7 @@
           <NavigationProperty Name="Categoria" Relationship="Self.FK__Comercio__ID_Gir__571DF1D5" FromRole="Comercio" ToRole="Categoria" />
           <NavigationProperty Name="Ciudad" Relationship="Self.FK__Comercio__ID_Ciu__5629CD9C" FromRole="Comercio" ToRole="Ciudad" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Comercio__ID_Usu__5535A963" FromRole="Comercio" ToRole="Usuario" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Comercio__ID_Ven__5812160E" FromRole="Comercio" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -697,6 +716,7 @@
           <Property Name="ID_Metodo_Tarjeta" Type="Int32" Nullable="false" />
           <Property Name="Fecha_Pago" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Cip_Efectivo" Relationship="Self.FK__Venta__ID_Cip__5165187F" FromRole="Venta" ToRole="Cip_Efectivo" />
+          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Ven__5812160E" FromRole="Venta" ToRole="Comercio" />
           <NavigationProperty Name="Metodo_Tarjeta" Relationship="Self.FK__Venta__ID_Metodo__52593CB8" FromRole="Venta" ToRole="Metodo_Tarjeta" />
         </EntityType>
         <Association Name="FK__Cuenta__ID_Banco__398D8EEE">
@@ -792,6 +812,18 @@
             </Principal>
             <Dependent Role="Comercio">
               <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comercio__ID_Ven__5812160E">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+          <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="ID_Venta" />
+            </Principal>
+            <Dependent Role="Comercio">
+              <PropertyRef Name="ID_Venta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -979,6 +1011,10 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
+          <AssociationSet Name="FK__Comercio__ID_Ven__5812160E" Association="Self.FK__Comercio__ID_Ven__5812160E">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="Comercio" EntitySet="Comercio" />
+          </AssociationSet>
           <AssociationSet Name="FK__Cuenta__ID_Lugar__3D5E1FD2" Association="Self.FK__Cuenta__ID_Lugar__3D5E1FD2">
             <End Role="Lugar" EntitySet="Lugar" />
             <End Role="Cuenta" EntitySet="Cuenta" />
@@ -1078,6 +1114,7 @@
                 <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
                 <ScalarProperty Name="ID_Ciudad" ColumnName="ID_Ciudad" />
                 <ScalarProperty Name="ID_Giro_Negocio" ColumnName="ID_Giro_Negocio" />
+                <ScalarProperty Name="ID_Venta" ColumnName="ID_Venta" />
                 <ScalarProperty Name="Llave_Publica" ColumnName="Llave_Publica" />
                 <ScalarProperty Name="Nombre_Comercial" ColumnName="Nombre_Comercial" />
                 <ScalarProperty Name="URL_Comercio" ColumnName="URL_Comercio" />

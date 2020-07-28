@@ -8,7 +8,7 @@ namespace Culqi_Online.Models
 {
     public partial class Orden
     {
-
+      
         public static int CrearOrden(Ordendto ordendto)
         {
             bd_culqiEntities db = new bd_culqiEntities();
@@ -43,7 +43,7 @@ namespace Culqi_Online.Models
         }
 
         //otro
-
-
+        
+        
     }
 }

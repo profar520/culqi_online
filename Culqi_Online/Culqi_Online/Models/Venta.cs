@@ -14,12 +14,20 @@ namespace Culqi_Online.Models
     
     public partial class Venta
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Venta()
+        {
+            this.Comercio = new HashSet<Comercio>();
+        }
+    
         public int ID_Venta { get; set; }
         public int ID_Cip { get; set; }
         public int ID_Metodo_Tarjeta { get; set; }
         public System.DateTime Fecha_Pago { get; set; }
     
         public virtual Cip_Efectivo Cip_Efectivo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comercio> Comercio { get; set; }
         public virtual Metodo_Tarjeta Metodo_Tarjeta { get; set; }
     }
 }

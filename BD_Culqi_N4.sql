@@ -149,6 +149,7 @@ ID_Comercio int identity (1,1) primary key not null,
 ID_Usuario int foreign key references Usuario (ID_Usuario) not null,
 ID_Ciudad int foreign key references Ciudad (ID_Ciudad) not null,
 ID_Giro_Negocio int foreign key references Categoria (ID_Giro_Negocio) not null,
+ID_Venta int foreign key references Venta (ID_Venta) not null,
 Llave_Publica varchar (50) not null,
 Nombre_Comercial varchar (25) not null,
 URL_Comercio varchar (100), 
@@ -249,12 +250,7 @@ alter table Link add Codigo varchar(50);
 alter table Link drop column Codigo
 select * from Link
 
-select * from Orden 
+select * from Orden
 ALTER TABLE ADD FOREIGN KEY(ID_Metodo_Pago) references Metodo_Pago (ID_Metodo_Pago)
 
 delete from Orden where ID_Orden=1
-
-SELECT c.ID_Link, c.Url, r.ID_Orden, r.Correo, r.ID_Link FROM Link c, Orden r WHERE ( c.ID_Link = r.ID_Link )
-
-select * from Comercio
-alter table Comercio drop column ID_Venta

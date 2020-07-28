@@ -9,11 +9,10 @@ namespace Culqi_Online.Transfers
     {
         public int ID_Orden { get; set; }
         public int ID_Link { get; set; }
-
         public int ID_Metodo_Pago { get; set; }
         public string Correo { get; set; }
 
-        ///public virtual Models.Link Link { get; set; }
+        //public virtual Link Link { get; set; }
         //public virtual Metodo_Pago Metodo_Pago { get; set; }
     }
 }
