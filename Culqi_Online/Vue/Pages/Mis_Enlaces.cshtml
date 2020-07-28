@@ -11,11 +11,13 @@
         <tr>
             <th>ID_Enlace</th>
             <th>Url</th>
+            <th>Compartir</th>
 
         </tr>
         <tr v-for="item in enlace">
             <td>{{item.ID_Link}}</td>
-            <td>{{item.Url}}</td>
+            <td>{{item.Url}}</></td>
+            <td><a class="btn btn-info btn-lg" role="button" aria-pressed="true" href="https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20express%20http://localhost:65160/Ordens">Compartir</a></td>
         </tr>
     </table>
 

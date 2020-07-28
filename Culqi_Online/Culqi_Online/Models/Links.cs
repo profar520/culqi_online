@@ -60,7 +60,7 @@ namespace Culqi_Online.Models
                                select new Linkdto()
                                {
                                   ID_Link = url.ID_Link,
-                                   Url = "http://localhost:65160/CompradorUrl.html"+"/" + url.Url,
+                                   Url = "http://localhost:65160/Ordens"+"/" + url.Url,
                                }; 
             return lista_url;
         }

@@ -8,17 +8,18 @@
 <body>
 
     <div id="app" class="container">
-        <h3>Lista de enlaces</h3>
+        <h3 class="text-info display-4">Lista de enlaces</h3>
         
         <table class="table">
             <tr>
                 <th>ID_Enlace</th>
                 <th>Url</th>
-
+                <th>Compartir</th>
             </tr>
             <tr v-for="item in enlace">
                 <td>{{item.ID_Link}}</td>
                 <td>{{item.Url}}</td>
+                <td><a class="btn btn-danger" role="button" aria-pressed="true" href="https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20express%20http://localhost:65160/Ordens">Compartir</a></td>
             </tr>
         </table>
     </div>
