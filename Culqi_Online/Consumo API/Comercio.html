@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Comercio</title>
+</head>
+<body>
+    <div id="app" class="container">
+        Resultado:{{resultado}}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                resultado: []
+            },
+            mounted: function () {
+                this.fetchPrueba();
+            },
+            methods: {
+                fetchPrueba: function () {
+                    var url = "http://localhost:53961/api/registrar_comercio/crear_comercio";
+                    var param = {
+                        ID_Usuario: 2,
+                        ID_Giro_Negocio: 1,
+                        Nombre_Comercial: "Prueba6",
+                        URL_Comercio: "http://prueba4.com",
+                        Celular: 123456789,
+                        ID_Ciudad: 1,
+                        ID_Tipo_Documento: 1,
+                        Numero_Documento: 72944087
+						};
+                    this.$http.post(url,param).then(function (response) {
+                        this.resultado = response.body;
+                    });
+                },
+            }
+        });
+    </script>
+
+</body>
+</html>
