@@ -86,20 +86,6 @@ ID_Lugar int foreign key references Lugar (ID_Lugar) not null,
 Numero_Cuenta varchar (50) not null,
 )
 
-/*******************************/
-
---Tabla Comercio
-CREATE TABLE Comercio (
-ID_Comercio int identity (1,1) primary key not null,
-ID_Usuario int foreign key references Usuario (ID_Usuario) not null,
-ID_Ciudad int foreign key references Ciudad (ID_Ciudad) not null,
-ID_Giro_Negocio int foreign key references Categoria (ID_Giro_Negocio) not null,
-Llave_Publica varchar (50) not null,
-Nombre_Comercial varchar (25) not null,
-URL_Comercio varchar (100), 
-Celular int not null
-)
-
 /************************************************/
 
 --Tabla Rubro
@@ -109,14 +95,74 @@ ID_Giro_Negocio int foreign key references Categoria (ID_Giro_Negocio) not null,
 Nombre_Rubro varchar (50) not null,
 )
 
+--Tabla Link
+CREATE TABLE Link(
+ID_Link int identity (1,1) primary key not null,
+ID_Moneda int foreign key references Tipo_Moneda (ID_Moneda) not null,
+Monto integer,
+Concepto varchar (15),
+Url varchar (25),
+)
+
+--Tabla Orden
+CREATE TABLE Orden(
+ID_Orden int identity (1,1) primary key not null,
+ID_Link int foreign key references Link (ID_Link) not null,
+Correo varchar (50),
+)
+
+--Tabla Pago o metodo de pago
+CREATE TABLE Metodo_Pago (
+ID_Metodo_Pago int identity (1,1) primary key not null,
+Metodo_Pago varchar (50),
+)
+
+--Tabla CIp -- generar codigo cip
+CREATE TABLE Cip_Efectivo (
+ID_Cip int identity (1,1) primary key not null,
+ID_Metodo_Pago int foreign key references Metodo_Pago (ID_Metodo_Pago) not null,
+Codigo varchar (8),
+)
+
+--Tabla Tarjeta
+CREATE TABLE Metodo_Tarjeta(
+ID_Metodo_Tarjeta int identity (1,1) primary key not null,
+ID_Metodo_Pago int foreign key references Metodo_Pago (ID_Metodo_Pago) not null,
+Numero_Tarjeta varchar (22),
+Mes_Año int,
+CVV int,
+)
+
+--Tabla Venta
+CREATE TABLE Venta(
+ID_Venta int identity (1,1) primary key not null,
+ID_Cip int foreign key references Cip_Efectivo (ID_Cip) not null,
+ID_Metodo_Tarjeta int foreign key references Metodo_tarjeta (ID_Metodo_Tarjeta) not null,
+Fecha_Pago datetime not null,
+)
+
+--Tabla Comercio
+CREATE TABLE Comercio (
+ID_Comercio int identity (1,1) primary key not null,
+ID_Usuario int foreign key references Usuario (ID_Usuario) not null,
+ID_Ciudad int foreign key references Ciudad (ID_Ciudad) not null,
+ID_Giro_Negocio int foreign key references Categoria (ID_Giro_Negocio) not null,
+ID_Venta int foreign key references Venta (ID_Venta) not null,
+Llave_Publica varchar (50) not null,
+Nombre_Comercial varchar (25) not null,
+URL_Comercio varchar (100), 
+Celular int not null
+)
+
 /********************FIN TABLAS*********************/
 
 --Otros--
 
 select * from Usuario
-insert into Usuario values (1,1,1,'Karina Samaritano','karina@gmail.com','12345678','76793341',1)
+--drop table Usuario
+insert into Usuario values (1,1,1,'Karina Samaritano','lesly@gmail.com','12345678','76793341',1)
 
-delete from Usuario where ID_Usuario=0
+delete from Usuario where ID_Usuario=1
 
 select * from Tipo_Usuario
 insert into Tipo_Usuario values ('desarrollador')
@@ -124,7 +170,7 @@ insert into Tipo_Usuario values ('comerciante')
 
 
 select * from Cuenta
-insert into Cuenta values (1,1,1,'dolar','1234-1234-1234-1234','lima')
+
 
 select * from Banco
 insert into Banco values ('bbva')
@@ -161,26 +207,25 @@ insert into Ciudad values ('limabamba, peru')
 insert into Ciudad values ('limapampa, peru')
 
 select * from Rubro
---Para el giro de negocio servicios financieros
-insert into Rubro values (2,'seguros')
-insert into Rubro values (2,'agentes de valores y corredores de bolsa')
-insert into Rubro values (2,'otros financieras')
---Para productos digitales
-insert into Rubro values (4,'software')
-insert into Rubro values (4,'ebook, audiolibros')
-insert into Rubro values (4,'juegos')
-insert into Rubro values (4,'otros')
 --Para entretenimiento
 insert into Rubro values (1,'cine')
 insert into Rubro values (1,'musico, orquesta')
 insert into Rubro values (1,'otras recreaciones')
+--Para el giro de negocio servicios financieros
+insert into Rubro values (2,'seguros')
+insert into Rubro values (2,'agentes de valores y corredores de bolsa')
+insert into Rubro values (2,'otros financieras')
 --Para enseñanza
 insert into Rubro values (3,'Servicio de cuidado infantil, guarderia')
 insert into Rubro values (3,'institutos de estudios superiores o universidades')
 insert into Rubro values (3,'centros de enseñanza primaria y secundaria')
 insert into Rubro values (3,'organizaciones de membresia')
 insert into Rubro values (3,'otros servicios educacionales')
-
+--Para productos digitales
+insert into Rubro values (4,'software')
+insert into Rubro values (4,'ebook, audiolibros')
+insert into Rubro values (4,'juegos')
+insert into Rubro values (4,'otros')
 
 select * from Categoria
 insert into Categoria values ('actividades recreativas y entretenimiento')
@@ -190,3 +235,17 @@ insert into Categoria values ('productos digitales')
 
 
 SELECT c.ID_Giro_Negocio, c.Giro_Negocio, r.ID_Rubro, r.Nombre_Rubro FROM Categoria c, Rubro r WHERE ( c.ID_Giro_Negocio = r.ID_Giro_Negocio )
+
+select * from Comercio
+
+select Nombre_Banco from Banco
+
+select * from Metodo_Pago
+insert into Metodo_Pago values ('banca por internet y movil')
+insert into Metodo_Pago values ('deposito en agencias bancarias')
+insert into Metodo_Pago values ('deposito en agentes y bodegas')
+insert into Metodo_Pago values ('tarjeta de credito y debito')
+
+alter table Link add Codigo varchar(50);
+alter table Link drop column Codigo
+select * from Link

@@ -11,6 +11,6 @@ namespace Culqi_Online.Transfers
         public int ID_Rubro { get; set; }
         public int ID_Giro_Negocio { get; set; }
         public string Nombre_Rubro { get; set; }
-       // public Giro_Negociodto Giro_Negociodto { get; set; }
+       
     }
 }

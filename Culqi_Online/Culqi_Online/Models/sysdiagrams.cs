@@ -12,12 +12,12 @@ namespace Culqi_Online.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Orden
+    public partial class sysdiagrams
     {
-        public int ID_Orden { get; set; }
-        public int ID_Link { get; set; }
-        public string Correo { get; set; }
-        public virtual Link Link { get; set; }
-
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
