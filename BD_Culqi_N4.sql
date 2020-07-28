@@ -104,17 +104,19 @@ Concepto varchar (15),
 Url varchar (25),
 )
 
---Tabla Orden
-CREATE TABLE Orden(
-ID_Orden int identity (1,1) primary key not null,
-ID_Link int foreign key references Link (ID_Link) not null,
-Correo varchar (50),
-)
 
 --Tabla Pago o metodo de pago
 CREATE TABLE Metodo_Pago (
 ID_Metodo_Pago int identity (1,1) primary key not null,
 Metodo_Pago varchar (50),
+)
+
+--Tabla Orden
+CREATE TABLE Orden(
+ID_Orden int identity (1,1) primary key not null,
+ID_Link int foreign key references Link (ID_Link) not null,
+ID_Metodo_Pago int foreign key references Metodo_Pago (ID_Metodo_Pago) not null,
+Correo varchar (50),
 )
 
 --Tabla CIp -- generar codigo cip
@@ -162,15 +164,13 @@ select * from Usuario
 --drop table Usuario
 insert into Usuario values (1,1,1,'Karina Samaritano','lesly@gmail.com','12345678','76793341',1)
 
-delete from Usuario where ID_Usuario=1
+delete from Link where ID_Link=2
 
 select * from Tipo_Usuario
 insert into Tipo_Usuario values ('desarrollador')
 insert into Tipo_Usuario values ('comerciante')
 
-
 select * from Cuenta
-
 
 select * from Banco
 insert into Banco values ('bbva')
@@ -249,3 +249,8 @@ insert into Metodo_Pago values ('tarjeta de credito y debito')
 alter table Link add Codigo varchar(50);
 alter table Link drop column Codigo
 select * from Link
+
+select * from Orden
+ALTER TABLE ADD FOREIGN KEY(ID_Metodo_Pago) references Metodo_Pago (ID_Metodo_Pago)
+
+delete from Orden where ID_Orden=1

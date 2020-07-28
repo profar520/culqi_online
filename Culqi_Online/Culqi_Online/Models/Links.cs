@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Text;
+using System.Security.Policy;
 
 namespace Culqi_Online.Models
 {
@@ -12,18 +13,17 @@ namespace Culqi_Online.Models
     {
 
         //crear link
-        public static string GenerarLink(Linkdto linkdto)
+        public static int GenerarLink(Linkdto linkdto)
         {
             bd_culqiEntities db = new bd_culqiEntities();
-            //regla 1: monto mayor 0 
-            var monto = db.Link.Where(m => m.Monto > 0);
-            //regla 2: crear un link
+
+            //regla 1: crear un link
             Link link = new Link();
             link.ID_Link = linkdto.ID_Link;
             link.Monto = linkdto.Monto;
             link.Concepto = linkdto.Concepto;
             link.ID_Moneda = linkdto.ID_Moneda;
-            //regla 3: crear token aleatorio
+            //regla 2: crear token aleatorio
             Guid miGuid = Guid.NewGuid();
             string token = Convert.ToBase64String(miGuid.ToByteArray());
             token = token.Replace("=", "").Replace("+", "").Replace("/", "");
@@ -33,7 +33,7 @@ namespace Culqi_Online.Models
             try
             {
                 db.SaveChanges();
-                return link.Url;
+                return link.ID_Link;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
@@ -52,5 +52,17 @@ namespace Culqi_Online.Models
             }
         }
 
+        //Listar enlace
+        public static IEnumerable<Linkdto> ListarEnlace()
+        {
+            bd_culqiEntities db = new bd_culqiEntities();
+            var lista_url = from url in db.Link
+                               select new Linkdto()
+                               {
+                                  ID_Link = url.ID_Link,
+                                   Url = "http://localhost:65160/CompradorUrl.html"+"/" + url.Url,
+                               }; 
+            return lista_url;
+        }
     }
 }

@@ -38,7 +38,6 @@ namespace Culqi_Online.Models
         public virtual DbSet<Metodo_Tarjeta> Metodo_Tarjeta { get; set; }
         public virtual DbSet<Orden> Orden { get; set; }
         public virtual DbSet<Rubro> Rubro { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tipo_Cuenta> Tipo_Cuenta { get; set; }
         public virtual DbSet<Tipo_Documento> Tipo_Documento { get; set; }
         public virtual DbSet<Tipo_Moneda> Tipo_Moneda { get; set; }

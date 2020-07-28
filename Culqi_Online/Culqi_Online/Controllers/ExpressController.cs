@@ -14,9 +14,17 @@ namespace Culqi_Online.Controllers
         //api/CulqiExpress/GenerarLink
         [HttpPost]
         [Route("api/CulqiExpress/GenerarLink")]
-        public string GenerarLink(Linkdto linkdto)
+        public int GenerarLink(Linkdto linkdto)
         {
-            return Link.GenerarLink(linkdto);
+            if (linkdto.Monto > 0)
+            {
+                return Link.GenerarLink(linkdto);
+            }
+            else
+            {
+                return 00;
+            }
+            
         }
 
         [HttpPost]
@@ -25,5 +33,14 @@ namespace Culqi_Online.Controllers
         {
             return Orden.CrearOrden(ordendto);
         }
+
+        //Listar enlace
+        [HttpGet]
+        [Route("api/CulqiExpress/listar_enlace")]
+        public IEnumerable<Linkdto> ListarEnlace()
+        {
+            return Link.ListarEnlace();
+        }
+
     }
 }

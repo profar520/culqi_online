@@ -107,6 +107,7 @@
           </Key>
           <Property Name="ID_Orden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Link" Type="int" Nullable="false" />
+          <Property Name="ID_Metodo_Pago" Type="int" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Rubro">
@@ -116,16 +117,6 @@
           <Property Name="ID_Rubro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Giro_Negocio" Type="int" Nullable="false" />
           <Property Name="Nombre_Rubro" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Tipo_Cuenta">
           <Key>
@@ -178,7 +169,7 @@
           <Property Name="ID_Metodo_Tarjeta" Type="int" Nullable="false" />
           <Property Name="Fecha_Pago" Type="datetime" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Cip_Efect__ID_Me__4AB81AF0">
+        <Association Name="FK__Cip_Efect__ID_Me__4BAC3F29">
           <End Role="Metodo_Pago" Type="Self.Metodo_Pago" Multiplicity="1" />
           <End Role="Cip_Efectivo" Type="Self.Cip_Efectivo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +181,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Ciu__5535A963">
+        <Association Name="FK__Comercio__ID_Ciu__5629CD9C">
           <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,7 +193,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Gir__5629CD9C">
+        <Association Name="FK__Comercio__ID_Gir__571DF1D5">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -214,7 +205,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Usu__5441852A">
+        <Association Name="FK__Comercio__ID_Usu__5535A963">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Ven__571DF1D5">
+        <Association Name="FK__Comercio__ID_Ven__5812160E">
           <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -310,7 +301,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Metodo_Ta__ID_Me__4D94879B">
+        <Association Name="FK__Metodo_Ta__ID_Me__4E88ABD4">
           <End Role="Metodo_Pago" Type="Self.Metodo_Pago" Multiplicity="1" />
           <End Role="Metodo_Tarjeta" Type="Self.Metodo_Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -322,7 +313,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orden__ID_Link__45F365D3">
+        <Association Name="FK__Orden__ID_Link__47DBAE45">
           <End Role="Link" Type="Self.Link" Multiplicity="1" />
           <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
           <ReferentialConstraint>
@@ -331,6 +322,18 @@
             </Principal>
             <Dependent Role="Orden">
               <PropertyRef Name="ID_Link" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orden__ID_Metodo__48CFD27E">
+          <End Role="Metodo_Pago" Type="Self.Metodo_Pago" Multiplicity="1" />
+          <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metodo_Pago">
+              <PropertyRef Name="ID_Metodo_Pago" />
+            </Principal>
+            <Dependent Role="Orden">
+              <PropertyRef Name="ID_Metodo_Pago" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -382,7 +385,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Cip__5070F446">
+        <Association Name="FK__Venta__ID_Cip__5165187F">
           <End Role="Cip_Efectivo" Type="Self.Cip_Efectivo" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -394,7 +397,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Metodo__5165187F">
+        <Association Name="FK__Venta__ID_Metodo__52593CB8">
           <End Role="Metodo_Tarjeta" Type="Self.Metodo_Tarjeta" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -420,30 +423,29 @@
           <EntitySet Name="Metodo_Tarjeta" EntityType="Self.Metodo_Tarjeta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orden" EntityType="Self.Orden" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rubro" EntityType="Self.Rubro" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Cuenta" EntityType="Self.Tipo_Cuenta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Documento" EntityType="Self.Tipo_Documento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Moneda" EntityType="Self.Tipo_Moneda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Cip_Efect__ID_Me__4AB81AF0" Association="Self.FK__Cip_Efect__ID_Me__4AB81AF0">
+          <AssociationSet Name="FK__Cip_Efect__ID_Me__4BAC3F29" Association="Self.FK__Cip_Efect__ID_Me__4BAC3F29">
             <End Role="Metodo_Pago" EntitySet="Metodo_Pago" />
             <End Role="Cip_Efectivo" EntitySet="Cip_Efectivo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Ciu__5535A963" Association="Self.FK__Comercio__ID_Ciu__5535A963">
+          <AssociationSet Name="FK__Comercio__ID_Ciu__5629CD9C" Association="Self.FK__Comercio__ID_Ciu__5629CD9C">
             <End Role="Ciudad" EntitySet="Ciudad" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Gir__5629CD9C" Association="Self.FK__Comercio__ID_Gir__5629CD9C">
+          <AssociationSet Name="FK__Comercio__ID_Gir__571DF1D5" Association="Self.FK__Comercio__ID_Gir__571DF1D5">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Usu__5441852A" Association="Self.FK__Comercio__ID_Usu__5441852A">
+          <AssociationSet Name="FK__Comercio__ID_Usu__5535A963" Association="Self.FK__Comercio__ID_Usu__5535A963">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Ven__571DF1D5" Association="Self.FK__Comercio__ID_Ven__571DF1D5">
+          <AssociationSet Name="FK__Comercio__ID_Ven__5812160E" Association="Self.FK__Comercio__ID_Ven__5812160E">
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
@@ -471,12 +473,16 @@
             <End Role="Tipo_Moneda" EntitySet="Tipo_Moneda" />
             <End Role="Link" EntitySet="Link" />
           </AssociationSet>
-          <AssociationSet Name="FK__Metodo_Ta__ID_Me__4D94879B" Association="Self.FK__Metodo_Ta__ID_Me__4D94879B">
+          <AssociationSet Name="FK__Metodo_Ta__ID_Me__4E88ABD4" Association="Self.FK__Metodo_Ta__ID_Me__4E88ABD4">
             <End Role="Metodo_Pago" EntitySet="Metodo_Pago" />
             <End Role="Metodo_Tarjeta" EntitySet="Metodo_Tarjeta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orden__ID_Link__45F365D3" Association="Self.FK__Orden__ID_Link__45F365D3">
+          <AssociationSet Name="FK__Orden__ID_Link__47DBAE45" Association="Self.FK__Orden__ID_Link__47DBAE45">
             <End Role="Link" EntitySet="Link" />
+            <End Role="Orden" EntitySet="Orden" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orden__ID_Metodo__48CFD27E" Association="Self.FK__Orden__ID_Metodo__48CFD27E">
+            <End Role="Metodo_Pago" EntitySet="Metodo_Pago" />
             <End Role="Orden" EntitySet="Orden" />
           </AssociationSet>
           <AssociationSet Name="FK__Rubro__ID_Giro_N__403A8C7D" Association="Self.FK__Rubro__ID_Giro_N__403A8C7D">
@@ -495,11 +501,11 @@
             <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Cip__5070F446" Association="Self.FK__Venta__ID_Cip__5070F446">
+          <AssociationSet Name="FK__Venta__ID_Cip__5165187F" Association="Self.FK__Venta__ID_Cip__5165187F">
             <End Role="Cip_Efectivo" EntitySet="Cip_Efectivo" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Metodo__5165187F" Association="Self.FK__Venta__ID_Metodo__5165187F">
+          <AssociationSet Name="FK__Venta__ID_Metodo__52593CB8" Association="Self.FK__Venta__ID_Metodo__52593CB8">
             <End Role="Metodo_Tarjeta" EntitySet="Metodo_Tarjeta" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
@@ -531,7 +537,7 @@
           </Key>
           <Property Name="ID_Giro_Negocio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Giro_Negocio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Gir__5629CD9C" FromRole="Categoria" ToRole="Comercio" />
+          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Gir__571DF1D5" FromRole="Categoria" ToRole="Comercio" />
           <NavigationProperty Name="Rubro" Relationship="Self.FK__Rubro__ID_Giro_N__403A8C7D" FromRole="Categoria" ToRole="Rubro" />
         </EntityType>
         <EntityType Name="Cip_Efectivo">
@@ -541,8 +547,8 @@
           <Property Name="ID_Cip" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Metodo_Pago" Type="Int32" Nullable="false" />
           <Property Name="Codigo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Metodo_Pago" Relationship="Self.FK__Cip_Efect__ID_Me__4AB81AF0" FromRole="Cip_Efectivo" ToRole="Metodo_Pago" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Cip__5070F446" FromRole="Cip_Efectivo" ToRole="Venta" />
+          <NavigationProperty Name="Metodo_Pago" Relationship="Self.FK__Cip_Efect__ID_Me__4BAC3F29" FromRole="Cip_Efectivo" ToRole="Metodo_Pago" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Cip__5165187F" FromRole="Cip_Efectivo" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Ciudad">
           <Key>
@@ -550,7 +556,7 @@
           </Key>
           <Property Name="ID_Ciudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre_Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Ciu__5535A963" FromRole="Ciudad" ToRole="Comercio" />
+          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Ciu__5629CD9C" FromRole="Ciudad" ToRole="Comercio" />
         </EntityType>
         <EntityType Name="Comercio">
           <Key>
@@ -565,10 +571,10 @@
           <Property Name="Nombre_Comercial" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="URL_Comercio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Celular" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Categoria" Relationship="Self.FK__Comercio__ID_Gir__5629CD9C" FromRole="Comercio" ToRole="Categoria" />
-          <NavigationProperty Name="Ciudad" Relationship="Self.FK__Comercio__ID_Ciu__5535A963" FromRole="Comercio" ToRole="Ciudad" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Comercio__ID_Usu__5441852A" FromRole="Comercio" ToRole="Usuario" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Comercio__ID_Ven__571DF1D5" FromRole="Comercio" ToRole="Venta" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Comercio__ID_Gir__571DF1D5" FromRole="Comercio" ToRole="Categoria" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK__Comercio__ID_Ciu__5629CD9C" FromRole="Comercio" ToRole="Ciudad" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Comercio__ID_Usu__5535A963" FromRole="Comercio" ToRole="Usuario" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Comercio__ID_Ven__5812160E" FromRole="Comercio" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -597,7 +603,7 @@
           <Property Name="Concepto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Url" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tipo_Moneda" Relationship="Self.FK__Link__ID_Moneda__4316F928" FromRole="Link" ToRole="Tipo_Moneda" />
-          <NavigationProperty Name="Orden" Relationship="Self.FK__Orden__ID_Link__45F365D3" FromRole="Link" ToRole="Orden" />
+          <NavigationProperty Name="Orden" Relationship="Self.FK__Orden__ID_Link__47DBAE45" FromRole="Link" ToRole="Orden" />
         </EntityType>
         <EntityType Name="Lugar">
           <Key>
@@ -613,8 +619,9 @@
           </Key>
           <Property Name="ID_Metodo_Pago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Metodo_Pago1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cip_Efectivo" Relationship="Self.FK__Cip_Efect__ID_Me__4AB81AF0" FromRole="Metodo_Pago" ToRole="Cip_Efectivo" />
-          <NavigationProperty Name="Metodo_Tarjeta" Relationship="Self.FK__Metodo_Ta__ID_Me__4D94879B" FromRole="Metodo_Pago" ToRole="Metodo_Tarjeta" />
+          <NavigationProperty Name="Cip_Efectivo" Relationship="Self.FK__Cip_Efect__ID_Me__4BAC3F29" FromRole="Metodo_Pago" ToRole="Cip_Efectivo" />
+          <NavigationProperty Name="Metodo_Tarjeta" Relationship="Self.FK__Metodo_Ta__ID_Me__4E88ABD4" FromRole="Metodo_Pago" ToRole="Metodo_Tarjeta" />
+          <NavigationProperty Name="Orden" Relationship="Self.FK__Orden__ID_Metodo__48CFD27E" FromRole="Metodo_Pago" ToRole="Orden" />
         </EntityType>
         <EntityType Name="Metodo_Tarjeta">
           <Key>
@@ -625,8 +632,8 @@
           <Property Name="Numero_Tarjeta" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
           <Property Name="Mes_Año" Type="Int32" />
           <Property Name="CVV" Type="Int32" />
-          <NavigationProperty Name="Metodo_Pago" Relationship="Self.FK__Metodo_Ta__ID_Me__4D94879B" FromRole="Metodo_Tarjeta" ToRole="Metodo_Pago" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Metodo__5165187F" FromRole="Metodo_Tarjeta" ToRole="Venta" />
+          <NavigationProperty Name="Metodo_Pago" Relationship="Self.FK__Metodo_Ta__ID_Me__4E88ABD4" FromRole="Metodo_Tarjeta" ToRole="Metodo_Pago" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ID_Metodo__52593CB8" FromRole="Metodo_Tarjeta" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Orden">
           <Key>
@@ -634,8 +641,10 @@
           </Key>
           <Property Name="ID_Orden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Link" Type="Int32" Nullable="false" />
+          <Property Name="ID_Metodo_Pago" Type="Int32" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Link" Relationship="Self.FK__Orden__ID_Link__45F365D3" FromRole="Orden" ToRole="Link" />
+          <NavigationProperty Name="Link" Relationship="Self.FK__Orden__ID_Link__47DBAE45" FromRole="Orden" ToRole="Link" />
+          <NavigationProperty Name="Metodo_Pago" Relationship="Self.FK__Orden__ID_Metodo__48CFD27E" FromRole="Orden" ToRole="Metodo_Pago" />
         </EntityType>
         <EntityType Name="Rubro">
           <Key>
@@ -645,16 +654,6 @@
           <Property Name="ID_Giro_Negocio" Type="Int32" Nullable="false" />
           <Property Name="Nombre_Rubro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Categoria" Relationship="Self.FK__Rubro__ID_Giro_N__403A8C7D" FromRole="Rubro" ToRole="Categoria" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Tipo_Cuenta">
           <Key>
@@ -703,7 +702,7 @@
           <Property Name="Numero_Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Terminos_Condiciones" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Canal" Relationship="Self.FK__Usuario__ID_Cana__36B12243" FromRole="Usuario" ToRole="Canal" />
-          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Usu__5441852A" FromRole="Usuario" ToRole="Comercio" />
+          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Usu__5535A963" FromRole="Usuario" ToRole="Comercio" />
           <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__ID_Usuar__3A81B327" FromRole="Usuario" ToRole="Cuenta" />
           <NavigationProperty Name="Tipo_Documento" Relationship="Self.FK__Usuario__ID_Tipo__35BCFE0A" FromRole="Usuario" ToRole="Tipo_Documento" />
           <NavigationProperty Name="Tipo_Usuario" Relationship="Self.FK__Usuario__ID_Tipo__34C8D9D1" FromRole="Usuario" ToRole="Tipo_Usuario" />
@@ -716,9 +715,9 @@
           <Property Name="ID_Cip" Type="Int32" Nullable="false" />
           <Property Name="ID_Metodo_Tarjeta" Type="Int32" Nullable="false" />
           <Property Name="Fecha_Pago" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Cip_Efectivo" Relationship="Self.FK__Venta__ID_Cip__5070F446" FromRole="Venta" ToRole="Cip_Efectivo" />
-          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Ven__571DF1D5" FromRole="Venta" ToRole="Comercio" />
-          <NavigationProperty Name="Metodo_Tarjeta" Relationship="Self.FK__Venta__ID_Metodo__5165187F" FromRole="Venta" ToRole="Metodo_Tarjeta" />
+          <NavigationProperty Name="Cip_Efectivo" Relationship="Self.FK__Venta__ID_Cip__5165187F" FromRole="Venta" ToRole="Cip_Efectivo" />
+          <NavigationProperty Name="Comercio" Relationship="Self.FK__Comercio__ID_Ven__5812160E" FromRole="Venta" ToRole="Comercio" />
+          <NavigationProperty Name="Metodo_Tarjeta" Relationship="Self.FK__Venta__ID_Metodo__52593CB8" FromRole="Venta" ToRole="Metodo_Tarjeta" />
         </EntityType>
         <Association Name="FK__Cuenta__ID_Banco__398D8EEE">
           <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
@@ -744,7 +743,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Gir__5629CD9C">
+        <Association Name="FK__Comercio__ID_Gir__571DF1D5">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -768,7 +767,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cip_Efect__ID_Me__4AB81AF0">
+        <Association Name="FK__Cip_Efect__ID_Me__4BAC3F29">
           <End Role="Metodo_Pago" Type="Self.Metodo_Pago" Multiplicity="1" />
           <End Role="Cip_Efectivo" Type="Self.Cip_Efectivo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -780,7 +779,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Cip__5070F446">
+        <Association Name="FK__Venta__ID_Cip__5165187F">
           <End Role="Cip_Efectivo" Type="Self.Cip_Efectivo" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -792,7 +791,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Ciu__5535A963">
+        <Association Name="FK__Comercio__ID_Ciu__5629CD9C">
           <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -804,7 +803,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Usu__5441852A">
+        <Association Name="FK__Comercio__ID_Usu__5535A963">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -816,7 +815,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comercio__ID_Ven__571DF1D5">
+        <Association Name="FK__Comercio__ID_Ven__5812160E">
           <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
           <End Role="Comercio" Type="Self.Comercio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -888,7 +887,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orden__ID_Link__45F365D3">
+        <Association Name="FK__Orden__ID_Link__47DBAE45">
           <End Role="Link" Type="Self.Link" Multiplicity="1" />
           <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
           <ReferentialConstraint>
@@ -900,7 +899,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Metodo_Ta__ID_Me__4D94879B">
+        <Association Name="FK__Metodo_Ta__ID_Me__4E88ABD4">
           <End Role="Metodo_Pago" Type="Self.Metodo_Pago" Multiplicity="1" />
           <End Role="Metodo_Tarjeta" Type="Self.Metodo_Tarjeta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -912,7 +911,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Venta__ID_Metodo__5165187F">
+        <Association Name="FK__Orden__ID_Metodo__48CFD27E">
+          <End Role="Metodo_Pago" Type="Self.Metodo_Pago" Multiplicity="1" />
+          <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metodo_Pago">
+              <PropertyRef Name="ID_Metodo_Pago" />
+            </Principal>
+            <Dependent Role="Orden">
+              <PropertyRef Name="ID_Metodo_Pago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Venta__ID_Metodo__52593CB8">
           <End Role="Metodo_Tarjeta" Type="Self.Metodo_Tarjeta" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -962,7 +973,6 @@
           <EntitySet Name="Metodo_Tarjeta" EntityType="Self.Metodo_Tarjeta" />
           <EntitySet Name="Orden" EntityType="Self.Orden" />
           <EntitySet Name="Rubro" EntityType="Self.Rubro" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tipo_Cuenta" EntityType="Self.Tipo_Cuenta" />
           <EntitySet Name="Tipo_Documento" EntityType="Self.Tipo_Documento" />
           <EntitySet Name="Tipo_Moneda" EntityType="Self.Tipo_Moneda" />
@@ -977,7 +987,7 @@
             <End Role="Canal" EntitySet="Canal" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Gir__5629CD9C" Association="Self.FK__Comercio__ID_Gir__5629CD9C">
+          <AssociationSet Name="FK__Comercio__ID_Gir__571DF1D5" Association="Self.FK__Comercio__ID_Gir__571DF1D5">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
@@ -985,23 +995,23 @@
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Rubro" EntitySet="Rubro" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cip_Efect__ID_Me__4AB81AF0" Association="Self.FK__Cip_Efect__ID_Me__4AB81AF0">
+          <AssociationSet Name="FK__Cip_Efect__ID_Me__4BAC3F29" Association="Self.FK__Cip_Efect__ID_Me__4BAC3F29">
             <End Role="Metodo_Pago" EntitySet="Metodo_Pago" />
             <End Role="Cip_Efectivo" EntitySet="Cip_Efectivo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Cip__5070F446" Association="Self.FK__Venta__ID_Cip__5070F446">
+          <AssociationSet Name="FK__Venta__ID_Cip__5165187F" Association="Self.FK__Venta__ID_Cip__5165187F">
             <End Role="Cip_Efectivo" EntitySet="Cip_Efectivo" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Ciu__5535A963" Association="Self.FK__Comercio__ID_Ciu__5535A963">
+          <AssociationSet Name="FK__Comercio__ID_Ciu__5629CD9C" Association="Self.FK__Comercio__ID_Ciu__5629CD9C">
             <End Role="Ciudad" EntitySet="Ciudad" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Usu__5441852A" Association="Self.FK__Comercio__ID_Usu__5441852A">
+          <AssociationSet Name="FK__Comercio__ID_Usu__5535A963" Association="Self.FK__Comercio__ID_Usu__5535A963">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comercio__ID_Ven__571DF1D5" Association="Self.FK__Comercio__ID_Ven__571DF1D5">
+          <AssociationSet Name="FK__Comercio__ID_Ven__5812160E" Association="Self.FK__Comercio__ID_Ven__5812160E">
             <End Role="Venta" EntitySet="Venta" />
             <End Role="Comercio" EntitySet="Comercio" />
           </AssociationSet>
@@ -1025,15 +1035,19 @@
             <End Role="Tipo_Moneda" EntitySet="Tipo_Moneda" />
             <End Role="Link" EntitySet="Link" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orden__ID_Link__45F365D3" Association="Self.FK__Orden__ID_Link__45F365D3">
+          <AssociationSet Name="FK__Orden__ID_Link__47DBAE45" Association="Self.FK__Orden__ID_Link__47DBAE45">
             <End Role="Link" EntitySet="Link" />
             <End Role="Orden" EntitySet="Orden" />
           </AssociationSet>
-          <AssociationSet Name="FK__Metodo_Ta__ID_Me__4D94879B" Association="Self.FK__Metodo_Ta__ID_Me__4D94879B">
+          <AssociationSet Name="FK__Metodo_Ta__ID_Me__4E88ABD4" Association="Self.FK__Metodo_Ta__ID_Me__4E88ABD4">
             <End Role="Metodo_Pago" EntitySet="Metodo_Pago" />
             <End Role="Metodo_Tarjeta" EntitySet="Metodo_Tarjeta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Venta__ID_Metodo__5165187F" Association="Self.FK__Venta__ID_Metodo__5165187F">
+          <AssociationSet Name="FK__Orden__ID_Metodo__48CFD27E" Association="Self.FK__Orden__ID_Metodo__48CFD27E">
+            <End Role="Metodo_Pago" EntitySet="Metodo_Pago" />
+            <End Role="Orden" EntitySet="Orden" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Venta__ID_Metodo__52593CB8" Association="Self.FK__Venta__ID_Metodo__52593CB8">
             <End Role="Metodo_Tarjeta" EntitySet="Metodo_Tarjeta" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
@@ -1164,6 +1178,7 @@
               <MappingFragment StoreEntitySet="Orden">
                 <ScalarProperty Name="ID_Orden" ColumnName="ID_Orden" />
                 <ScalarProperty Name="ID_Link" ColumnName="ID_Link" />
+                <ScalarProperty Name="ID_Metodo_Pago" ColumnName="ID_Metodo_Pago" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1174,17 +1189,6 @@
                 <ScalarProperty Name="ID_Rubro" ColumnName="ID_Rubro" />
                 <ScalarProperty Name="ID_Giro_Negocio" ColumnName="ID_Giro_Negocio" />
                 <ScalarProperty Name="Nombre_Rubro" ColumnName="Nombre_Rubro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="bd_culqiModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

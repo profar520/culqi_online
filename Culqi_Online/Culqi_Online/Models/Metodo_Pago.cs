@@ -19,6 +19,7 @@ namespace Culqi_Online.Models
         {
             this.Cip_Efectivo = new HashSet<Cip_Efectivo>();
             this.Metodo_Tarjeta = new HashSet<Metodo_Tarjeta>();
+            this.Orden = new HashSet<Orden>();
         }
     
         public int ID_Metodo_Pago { get; set; }
@@ -28,5 +29,7 @@ namespace Culqi_Online.Models
         public virtual ICollection<Cip_Efectivo> Cip_Efectivo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Metodo_Tarjeta> Metodo_Tarjeta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orden> Orden { get; set; }
     }
 }

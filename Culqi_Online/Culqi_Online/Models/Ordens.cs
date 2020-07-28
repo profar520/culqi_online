@@ -8,16 +8,18 @@ namespace Culqi_Online.Models
 {
     public partial class Orden
     {
+      
         public static int CrearOrden(Ordendto ordendto)
         {
             bd_culqiEntities db = new bd_culqiEntities();
-            ///var id_link2 = db.Link.Where(l => l.ID_Link == id_link);
+
             //insertar una nueva orden
             Orden orden = new Orden();
             orden.ID_Orden = ordendto.ID_Orden;
             orden.Correo = ordendto.Correo;
+            orden.ID_Metodo_Pago = ordendto.ID_Metodo_Pago;
             orden.ID_Link = ordendto.ID_Link;
-
+            db.Orden.Add(orden);
             try
             {
                 db.SaveChanges();
@@ -41,5 +43,7 @@ namespace Culqi_Online.Models
         }
 
         //otro
+        
+        
     }
 }

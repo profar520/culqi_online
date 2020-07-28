@@ -242,9 +242,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rubros.cs" />
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Tipo_Cuenta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
