@@ -67,5 +67,21 @@ namespace Culqi_Online.Controllers
         {
             return Moneda.listar_moneda();
         }
+
+
+        //CIP
+
+
+        [HttpPost]
+        [Route("api/pagoefectivo/registrarcip")]
+
+        public int registrarcip(Cip_Efectivodto cip_efectivodto)
+        {
+            return Cip_Efectivo.registrarcip(cip_efectivodto);
+
+        }
+
+
+
     }
 }
