@@ -50,7 +50,7 @@
             <input class="form-control" type="text" v-model="comercio.URL_Comercio" required />
         </div>
         <button class="btn btn-default" type="submit" @@click="grabarComercio">Continuar</button>
-        {{ comercio }}
+
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -64,7 +64,8 @@
                 comercio: {},
                 documento: [],
                 ciudad: [],
-                categoria: []
+                categoria: [],
+                comercio: { ID_Usuario: "" }
             },
             mounted: function () {
                 this.obtenerDocumento();
@@ -106,6 +107,13 @@
                         this.categoria = response.body;
                     });
                 }
+            },
+            created() {
+                let uri = window.location.search.substring(1);
+                let params = new URLSearchParams(uri);
+                this.comercio.ID_Usuario = params.get("ID_Usuario");
+            },
+            updated() {
             }
         });
     </script>
