@@ -71,6 +71,9 @@
                 this.obtenerDocumento();
                 this.obtenerCiudad();
                 this.obtenerCategoria();
+                let uri = window.location.search.substring(1);
+                let params = new URLSearchParams(uri);
+                this.comercio.ID_Usuario = params.get("ID_Usuario");
             },
             methods: {
                 grabarComercio: function () {
@@ -107,13 +110,6 @@
                         this.categoria = response.body;
                     });
                 }
-            },
-            created() {
-                let uri = window.location.search.substring(1);
-                let params = new URLSearchParams(uri);
-                this.comercio.ID_Usuario = params.get("ID_Usuario");
-            },
-            updated() {
             }
         });
     </script>
