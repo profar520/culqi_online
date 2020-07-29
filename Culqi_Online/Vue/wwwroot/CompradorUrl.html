@@ -12,15 +12,12 @@
             <input class="form-control" type="email" placeholder="Correo" v-model="orden.Correo" required />
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" placeholder="ID_Link" v-model="orden.ID_Link" required />
-        </div>
-        <div class="form-group">
             <select class="form-control" v-model="orden.ID_Metodo_Pago" required>
                 <option value="" disabled selected>escoge Metodo Pago</option>
                 <option v-for="item in metodo" :value="item.ID_Metodo_Pago">{{ item.Metodo_Pago }}</option>
             </select>
         </div>
-        <a class="btn btn-info btn-lg" role="button" aria-pressed="true" type="submit" @@click="crearOrden" >Continuar</a>
+        <a class="btn btn-info btn-lg" role="button" aria-pressed="true" type="submit" @@click="crearOrden">Continuar</a>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -28,38 +25,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
     <script>
-    new Vue({
-        el: "#app",
-        data: {
-            orden: {},
-            metodo: [],
-            enlace:[]
-        },
-        mounted: function () {
-            this.obtenerPago();
-            this.obtenerUrl()
-        },
-        methods: {
-            crearOrden: function () {
-                var url = "http://localhost:49996/api/CulqiExpress/CrearOrden";
-                this.$http.post(url, this.orden).then(function (response) {
-                    alert(response.body);
-                });
+        new Vue({
+            el: "#app",
+            data: {
+                orden: {},
+                metodo: [],
+                enlace: [],
+                orden: { ID_Link: "" }
             },
-            obtenerPago: function () {
-                var url = "http://localhost:49996/api/registrar_pago/listar_metodo_pago";
-                this.$http.get(url).then(function (response) {
-                    this.metodo= response.body;
-                });
+            mounted: function () {
+                this.obtenerPago();
+                this.obtenerUrl()
             },
-            obtenerUrl: function () {
-                var url = "http://localhost:49996/api/CulqiExpress/listar_enlace";
-                this.$http.get(url).then(function (response) {
-                    this.enlace = response.body;
-                });
-            }
-        }
-    });
+            methods: {
+                crearOrden: function () {
+                    var url = "http://localhost:49996/api/CulqiExpress/CrearOrden";
+                    this.$http.post(url, this.orden).then(function (response) {
+                        alert(response.body);
+                    });
+                },
+                obtenerPago: function () {
+                    var url = "http://localhost:49996/api/registrar_pago/listar_metodo_pago";
+                    this.$http.get(url).then(function (response) {
+                        this.metodo = response.body;
+                    });
+                },
+                obtenerUrl: function () {
+                    var url = "http://localhost:49996/api/CulqiExpress/listar_enlace";
+                    this.$http.get(url).then(function (response) {
+                        this.enlace = response.body;
+                    });
+                }
+            },
+            created() {
+                let uri = window.location.search.substring(1);
+                let params = new URLSearchParams(uri);
+                this.orden.ID_Link = params.get("ID_Link")
+            },
+        });
     </script>
 </body>
 </html>

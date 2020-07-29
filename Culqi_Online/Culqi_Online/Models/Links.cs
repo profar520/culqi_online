@@ -48,7 +48,7 @@ namespace Culqi_Online.Models
             }
         }
 
-        //Listar enlace
+        //Listar todos enlace
         public static IEnumerable<Linkdto> ListarEnlace()
         {
             bd_culqiEntities db = new bd_culqiEntities();
@@ -60,5 +60,19 @@ namespace Culqi_Online.Models
                                }; 
             return lista_url;
         }
+
+        //Listar un enlace según el id
+        public static IEnumerable<Linkdto> ListarEnlaceId(int ID_Link)
+        {
+            bd_culqiEntities db = new bd_culqiEntities();
+            var lista_url_id = from url in db.Link.Where(l => l.ID_Link == ID_Link)
+                            select new Linkdto()
+                            {
+                                ID_Link = url.ID_Link,
+                                Url = url.Url + url.ID_Link,
+                            };
+            return lista_url_id;
+        }
+
     }
 }
