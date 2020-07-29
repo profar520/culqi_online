@@ -1,0 +1,111 @@
+﻿@page
+@model Vue.Pages.CuentaModel
+@{
+    ViewData["Title"] = "Cuenta";
+}
+    <div id="app" class="container">
+        <h1 class="display-4">Registrar cuenta</h1>
+        <div class="form-group">
+            <input class="form-control" type="text" v-model="cuenta.ID_Usuario" required />
+        </div>
+
+        <template v-for="item in moneda">
+            <div class="form-check">
+                <input type="radio" class="form-check-input" :value="item.ID_Moneda" v-model="cuenta.ID_Moneda">
+                <label class="form-check-label"> Cuenta {{ item.Moneda }} </label>
+            </div>
+        </template>
+
+        <label>¿Dónde aperturaste tu cuenta?</label>
+        <template v-for="item in lugar">
+            <div class="form-check">
+                <input type="radio" class="form-check-input" :value="item.ID_Lugar" v-model="cuenta.ID_Lugar">
+                <label> {{ item.Lugar }} </label>
+            </div>
+        </template>
+
+        <div class="form-group">
+            <label>Nombre del banco</label>
+            <select class="form-control" v-model="cuenta.ID_Banco" required>
+                <option disabled selected>Seleccionar</option>
+                <option v-for="item in banco" :value="item.ID_Banco">{{ item.Nombre_Banco }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Tipo de cuenta</label>
+            <select class="form-control" v-model="cuenta.ID_Tipo_Cuenta" required>
+                <option disabled selected>Seleccionar</option>
+                <option v-for="item in tipocuenta" :value="item.ID_Tipo_cuenta">{{ item.Cuenta }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Número de cuenta bancaria</label>
+            <input class="form-control" type="number" v-model="cuenta.Numero_Cuenta" required />
+        </div>
+
+        <button class="btn btn-default" type="submit" @@click="grabarCuenta">Continuar</button>
+        {{ cuenta }}
+    </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            cuenta: {},
+            banco: [],
+            tipocuenta: [],
+            moneda: [],
+            lugar: []
+        },
+        mounted: function () {
+            this.obtenerBanco();
+            this.obtenerTipoCuenta();
+            this.obtenerMoneda();
+            this.obtenerLugar();
+        },
+        methods: {
+            grabarCuenta: function () {
+                var url = "http://localhost:49996/api/afiliar_cuenta/registrar_cuenta";
+                //var param = {
+                //    ID_Banco: 1,
+                //    ID_Usuario: 1,
+                //    ID_Tipo_Cuenta: 1,
+                //    ID_Moneda: 1,
+                //    ID_Lugar: 1,
+                //    Numero_Cuenta: "11111222223333344444"
+                //};
+                this.$http.post(url, this.cuenta).then(function (response) {
+                    alert(response.body);
+                });
+            },
+            obtenerBanco: function () {
+                var url = "http://localhost:49996/api/afiliar_cuenta/listar_nombre_banco";
+                this.$http.get(url).then(function (response) {
+                    this.banco = response.body;
+                });
+            },
+            obtenerTipoCuenta: function () {
+                var url = "http://localhost:49996/api/afiliar_cuenta/listar_tipo_cuenta";
+                this.$http.get(url).then(function (response) {
+                    this.tipocuenta = response.body;
+                });
+            },
+            obtenerMoneda: function () {
+                var url = "http://localhost:49996/api/afiliar_cuenta/listar_moneda";
+                this.$http.get(url).then(function (response) {
+                    this.moneda = response.body;
+                });
+            },
+            obtenerLugar: function () {
+                var url = "http://localhost:49996/api/afiliar_cuenta/listar_lugar";
+                this.$http.get(url).then(function (response) {
+                    this.lugar = response.body;
+                });
+            }
+        }
+    });
+</script>

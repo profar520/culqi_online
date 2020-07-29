@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row m-3 p-3">
+    <div class="col-md-6">
+        <h1 class="text-info display-4">Te ayudamos a transformar tu negocio y seguir creciendo</h1>
+        <p>Conoce nuestro ecosistema de pagos flexible, que rompe las barreras tradicionales para abrirte las puertas a un nuevo mundo de posibilidades.</p>
+        <a asp-page="/Usuario" class="btn btn-info btn-lg" role="button" aria-pressed="true">Crear mi cuenta gratis</a>
+    </div>
+    <div class="col-md-offset-6">
+        <img src="~/images/banner-pos.png" class="img-fluid" alt="Responsive image" style="height:380px">
+    </div>
+</div>
