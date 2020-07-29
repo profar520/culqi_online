@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\luis\Desktop\trabajo_Final_SOa\culqi_online\Culqi_Online\Culqi_Online\Models\Model1.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'E:\UTP SOA\culqi_online\Culqi_Online\Culqi_Online\Models\Model1.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.
