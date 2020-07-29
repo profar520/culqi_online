@@ -4,9 +4,8 @@
     ViewData["Title"] = "Orden";
 }
 
-<h2>Enlaces</h2>
 <div id="app" class="container">
-    <h3>Lista de enlaces</h3>
+    <h3 class="text-info display-4">Lista de enlaces</h3>
     <table class="table">
         <tr>
             <th>ID_Enlace</th>
@@ -17,7 +16,7 @@
         <tr v-for="item in enlace">
             <td>{{item.ID_Link}}</td>
             <td>{{item.Url}}</></td>
-            <td><a class="btn btn-info btn-lg" role="button" aria-pressed="true" href="https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20express%20http://localhost:65160/Ordens">Compartir</a></td>
+            <td><a class="btn btn-danger" role="button" aria-pressed="true" href="https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20Express:%20http://localhost:65160/Ordens?+{{item.ID_Link}}">Compartir WhatsApp</a></td>
         </tr>
     </table>
 
@@ -33,6 +32,7 @@
         el: "#app",
         data: {
             enlace: [],
+            enlace: { ID_Link: "" }
         },
         mounted: function () {
             this.obtenerUrl();

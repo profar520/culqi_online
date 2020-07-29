@@ -19,7 +19,7 @@
             <tr v-for="item in enlace">
                 <td>{{item.ID_Link}}</td>
                 <td>{{item.Url}}</td>
-                <td><a class="btn btn-danger" role="button" aria-pressed="true" href="https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20express%20http://localhost:65160/Ordens">Compartir</a></td>
+                <td><a class="btn btn-danger" role="button" aria-pressed="true" href="https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20express%20http://localhost:65160/Ordens?ID_Link={{item.ID_Link}}">Compartir WhatssApp</a></td>
             </tr>
         </table>
     </div>

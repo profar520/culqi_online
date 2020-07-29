@@ -23,11 +23,7 @@ namespace Culqi_Online.Models
             link.Monto = linkdto.Monto;
             link.Concepto = linkdto.Concepto;
             link.ID_Moneda = linkdto.ID_Moneda;
-            //regla 2: crear token aleatorio
-            Guid miGuid = Guid.NewGuid();
-            string token = Convert.ToBase64String(miGuid.ToByteArray());
-            token = token.Replace("=", "").Replace("+", "").Replace("/", "");
-            link.Url = token.Substring(0, 8);
+            link.Url = "http://localhost:65160/Ordens?ID_Link=";
             db.Link.Add(link);
 
             try
@@ -59,8 +55,8 @@ namespace Culqi_Online.Models
             var lista_url = from url in db.Link
                                select new Linkdto()
                                {
-                                  ID_Link = url.ID_Link,
-                                   Url = "http://localhost:65160/Ordens"+"/" + url.Url,
+                                   ID_Link = url.ID_Link,
+                                   Url = url.Url + url.ID_Link,
                                }; 
             return lista_url;
         }

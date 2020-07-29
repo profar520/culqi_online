@@ -74,7 +74,7 @@
           <Property Name="ID_Moneda" Type="int" Nullable="false" />
           <Property Name="Monto" Type="int" />
           <Property Name="Concepto" Type="varchar" MaxLength="15" />
-          <Property Name="Url" Type="varchar" MaxLength="25" />
+          <Property Name="Url" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Lugar">
           <Key>
@@ -582,7 +582,7 @@
           <Property Name="ID_Moneda" Type="Int32" Nullable="false" />
           <Property Name="Monto" Type="Int32" />
           <Property Name="Concepto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Url" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tipo_Moneda" Relationship="Self.FK__Link__ID_Moneda__4316F928" FromRole="Link" ToRole="Tipo_Moneda" />
           <NavigationProperty Name="Orden" Relationship="Self.FK__Orden__ID_Link__47DBAE45" FromRole="Link" ToRole="Orden" />
         </EntityType>

@@ -41,6 +41,7 @@
                 var url = "http://localhost:49996/api/CulqiExpress/GenerarLink";
                 this.$http.post(url, this.link).then(function (response) {
                     alert(response.body);
+                    window.location.href = '/Mis_Enlaces?ID_Link='+ response.body;
                 });
             },
             obtenerMoneda: function () {

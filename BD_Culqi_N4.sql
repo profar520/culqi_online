@@ -254,7 +254,7 @@ ALTER TABLE ADD FOREIGN KEY(ID_Metodo_Pago) references Metodo_Pago (ID_Metodo_Pa
 
 delete from Orden where ID_Orden=1
 
-SELECT c.ID_Link, c.Url, r.ID_Orden, r.Correo, r.ID_Link FROM Link c, Orden r WHERE ( c.ID_Link = r.ID_Link )
+SELECT c.ID_Link, c.Url, r.ID_Orden, r.Correo, r.ID_Link, r.ID_Metodo_Pago FROM Link c, Orden r WHERE ( c.ID_Link = r.ID_Link )
 
 select * from Comercio
 alter table Comercio drop column ID_Venta
