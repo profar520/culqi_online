@@ -23,7 +23,7 @@ namespace Culqi_Online.Models
             link.Monto = linkdto.Monto;
             link.Concepto = linkdto.Concepto;
             link.ID_Moneda = linkdto.ID_Moneda;
-            link.Url = "http://localhost:65160/Ordens?ID_Link=";
+            link.Url = "http://localhost:65160/CompradorUrl.html?ID_Link=";
             db.Link.Add(link);
 
             try
