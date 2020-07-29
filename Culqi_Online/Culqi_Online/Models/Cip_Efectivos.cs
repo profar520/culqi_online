@@ -6,24 +6,27 @@ using System.Web;
 
 namespace Culqi_Online.Models
 {
-    public partial class Orden
+    public partial class Cip_Efectivo
     {
 
-        public static int CrearOrden(Ordendto ordendto)
+        public static int registrarcip(Cip_Efectivodto cip_efectivodto)
         {
-            bd_culqiEntities db = new bd_culqiEntities();
+            int numero = new Random().Next(0, 99999999);
 
-            //insertar una nueva orden
-            Orden orden = new Orden();
-            //orden.ID_Orden = ordendto.ID_Orden;
-            orden.Correo = ordendto.Correo;
-            orden.ID_Metodo_Pago = ordendto.ID_Metodo_Pago;
-            orden.ID_Link = ordendto.ID_Link;
-            db.Orden.Add(orden);
+            bd_culqiEntities db = new bd_culqiEntities();
+            Cip_Efectivo cip_efectivo = new Cip_Efectivo();
+            cip_efectivo.ID_Metodo_Pago = cip_efectivodto.ID_Metodo_Pago;
+            //Generar Cip Aleatorio
+
+            cip_efectivo.Codigo = numero;
+            db.Cip_Efectivo.Add(cip_efectivo);
+
+
+
             try
             {
                 db.SaveChanges();
-                return (int)orden.ID_Metodo_Pago;
+                return (int)cip_efectivo.Codigo;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
@@ -40,9 +43,15 @@ namespace Culqi_Online.Models
                 }
                 throw raise;
             }
+
+
+
         }
 
-        //otro
+
+
+
+
 
 
     }

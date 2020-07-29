@@ -42,6 +42,11 @@
                     var url = "http://localhost:49996/api/CulqiExpress/CrearOrden";
                     this.$http.post(url, this.orden).then(function (response) {
                         alert(response.body);
+                        if (response.body == 4) {
+                            window.location.href = 'MetodoTarjeta.html?ID_Metodo_Pago=' + response.body;
+                        } else {
+                            window.location.href = 'Efectivo.html?ID_Metodo_Pago=' + response.body;
+                        }
                     });
                 },
                 obtenerPago: function () {
