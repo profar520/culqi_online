@@ -36,6 +36,9 @@
             mounted: function () {
                 this.obtenerPago();
                 this.obtenerUrl()
+                let uri = window.location.search.substring(1);
+                let params = new URLSearchParams(uri);
+                this.orden.ID_Link = params.get("ID_Link")
             },
             methods: {
                 crearOrden: function () {
@@ -62,11 +65,7 @@
                     });
                 }
             },
-            created() {
-                let uri = window.location.search.substring(1);
-                let params = new URLSearchParams(uri);
-                this.orden.ID_Link = params.get("ID_Link")
-            },
+            
         });
     </script>
 </body>

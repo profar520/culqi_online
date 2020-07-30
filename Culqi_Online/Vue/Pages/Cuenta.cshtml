@@ -6,7 +6,7 @@
     <div id="app" class="container">
         <h1 class="display-4">Registrar cuenta</h1>
         <div class="form-group">
-            <input class="form-control" type="text" v-model="cuenta.ID_Usuario" hidden />
+            <input class="form-control" type="hidden" v-model="cuenta.ID_Usuario"  />
         </div>
 
         <template v-for="item in moneda">
@@ -82,14 +82,15 @@
                 //    Numero_Cuenta: "11111222223333344444"
                 //};
                 this.$http.post(url, this.cuenta).then(function (response) {
-                    alert(response.body);
+                    //alert(response.body);
+                    window.location.href = '/Link'
                 });
             },
             obtenerBanco: function () {
                 var url = "http://localhost:49996/api/afiliar_cuenta/listar_nombre_banco";
                 this.$http.get(url).then(function (response) {
                     this.banco = response.body;
-                    window.location.href = '/Link'
+                    
                 });
             },
             obtenerTipoCuenta: function () {
