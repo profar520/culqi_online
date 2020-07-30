@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
     <div id="app" class="container">
@@ -11,7 +14,7 @@
         <div class="form-group">
             <label>Método de pago</label>
             <select class="form-control" v-model="pago.ID_Metodo_Pago" required>
-                <option disabled selected>Seleccionar</option>
+                <option disabled>Seleccionar</option>
                 <option v-for="item in metodo_pago" :value="item.ID_Metodo_Pago">{{ item.Metodo_Pago }}</option>
             </select>
         </div>
@@ -29,44 +32,47 @@
         </div>
 
         <button class="btn btn-default" type="submit" @click="grabarPago">Continuar</button>
-        {{ pago }}
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
     <script>
-    new Vue({
-        el: "#app",
-        data: {
-            pago: {},
-            metodo_pago: []
-        },
-        mounted: function () {
-            this.obtenerMetodoPago();
-        },
-        methods: {
-            grabarPago: function () {
-                var url = "http://localhost:49996/api/registrar_pago/metodo_tarjeta";
-                //var param = {
-                //    ID_Metodo_Pago: 1,
-                //    Numero_Tarjeta: 123456789,
-                //    Mes_Año: 0424,
-                //    CVV: 147
-                //};
-                this.$http.post(url, this.pago).then(function (response) {
-                    alert(response.body);
-                });
+        new Vue({
+            el: "#app",
+            data: {
+                pago: {},
+                metodo_pago: [],
+                pago: { ID_Metodo_Pago: "" }
             },
-            obtenerMetodoPago: function () {
-                var url = "http://localhost:49996/api/registrar_pago/listar_metodo_pago";
-                this.$http.get(url).then(function (response) {
-                    this.metodo_pago = response.body;
-                });
+            mounted: function () {
+                this.obtenerMetodoPago();
+                let uri = window.location.search.substring(1);
+                let params = new URLSearchParams(uri);
+                this.pago.ID_Metodo_Pago = params.get("ID_Metodo_Pago");
+            },
+            methods: {
+                grabarPago: function () {
+                    var url = "http://localhost:49996/api/registrar_pago/metodo_tarjeta";
+                    //var param = {
+                    //    ID_Metodo_Pago: 1,
+                    //    Numero_Tarjeta: 123456789,
+                    //    Mes_Año: 0424,
+                    //    CVV: 147
+                    //};
+                    this.$http.post(url, this.pago).then(function (response) {
+                        alert(response.body);
+                    });
+                },
+                obtenerMetodoPago: function () {
+                    var url = "http://localhost:49996/api/registrar_pago/listar_metodo_pago";
+                    this.$http.get(url).then(function (response) {
+                        this.metodo_pago = response.body;
+                    });
+                }
             }
-        }
-    });
+        });
     </script>
 </body>
 </html>

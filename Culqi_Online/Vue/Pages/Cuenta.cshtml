@@ -6,7 +6,7 @@
     <div id="app" class="container">
         <h1 class="display-4">Registrar cuenta</h1>
         <div class="form-group">
-            <input class="form-control" type="text" v-model="cuenta.ID_Usuario" required />
+            <input class="form-control" type="text" v-model="cuenta.ID_Usuario" hidden />
         </div>
 
         <template v-for="item in moneda">
@@ -44,7 +44,6 @@
         </div>
 
         <button class="btn btn-default" type="submit" @@click="grabarCuenta">Continuar</button>
-        {{ cuenta }}
     </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -59,13 +58,17 @@
             banco: [],
             tipocuenta: [],
             moneda: [],
-            lugar: []
+            lugar: [],
+            cuenta: { ID_Usuario: "" }
         },
         mounted: function () {
             this.obtenerBanco();
             this.obtenerTipoCuenta();
             this.obtenerMoneda();
             this.obtenerLugar();
+            let uri = window.location.search.substring(1);
+            let params = new URLSearchParams(uri);
+            this.cuenta.ID_Usuario = params.get("ID_Usuario");
         },
         methods: {
             grabarCuenta: function () {
@@ -86,6 +89,7 @@
                 var url = "http://localhost:49996/api/afiliar_cuenta/listar_nombre_banco";
                 this.$http.get(url).then(function (response) {
                     this.banco = response.body;
+                    window.location.href = '/Link'
                 });
             },
             obtenerTipoCuenta: function () {
