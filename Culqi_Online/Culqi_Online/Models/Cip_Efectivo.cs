@@ -23,6 +23,8 @@ namespace Culqi_Online.Models
         public int ID_Cip { get; set; }
         public int ID_Metodo_Pago { get; set; }
         public Nullable<int> Codigo { get; set; }
+        public string Cip_Fecha_T { get; set; }
+        public string Cip_Fecha_V { get; set; }
     
         public virtual Metodo_Pago Metodo_Pago { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

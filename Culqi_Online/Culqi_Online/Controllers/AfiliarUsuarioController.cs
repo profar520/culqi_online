@@ -71,13 +71,13 @@ namespace Culqi_Online.Controllers
         //CIP
 
 
-        //[HttpPost]
-        //[Route("api/pagoefectivo/registrarcip")]
+        [HttpPost]
+        [Route("api/pagoefectivo/registrarcip")]
 
-        //public int registrarcip(Cip_Efectivodto cip_efectivodto)
-        //{
-        //    return Cip_Efectivo.registrarcip(cip_efectivodto);
+        public int registrarcip(Cip_Efectivodto cip_efectivodto)
+        {
+            return Cip_Efectivo.registrarcip(cip_efectivodto);
 
-        //}
+        }
     }
 }

@@ -16,8 +16,7 @@
         <tr v-for="item in enlace">
             <td>{{item.ID_Link}}</td>
             <td>{{item.Url}}</></td>
-            <td><a class="btn btn-danger" role="button" aria-pressed="true" href="https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20Express:%20http://localhost:65160/CompradorUrl.html?ID_Link=">Compartir WhatsApp</a></td>
-        </tr>
+            <td><a class="btn btn-danger" role="button" aria-pressed="true" v-bind:href="'https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20Express:%20' + item.Url ">Compartir WhatsApp</a></td>
     </table>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -29,7 +28,7 @@
     new Vue({
         el: "#app",
         data: {
-            enlace: [],
+            enlace: []
         },
         mounted: function () {
             this.obtenerUrl();

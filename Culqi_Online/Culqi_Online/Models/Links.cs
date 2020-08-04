@@ -31,7 +31,7 @@ namespace Culqi_Online.Models
             {
                 db.SaveChanges();
                 Link link1 = db.Link.Find(link.ID_Link);
-                link.Url = "http://localhost:65160/CompradorUrl.html?ID_Link=" + link.ID_Link + "&ID_Comercio=" + id_comercio;
+                link.Url = "http://localhost:65160/CompradorUrl.html?ID_Link=" + link.ID_Link + "%26ID_Comercio=" + id_comercio;
                 db.Entry(link1).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return link.ID_Link;
@@ -60,7 +60,7 @@ namespace Culqi_Online.Models
             var lista_url = from url in db.Link
                                select new Linkdto()
                                {
-                                   //ID_Link = url.ID_Link,
+                                   ID_Link = url.ID_Link,
                                    Url = url.Url,
                                }; 
             return lista_url;
