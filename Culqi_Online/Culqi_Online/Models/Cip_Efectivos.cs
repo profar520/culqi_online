@@ -21,10 +21,14 @@ namespace Culqi_Online.Models
             cip_efectivo.Codigo = numero;
             db.Cip_Efectivo.Add(cip_efectivo);
 
-
-
             try
             {
+                db.SaveChanges();
+                Venta venta = new Venta();
+                venta.ID_Cip = cip_efectivo.ID_Cip;
+                venta.ID_Comercio = cip_efectivodto.ID_Comercio;
+                venta.Fecha_Pago = DateTime.Now;
+                db.Venta.Add(venta);
                 db.SaveChanges();
                 return (int)cip_efectivo.Codigo;
             }

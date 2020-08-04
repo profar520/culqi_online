@@ -30,25 +30,26 @@
             data: {
                 orden: {},
                 metodo: [],
-                enlace: [],
+                //enlace: [],
+                ID_Comercio: "",
                 orden: { ID_Link: "" }
             },
             mounted: function () {
                 this.obtenerPago();
-                this.obtenerUrl()
+                //this.obtenerUrl();
                 let uri = window.location.search.substring(1);
                 let params = new URLSearchParams(uri);
-                this.orden.ID_Link = params.get("ID_Link")
+                this.ID_Comercio = params.get("ID_Comercio");
+                this.orden.ID_Link = params.get("ID_Link");
             },
             methods: {
                 crearOrden: function () {
                     var url = "http://localhost:49996/api/CulqiExpress/CrearOrden";
                     this.$http.post(url, this.orden).then(function (response) {
-                        alert(response.body);
                         if (response.body == 4) {
-                            window.location.href = 'MetodoTarjeta.html?ID_Metodo_Pago=' + response.body;
+                            window.location.href = 'MetodoTarjeta.html?ID_Metodo_Pago=' + response.body + '&ID_Comercio=' + this.ID_Comercio;
                         } else {
-                            window.location.href = 'Efectivo.html?ID_Metodo_Pago=' + response.body;
+                            window.location.href = 'Efectivo.html?ID_Metodo_Pago=' + response.body + '&ID_Comercio=' + this.ID_Comercio;
                         }
                     });
                 },
@@ -57,15 +58,14 @@
                     this.$http.get(url).then(function (response) {
                         this.metodo = response.body;
                     });
-                },
-                obtenerUrl: function () {
-                    var url = "http://localhost:49996/api/CulqiExpress/listar_enlace";
-                    this.$http.get(url).then(function (response) {
-                        this.enlace = response.body;
-                    });
                 }
-            },
-            
+                //obtenerUrl: function () {
+                //    var url = "http://localhost:49996/api/CulqiExpress/listar_enlace";
+                //    this.$http.get(url).then(function (response) {
+                //        this.enlace = response.body;
+                //    });
+                //}
+            }        
         });
     </script>
 </body>

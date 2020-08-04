@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="culqiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="culqiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Banco">
           <Key>
             <PropertyRef Name="ID_Banco" />
@@ -164,9 +164,9 @@
             <PropertyRef Name="ID_Venta" />
           </Key>
           <Property Name="ID_Venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_Cip" Type="int" Nullable="false" />
-          <Property Name="ID_Metodo_Tarjeta" Type="int" Nullable="false" />
-          <Property Name="ID_Comercio" Type="int" />
+          <Property Name="ID_Cip" Type="int" />
+          <Property Name="ID_Metodo_Tarjeta" Type="int" />
+          <Property Name="ID_Comercio" Type="int" Nullable="false" />
           <Property Name="Fecha_Pago" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK__Cip_Efect__ID_Me__76969D2E">
@@ -362,7 +362,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Venta__ID_Cip__7C4F7684">
-          <End Role="Cip_Efectivo" Type="Self.Cip_Efectivo" Multiplicity="1" />
+          <End Role="Cip_Efectivo" Type="Self.Cip_Efectivo" Multiplicity="0..1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cip_Efectivo">
@@ -374,7 +374,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Venta__ID_Metodo__7D439ABD">
-          <End Role="Metodo_Tarjeta" Type="Self.Metodo_Tarjeta" Multiplicity="1" />
+          <End Role="Metodo_Tarjeta" Type="Self.Metodo_Tarjeta" Multiplicity="0..1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Metodo_Tarjeta">
@@ -398,7 +398,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Venta_Comercio">
-          <End Role="Comercio" Type="Self.Comercio" Multiplicity="0..1" />
+          <End Role="Comercio" Type="Self.Comercio" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Comercio">
@@ -510,7 +510,8 @@
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="culqiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -710,9 +711,9 @@
             <PropertyRef Name="ID_Venta" />
           </Key>
           <Property Name="ID_Venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_Cip" Type="Int32" Nullable="false" />
-          <Property Name="ID_Metodo_Tarjeta" Type="Int32" Nullable="false" />
-          <Property Name="ID_Comercio" Type="Int32" />
+          <Property Name="ID_Cip" Type="Int32" />
+          <Property Name="ID_Metodo_Tarjeta" Type="Int32" />
+          <Property Name="ID_Comercio" Type="Int32" Nullable="false" />
           <Property Name="Fecha_Pago" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Cip_Efectivo" Relationship="Self.FK__Venta__ID_Cip__7C4F7684" FromRole="Venta" ToRole="Cip_Efectivo" />
           <NavigationProperty Name="Comercio" Relationship="Self.FK_Venta_Comercio" FromRole="Venta" ToRole="Comercio" />
@@ -779,7 +780,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Venta__ID_Cip__7C4F7684">
-          <End Role="Cip_Efectivo" Type="Self.Cip_Efectivo" Multiplicity="1" />
+          <End Role="Cip_Efectivo" Type="Self.Cip_Efectivo" Multiplicity="0..1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cip_Efectivo">
@@ -815,7 +816,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Venta_Comercio">
-          <End Role="Comercio" Type="Self.Comercio" Multiplicity="0..1" />
+          <End Role="Comercio" Type="Self.Comercio" Multiplicity="1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Comercio">
@@ -923,7 +924,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Venta__ID_Metodo__7D439ABD">
-          <End Role="Metodo_Tarjeta" Type="Self.Metodo_Tarjeta" Multiplicity="1" />
+          <End Role="Metodo_Tarjeta" Type="Self.Metodo_Tarjeta" Multiplicity="0..1" />
           <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Metodo_Tarjeta">

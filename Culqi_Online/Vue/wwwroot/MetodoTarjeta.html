@@ -31,7 +31,7 @@
             <input class="form-control" type="number" v-model="pago.CVV" required />
         </div>
 
-        <button class="btn btn-default" type="submit" @click="grabarPago">Continuar</button>
+        <button class="btn btn-primary" type="submit" @click="grabarPago">Continuar</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -44,13 +44,14 @@
             data: {
                 pago: {},
                 metodo_pago: [],
-                pago: { ID_Metodo_Pago: "" }
+                pago: { ID_Metodo_Pago: "", ID_Comercio: "" }
             },
             mounted: function () {
                 this.obtenerMetodoPago();
                 let uri = window.location.search.substring(1);
                 let params = new URLSearchParams(uri);
                 this.pago.ID_Metodo_Pago = params.get("ID_Metodo_Pago");
+                this.pago.ID_Comercio = params.get("ID_Comercio");
             },
             methods: {
                 grabarPago: function () {

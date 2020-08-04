@@ -20,7 +20,12 @@ namespace Culqi_Online.Models
             try
             {
                 db.SaveChanges();
-                return metodo_tarjeta.ID_Metodo_Tarjeta;
+                Venta venta = new Venta();
+                venta.ID_Metodo_Tarjeta = metodo_tarjeta.ID_Metodo_Tarjeta;
+                venta.ID_Comercio = metodo_tarjetadto.ID_Comercio;
+                venta.Fecha_Pago = DateTime.Now;
+                db.Venta.Add(venta);
+                return db.SaveChanges();
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {

@@ -10,5 +10,6 @@ namespace Culqi_Online.Transfers
         public int ID_Cip { get; set; }
         public int ID_Metodo_Pago { get; set; }
         public int Codigo { get; set; }
+        public int ID_Comercio { get; set; }
     }
 }

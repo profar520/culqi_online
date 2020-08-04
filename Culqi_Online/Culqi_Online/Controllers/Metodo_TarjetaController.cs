@@ -23,8 +23,7 @@ namespace Culqi_Online.Controllers
             else
             {
                 return 0;
-            }
-            
+            }       
         }
 
         [HttpGet]
@@ -33,5 +32,6 @@ namespace Culqi_Online.Controllers
         {
             return Metodo_Pago.ListarMetodosPago();
         }
+
     }
 }

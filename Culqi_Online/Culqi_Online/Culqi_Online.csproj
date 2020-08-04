@@ -285,6 +285,7 @@
     <Compile Include="Transfers\Tipo_Documentodto.cs" />
     <Compile Include="Transfers\Tipo_Usuariodto.cs" />
     <Compile Include="Transfers\Usuariodto.cs" />
+    <Compile Include="Transfers\Ventadto.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

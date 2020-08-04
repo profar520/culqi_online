@@ -12,5 +12,6 @@ namespace Culqi_Online.Transfers
         public string Numero_Tarjeta { get; set; }
         public Nullable<int> Mes_Año { get; set; }
         public Nullable<int> CVV { get; set; }
+        public int ID_Comercio { get; set; }
     }
 }
