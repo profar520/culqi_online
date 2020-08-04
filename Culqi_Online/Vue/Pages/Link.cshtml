@@ -30,10 +30,14 @@
         el: "#app",
         data: {
             link: {},
+            link: { ID_Comercio: "" },
             moneda: []
         },
         mounted: function () {
             this.obtenerMoneda();
+            let uri = window.location.search.substring(1);
+            let params = new URLSearchParams(uri);
+            this.link.ID_Comercio = params.get("ID_Comercio");
         },
         methods: {
             crearlink: function () {

@@ -90,7 +90,7 @@
                 //};
                 this.$http.post(url, this.comercio).then(function (response) {
                     //alert("id_comercio: " + response.body.ID_Comercio + ", llave pública: " + response.body.Llave_Publica);
-                    window.location.href = '/Cuenta?ID_Usuario=' + this.comercio.ID_Usuario;
+                    window.location.href = '/Cuenta?ID_Usuario=' + this.comercio.ID_Usuario + '&ID_Comercio=' + response.body.ID_Comercio;
                 });
             },
             obtenerDocumento: function () {

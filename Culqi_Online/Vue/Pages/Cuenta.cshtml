@@ -59,6 +59,7 @@
             tipocuenta: [],
             moneda: [],
             lugar: [],
+            id_comercio: "",
             cuenta: { ID_Usuario: "" }
         },
         mounted: function () {
@@ -69,6 +70,7 @@
             let uri = window.location.search.substring(1);
             let params = new URLSearchParams(uri);
             this.cuenta.ID_Usuario = params.get("ID_Usuario");
+            this.id_comercio = params.get("ID_Comercio");
         },
         methods: {
             grabarCuenta: function () {
@@ -83,7 +85,7 @@
                 //};
                 this.$http.post(url, this.cuenta).then(function (response) {
                     //alert(response.body);
-                    window.location.href = '/Link'
+                    window.location.href = '/Link?ID_Comercio=' + this.id_comercio;
                 });
             },
             obtenerBanco: function () {
