@@ -42,13 +42,5 @@ namespace Culqi_Online.Controllers
             return Link.ListarEnlace();
         }
 
-        //Listar todo los enlaces según el id
-        [HttpGet]
-        [Route("api/CulqiExpress/listarenlaceId")]
-        public IEnumerable<Linkdto> ListarEnlaceId(int ID_Link)
-        {
-            return Link.ListarEnlaceId(ID_Link);
-        }
-
     }
 }

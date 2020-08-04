@@ -30,7 +30,7 @@ namespace Culqi_Online.Models
                 venta.Fecha_Pago = DateTime.Now;
                 db.Venta.Add(venta);
                 db.SaveChanges();
-                return (int)cip_efectivo.Codigo;
+                return (int) cip_efectivo.Codigo;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {

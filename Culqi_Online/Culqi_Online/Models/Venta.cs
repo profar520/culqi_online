@@ -15,9 +15,9 @@ namespace Culqi_Online.Models
     public partial class Venta
     {
         public int ID_Venta { get; set; }
-        public Nullable<int> ID_Cip { get; set; }
-        public Nullable<int> ID_Metodo_Tarjeta { get; set; }
-        public int ID_Comercio { get; set; }
+        public Nullable<int> ID_Comercio { get; set; }
+        public int ID_Cip { get; set; }
+        public int ID_Metodo_Tarjeta { get; set; }
         public System.DateTime Fecha_Pago { get; set; }
     
         public virtual Cip_Efectivo Cip_Efectivo { get; set; }

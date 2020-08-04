@@ -113,7 +113,7 @@ Metodo_Pago varchar (50),
 
 --Tabla Orden
 CREATE TABLE Orden(
-ID_Orden int identity (1,1) primary key not null,
+ID_Orden int identity (1,1) primary key,
 ID_Link int foreign key references Link (ID_Link) not null,
 ID_Metodo_Pago int foreign key references Metodo_Pago (ID_Metodo_Pago) not null,
 Correo varchar (50),
@@ -128,19 +128,11 @@ Codigo varchar (8),
 
 --Tabla Tarjeta
 CREATE TABLE Metodo_Tarjeta(
-ID_Metodo_Tarjeta int identity (1,1) primary key not null,
+ID_Metodo_Tarjeta int identity (1,1) primary key,
 ID_Metodo_Pago int foreign key references Metodo_Pago (ID_Metodo_Pago) not null,
 Numero_Tarjeta varchar (22),
 Mes_Año int,
 CVV int,
-)
-
---Tabla Venta
-CREATE TABLE Venta(
-ID_Venta int identity (1,1) primary key not null,
-ID_Cip int foreign key references Cip_Efectivo (ID_Cip) not null,
-ID_Metodo_Tarjeta int foreign key references Metodo_tarjeta (ID_Metodo_Tarjeta) not null,
-Fecha_Pago datetime not null,
 )
 
 --Tabla Comercio
@@ -153,6 +145,15 @@ Llave_Publica varchar (50) not null,
 Nombre_Comercial varchar (25) not null,
 URL_Comercio varchar (100), 
 Celular int not null
+)
+
+--Tabla Venta
+CREATE TABLE Venta(
+ID_Venta int identity (1,1) primary key not null,
+ID_Comercio int foreign key references Comercio (ID_Comercio),
+ID_Cip int foreign key references Cip_Efectivo (ID_Cip) not null,
+ID_Metodo_Tarjeta int foreign key references Metodo_tarjeta (ID_Metodo_Tarjeta) not null,
+Fecha_Pago datetime not null,
 )
 
 /********************FIN TABLAS*********************/

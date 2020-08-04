@@ -12,22 +12,27 @@ namespace Culqi_Online.Models
     public partial class Link
     {
 
+
         //crear link
         public static int GenerarLink(Linkdto linkdto)
         {
             bd_culqiEntities db = new bd_culqiEntities();
 
             //regla 1: crear un link
+            var id_comercio = linkdto.ID_Comercio;
             Link link = new Link();
-            link.ID_Link = linkdto.ID_Link;
             link.Monto = linkdto.Monto;
             link.Concepto = linkdto.Concepto;
             link.ID_Moneda = linkdto.ID_Moneda;
-            link.Url = "http://localhost:65160/CompradorUrl.html?ID_Link=";
+            //link.Url = "http://localhost:65160/CompradorUrl.html?ID_Link="+ link.ID_Link +"&ID_Comercio=" + id_comercio;
             db.Link.Add(link);
 
             try
             {
+                db.SaveChanges();
+                Link link1 = db.Link.Find(link.ID_Link);
+                link.Url = "http://localhost:65160/CompradorUrl.html?ID_Link=" + link.ID_Link + "&ID_Comercio=" + id_comercio;
+                db.Entry(link1).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return link.ID_Link;
             }
@@ -55,23 +60,10 @@ namespace Culqi_Online.Models
             var lista_url = from url in db.Link
                                select new Linkdto()
                                {
-                                   ID_Link = url.ID_Link,
-                                   Url = url.Url + url.ID_Link,
+                                   //ID_Link = url.ID_Link,
+                                   Url = url.Url,
                                }; 
             return lista_url;
-        }
-
-        //Listar un enlace según el id
-        public static IEnumerable<Linkdto> ListarEnlaceId(int ID_Link)
-        {
-            bd_culqiEntities db = new bd_culqiEntities();
-            var lista_url_id = from url in db.Link.Where(l => l.ID_Link == ID_Link)
-                            select new Linkdto()
-                            {
-                                ID_Link = url.ID_Link,
-                                Url = url.Url + url.ID_Link,
-                            };
-            return lista_url_id;
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Culqi_Online.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,5 +13,6 @@ namespace Culqi_Online.Transfers
         public Nullable<int> Monto { get; set; }
         public string Concepto { get; set; }
         public string Url { get; set; }
+        public int ID_Comercio { get; set; }
     }
 }
