@@ -28,6 +28,7 @@ namespace Culqi_Online.Models
                 venta.ID_Cip = cip_efectivo.ID_Cip;
                 venta.ID_Comercio = cip_efectivodto.ID_Comercio;
                 venta.Fecha_Pago = DateTime.Now;
+                venta.Estado = "0";
                 db.Venta.Add(venta);
                 db.SaveChanges();
                 return (int) cip_efectivo.Codigo;

@@ -19,6 +19,7 @@ namespace Culqi_Online.Models
         public Nullable<int> ID_Metodo_Tarjeta { get; set; }
         public int ID_Comercio { get; set; }
         public System.DateTime Fecha_Pago { get; set; }
+        public string Estado { get; set; }
     
         public virtual Cip_Efectivo Cip_Efectivo { get; set; }
         public virtual Comercio Comercio { get; set; }

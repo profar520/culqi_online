@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="culqiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="culqiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Banco">
           <Key>
             <PropertyRef Name="ID_Banco" />
@@ -170,6 +170,7 @@
           <Property Name="ID_Metodo_Tarjeta" Type="int" />
           <Property Name="ID_Comercio" Type="int" Nullable="false" />
           <Property Name="Fecha_Pago" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" />
         </EntityType>
         <Association Name="FK__Cip_Efect__ID_Me__76969D2E">
           <End Role="Metodo_Pago" Type="Self.Metodo_Pago" Multiplicity="1" />
@@ -512,8 +513,7 @@
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="culqiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -722,6 +722,7 @@
           <NavigationProperty Name="Cip_Efectivo" Relationship="Self.FK__Venta__ID_Cip__7C4F7684" FromRole="Venta" ToRole="Cip_Efectivo" />
           <NavigationProperty Name="Comercio" Relationship="Self.FK_Venta_Comercio" FromRole="Venta" ToRole="Comercio" />
           <NavigationProperty Name="Metodo_Tarjeta" Relationship="Self.FK__Venta__ID_Metodo__7D439ABD" FromRole="Venta" ToRole="Metodo_Tarjeta" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <Association Name="FK__Cuenta__ID_Banco__5FB337D6">
           <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
@@ -1247,6 +1248,7 @@
           <EntitySetMapping Name="Venta">
             <EntityTypeMapping TypeName="culqiModel.Venta">
               <MappingFragment StoreEntitySet="Venta">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="ID_Venta" ColumnName="ID_Venta" />
                 <ScalarProperty Name="ID_Cip" ColumnName="ID_Cip" />
                 <ScalarProperty Name="ID_Metodo_Tarjeta" ColumnName="ID_Metodo_Tarjeta" />
