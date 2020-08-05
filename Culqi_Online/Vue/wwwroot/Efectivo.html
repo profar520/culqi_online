@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+</head>
+<body>
+    <div id="app" class="container" align="center">
+
+        <h1>¿CÓMO <font color="red">PAGARAS</font> HOY?</h1><br />
+
+        <h4><strong>Método de pago</strong></h4><br />
+        <h3>
+            <select v-model="cip.ID_Metodo_Pago" class="form-horizontal">
+                <option value="0">--Seleccionar--</option>
+                <option v-for="item in metodos_pago" :value="item.ID_Metodo_Pago">{{item.Metodo_Pago}}</option>
+            </select>
+        </h3>
+
+        <br />
+
+        <button type="submit" class="btn btn-primary" @click="fetchCip">Generar Cip</button>
+        <button type="submit" class="btn btn-primary" @click="fetchMostfv">Obtener Cip</button>
+
+        <h4><strong>Datos del CIP generado</strong></h4>
+       
+
+
+        <br />
+        <table class="table" border="1">
+            <tr>
+                <th>ID_Cip</th>
+                <th>Codigo_Cip</th>
+                <th>Fecha de Emisión</th>
+                <th>Fecha de Vencimiento</th>
+            </tr>
+            <tr v-for="item in mostrarfv">
+                <td>{{item.ID_Cip}}</td>
+                <td>{{item.Codigo}}</td>
+                <td>{{item.Cip_Fecha_T}}</></td>
+                <td>{{item.Cip_Fecha_V}}</></td>
+            </tr>
+        </table>
+    </div>
+        <script>
+            new Vue({
+                el: "#app",
+                data: {
+                    ID_Metodo_Pago: 0,
+                    cip: {},
+                    metodos_pago: [],
+                    
+                    cip: { ID_Metodo_Pago: "", ID_Comercio: "" },
+                    ID_Cip: "",
+                    mostrarfv: []
+
+                },
+                mounted: function () {
+                    this.fetchMetodopago();
+                    let uri = window.location.search.substring(1);
+                    let params = new URLSearchParams(uri);
+                    this.cip.ID_Metodo_Pago = params.get("ID_Metodo_Pago");
+                    this.cip.ID_Comercio = params.get("ID_Comercio");
+                },
+                methods: {
+                    fetchMetodopago: function () {
+                        var url = "http://localhost:49996/api/registrar_pago/listar_metodo_pago";
+                        this.$http.get(url).then(function (response) {
+                            this.metodos_pago = response.body;
+                        });
+                    },
+                    fetchCip: function () {
+                        var url = "http://localhost:49996/api/pagoefectivo/registrarcip";
+                        this.$http.post(url, this.cip).then(function (response) {
+                            this.ID_Cip = response.body;
+                        });
+                    },
+
+                    fetchMostfv: function () {
+                        var url = "http://localhost:49996/api/pagoefectivo/listarcip?ID_Cip=" + this.ID_Cip;
+                        this.$http.get(url, this.ID_Cip).then(function (response) {
+                            this.mostrarfv = response.body;
+                        });
+                    },
+                }
+            });
+        </script>
+
+        <br /><br /><br /><br />
+    
+
+
+
+</body>
+</html>

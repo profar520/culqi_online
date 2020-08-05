@@ -1,0 +1,45 @@
+﻿@page
+@model Vue.Pages.OrdenModel
+@{
+    ViewData["Title"] = "MisEnlaces";
+}
+
+<div id="app" class="container">
+    <h3 class="text-info display-4">Lista de enlaces</h3>
+    <table class="table">
+        <tr>
+            <th>ID_Enlace</th>
+            <th>Url</th>
+            <th>Compartir</th>
+
+        </tr>
+        <tr v-for="item in enlace">
+            <td>{{item.ID_Link}}</td>
+            <td>{{item.Url}}</></td>
+            <td><a class="btn btn-danger" role="button" aria-pressed="true" v-bind:href="'https://api.whatsapp.com/send?text=Paga%20facil%20con%20culqi%20Express:%20' + item.Url ">Compartir WhatsApp</a></td>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            enlace: []
+        },
+        mounted: function () {
+            this.obtenerUrl();
+        },
+        methods: {
+            obtenerUrl: function () {
+                var url = "http://localhost:49996/api/CulqiExpress/listar_enlace";
+                this.$http.get(url).then(function (response) {
+                    this.enlace = response.body;
+                });
+            }
+        }
+    });
+</script>
