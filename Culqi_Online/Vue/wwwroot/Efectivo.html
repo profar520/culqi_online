@@ -22,14 +22,32 @@
                 <option value="0">--Seleccionar--</option>
                 <option v-for="item in metodos_pago" :value="item.ID_Metodo_Pago">{{item.Metodo_Pago}}</option>
             </select>
-        </h3><br /><br />
+        </h3>
 
         <br />
 
-        <button type="submit" class="btn btn-primary" @click="fetchCip" >Generar Cip</button>
+        <button type="submit" class="btn btn-primary" @click="fetchCip">Generar Cip</button>
+        <button type="submit" class="btn btn-primary" @click="fetchMostfv">Obtener Cip</button>
 
-        <h4><strong>Código de Pago CIP</strong></h4>
-        codigo {{Codigo}}
+        <h4><strong>Datos del CIP generado</strong></h4>
+       
+
+
+        <br />
+        <table class="table" border="1">
+            <tr>
+                <th>ID_Cip</th>
+                <th>Codigo_Cip</th>
+                <th>Fecha de Emisión</th>
+                <th>Fecha de Vencimiento</th>
+            </tr>
+            <tr v-for="item in mostrarfv">
+                <td>{{item.ID_Cip}}</td>
+                <td>{{item.Codigo}}</td>
+                <td>{{item.Cip_Fecha_T}}</></td>
+                <td>{{item.Cip_Fecha_V}}</></td>
+            </tr>
+        </table>
     </div>
         <script>
             new Vue({
@@ -38,8 +56,11 @@
                     ID_Metodo_Pago: 0,
                     cip: {},
                     metodos_pago: [],
-                    Codigo: "",
-                    cip: { ID_Metodo_Pago: "", ID_Comercio: "" }
+                    
+                    cip: { ID_Metodo_Pago: "", ID_Comercio: "" },
+                    ID_Cip: "",
+                    mostrarfv: []
+
                 },
                 mounted: function () {
                     this.fetchMetodopago();
@@ -58,7 +79,14 @@
                     fetchCip: function () {
                         var url = "http://localhost:49996/api/pagoefectivo/registrarcip";
                         this.$http.post(url, this.cip).then(function (response) {
-                            this.Codigo = response.body;
+                            this.ID_Cip = response.body;
+                        });
+                    },
+
+                    fetchMostfv: function () {
+                        var url = "http://localhost:49996/api/pagoefectivo/listarcip?ID_Cip=" + this.ID_Cip;
+                        this.$http.get(url, this.ID_Cip).then(function (response) {
+                            this.mostrarfv = response.body;
                         });
                     },
                 }

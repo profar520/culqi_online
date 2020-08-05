@@ -17,6 +17,8 @@
                 <option v-for="item in metodo" :value="item.ID_Metodo_Pago">{{ item.Metodo_Pago }}</option>
             </select>
         </div>
+     
+       
         <a class="btn btn-info btn-lg" role="button" aria-pressed="true" type="submit" @click="crearOrden">Continuar</a>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -32,7 +34,8 @@
                 metodo: [],
                 //enlace: [],
                 ID_Comercio: "",
-                orden: { ID_Link: "" }
+                orden: { ID_Link: "" },
+                venta:[],
             },
             mounted: function () {
                 this.obtenerPago();
@@ -41,6 +44,7 @@
                 let params = new URLSearchParams(uri);
                 this.ID_Comercio = params.get("ID_Comercio");
                 this.orden.ID_Link = params.get("ID_Link");
+                this.venta.ID_Venta = params.get("ID_Orden");
             },
             methods: {
                 crearOrden: function () {
@@ -58,13 +62,13 @@
                     this.$http.get(url).then(function (response) {
                         this.metodo = response.body;
                     });
+                },
+                listarventas: function () {
+                    var url = "http://localhost:49996/api/registrar_pago/listar_ventas";
+                    this.$http.get(url).then(function (response) {
+                        this.venta = response.body;
+                    });
                 }
-                //obtenerUrl: function () {
-                //    var url = "http://localhost:49996/api/CulqiExpress/listar_enlace";
-                //    this.$http.get(url).then(function (response) {
-                //        this.enlace = response.body;
-                //    });
-                //}
             }        
         });
     </script>

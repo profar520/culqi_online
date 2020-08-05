@@ -79,5 +79,17 @@ namespace Culqi_Online.Controllers
             return Cip_Efectivo.registrarcip(cip_efectivodto);
 
         }
+
+
+        [HttpGet]
+        [Route("api/pagoefectivo/listarcip")]
+
+        public IEnumerable<Cip_Efectivodto> listar_cip_efectivo(int ID_Cip)
+        {
+            return Cip_Efectivo.listar_cip_efectivo(ID_Cip);
+
+        }
+
+
     }
 }

@@ -16,6 +16,13 @@ namespace Culqi_Online.Models
             bd_culqiEntities db = new bd_culqiEntities();
             Cip_Efectivo cip_efectivo = new Cip_Efectivo();
             cip_efectivo.ID_Metodo_Pago = cip_efectivodto.ID_Metodo_Pago;
+
+
+            DateTime fecha = DateTime.Now;
+            string fecha_t = Convert.ToDateTime(fecha).ToString();
+            cip_efectivo.Cip_Fecha_T = fecha_t;
+            string fecha_v = Convert.ToDateTime(fecha).AddDays(2).ToString();
+            cip_efectivo.Cip_Fecha_V = fecha_v;
             //Generar Cip Aleatorio
 
             cip_efectivo.Codigo = numero;
@@ -31,7 +38,7 @@ namespace Culqi_Online.Models
                 venta.Estado = "0";
                 db.Venta.Add(venta);
                 db.SaveChanges();
-                return (int) cip_efectivo.Codigo;
+                return (int) cip_efectivo.ID_Cip;
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
@@ -49,12 +56,23 @@ namespace Culqi_Online.Models
                 throw raise;
             }
 
-
-
         }
 
 
+        public static IEnumerable<Cip_Efectivodto> listar_cip_efectivo(int ID_Cip)
+        {
+            bd_culqiEntities db = new bd_culqiEntities();
+            var list = from b in db.Cip_Efectivo.Where(t => t.ID_Cip == ID_Cip)
 
+                       select new Cip_Efectivodto()
+                       {
+                           ID_Cip = b.ID_Cip,
+                           Codigo = (int)b.Codigo,
+                           Cip_Fecha_T = b.Cip_Fecha_T,
+                           Cip_Fecha_V = b.Cip_Fecha_V,
+                       };
+            return list;
+        }
 
 
 
