@@ -100,8 +100,8 @@ CREATE TABLE Link(
 ID_Link int identity (1,1) primary key not null,
 ID_Moneda int foreign key references Tipo_Moneda (ID_Moneda) not null,
 Monto integer,
-Concepto varchar (15),
-Url varchar (25),
+Concepto varchar (50),
+Url varchar (100),
 )
 
 
@@ -144,15 +144,15 @@ ID_Giro_Negocio int foreign key references Categoria (ID_Giro_Negocio) not null,
 Llave_Publica varchar (50) not null,
 Nombre_Comercial varchar (25) not null,
 URL_Comercio varchar (100), 
-Celular int not null
+Celular int not null,
 )
 
 --Tabla Venta
 CREATE TABLE Venta(
 ID_Venta int identity (1,1) primary key not null,
 ID_Comercio int foreign key references Comercio (ID_Comercio),
-ID_Cip int foreign key references Cip_Efectivo (ID_Cip) not null,
-ID_Metodo_Tarjeta int foreign key references Metodo_tarjeta (ID_Metodo_Tarjeta) not null,
+ID_Cip int foreign key references Cip_Efectivo (ID_Cip),
+ID_Metodo_Tarjeta int foreign key references Metodo_tarjeta (ID_Metodo_Tarjeta),
 Fecha_Pago datetime not null,
 )
 
@@ -206,6 +206,12 @@ insert into Ciudad values ('limatambo, peru')
 insert into Ciudad values ('limabamba, peru')
 insert into Ciudad values ('limapampa, peru')
 
+select * from Categoria
+insert into Categoria values ('actividades recreativas y entretenimiento')
+insert into Categoria values ('servicios financieros')
+insert into Categoria values ('enseñanza')
+insert into Categoria values ('productos digitales')
+
 select * from Rubro
 --Para entretenimiento
 insert into Rubro values (1,'cine')
@@ -227,24 +233,17 @@ insert into Rubro values (4,'ebook, audiolibros')
 insert into Rubro values (4,'juegos')
 insert into Rubro values (4,'otros')
 
-select * from Categoria
-insert into Categoria values ('actividades recreativas y entretenimiento')
-insert into Categoria values ('servicios financieros')
-insert into Categoria values ('enseñanza')
-insert into Categoria values ('productos digitales')
-
+select * from Metodo_Pago
+insert into Metodo_Pago values ('banca por internet y movil')
+insert into Metodo_Pago values ('deposito en agencias bancarias')
+insert into Metodo_Pago values ('deposito en agentes y bodegas')
+insert into Metodo_Pago values ('tarjeta de credito y debito')
 
 SELECT c.ID_Giro_Negocio, c.Giro_Negocio, r.ID_Rubro, r.Nombre_Rubro FROM Categoria c, Rubro r WHERE ( c.ID_Giro_Negocio = r.ID_Giro_Negocio )
 
 select * from Comercio
 
 select Nombre_Banco from Banco
-
-select * from Metodo_Pago
-insert into Metodo_Pago values ('banca por internet y movil')
-insert into Metodo_Pago values ('deposito en agencias bancarias')
-insert into Metodo_Pago values ('deposito en agentes y bodegas')
-insert into Metodo_Pago values ('tarjeta de credito y debito')
 
 alter table Link add Codigo varchar(50);
 alter table Link drop column Codigo
